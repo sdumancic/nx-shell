@@ -14,7 +14,20 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-shell/tire-storage/tsm-domain": [
+        "libs/tire-storage/tsm-domain/src/index.ts"
+      ],
+      "@nx-shell/tire-storage/tsm-home": [
+        "libs/tire-storage/tsm-home/src/index.ts"
+      ],
+      "@nx-shell/tire-storage/tsm-ui": [
+        "libs/tire-storage/tsm-ui/src/index.ts"
+      ],
+      "@nx-shell/tire-storage/tsm-util": [
+        "libs/tire-storage/tsm-util/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
