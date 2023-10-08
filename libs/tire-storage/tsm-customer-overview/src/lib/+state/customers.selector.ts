@@ -1,5 +1,6 @@
 import { createSelector } from '@ngrx/store'
 import { customerOverviewFeature, CustomersOverviewState } from './customers.reducer'
+import { getError, LoadingState } from '@nx-shell/tire-storage/tsm-util'
 
 export const selectCustomerGenders = createSelector(
   customerOverviewFeature.selectCustomersOverviewState,
@@ -9,6 +10,14 @@ export const selectBookListPageViewModel = createSelector(
   customerOverviewFeature.selectCustomers,
   selectCustomerGenders,
   customerOverviewFeature.selectCurrentCustomer,
-  customerOverviewFeature.selectError,
-  (customers, genders, currentCustomer, error) => ({ customers, genders, currentCustomer, error })
+  customerOverviewFeature.selectCustomersCallState,
+  (customers, genders, currentCustomer, callState) => (
+    {
+      customers,
+      genders,
+      currentCustomer,
+      customersLoading: callState === LoadingState.LOADING,
+      customersLoaded: callState === LoadingState.LOADED,
+      customersError: getError(callState),
+    })
 )

@@ -1,22 +1,30 @@
 import { createFeature, createReducer, on } from '@ngrx/store'
 import { Customer, CustomerMetadata } from '@nx-shell/tire-storage/tsm-services'
-import { loadCustomer, loadCustomerFailure, loadCustomerSuccess } from './customer.actions'
+import {
+  loadCustomer,
+  loadCustomerFailure,
+  loadCustomerMetadata,
+  loadCustomerMetadataFailure,
+  loadCustomerMetadataSuccess,
+  loadCustomerSuccess
+} from './customer.actions'
+import { CallState, LoadingState } from '@nx-shell/tire-storage/tsm-util'
 
 export interface CustomerState {
   customer: Customer | null
-  loading: boolean,
+  customerCallState: CallState,
   metadata: CustomerMetadata,
-  error: string | null
+  metadataCallState: CallState,
 }
 
 const initialState: CustomerState = {
   customer: null,
-  loading: false,
+  customerCallState: LoadingState.INIT,
   metadata: {
     genders: [],
     states: []
   },
-  error: null
+  metadataCallState: LoadingState.INIT,
 }
 
 export const customerFeature = createFeature({
@@ -26,26 +34,43 @@ export const customerFeature = createFeature({
     on(loadCustomer, (state, action) => {
       return {
         ...state,
-        loading: true
+        customerCallState: LoadingState.LOADING
       }
     }),
     on(loadCustomerSuccess, (state, action) => {
       return {
         ...state,
-        loading: false,
+        customerCallState: LoadingState.LOADED,
         customer: action.customer,
-        error: null
       }
     }),
     on(loadCustomerFailure, (state, action) => {
       return {
         ...state,
-        loading: false,
-        customer: null,
-        error: action.error
+        customerCallState: { errorMsg: action.error }
+      }
+    }),
+    on(loadCustomerMetadata, (state, action) => {
+      return {
+        ...state,
+        metadataCallState: LoadingState.LOADING
+      }
+    }),
+    on(loadCustomerMetadataSuccess, (state, action) => {
+      return {
+        ...state,
+        metadataCallState: LoadingState.LOADED,
+        metadata: action.metadata,
+      }
+    }),
+    on(loadCustomerMetadataFailure, (state, action) => {
+      return {
+        ...state,
+        metadataCallState: { errorMsg: action.error }
       }
     })
   ),
 })
+
 
 

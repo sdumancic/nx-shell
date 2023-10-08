@@ -1,8 +1,15 @@
 import { inject } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { catchError, exhaustMap, map, of } from 'rxjs'
-import { CustomersService } from '@nx-shell/tire-storage/tsm-services'
-import { loadCustomer, loadCustomerFailure, loadCustomerSuccess } from './customer.actions'
+import { CustomersMetadataService, CustomersService } from '@nx-shell/tire-storage/tsm-services'
+import {
+  loadCustomer,
+  loadCustomerFailure,
+  loadCustomerMetadata,
+  loadCustomerMetadataFailure,
+  loadCustomerMetadataSuccess,
+  loadCustomerSuccess
+} from './customer.actions'
 
 export const getCustomerEffect = createEffect((actions$ = inject(Actions), customerService = inject(CustomersService)) => {
     return actions$.pipe(
@@ -17,3 +24,18 @@ export const getCustomerEffect = createEffect((actions$ = inject(Actions), custo
   },
   { functional: true }
 )
+
+export const getMetadataEffect =
+  createEffect((actions$ = inject(Actions), customerMetadataService = inject(CustomersMetadataService)) => {
+      return actions$.pipe(
+        ofType(loadCustomerMetadata),
+        exhaustMap((action) =>
+          customerMetadataService.getCustomerMetadata$().pipe(
+            map(metadata => loadCustomerMetadataSuccess(metadata)),
+            catchError((error: string) => of(loadCustomerMetadataFailure(error)))
+          )
+        )
+      )
+    },
+    { functional: true }
+  )
