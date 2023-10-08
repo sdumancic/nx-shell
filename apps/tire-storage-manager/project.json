@@ -2,7 +2,7 @@
   "name": "tire-storage-manager",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "nx-shell",
+  "prefix": "tsm-app",
   "sourceRoot": "apps/tire-storage-manager/src",
   "tags": [],
   "targets": {

@@ -1,6 +1,6 @@
 {
   "extends": [
-    "../../.eslintrc.json"
+    "../../../.eslintrc.json"
   ],
   "ignorePatterns": [
     "!**/*"
@@ -19,7 +19,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "tsmApp",
+            "prefix": "tsm",
             "style": "camelCase"
           }
         ],
@@ -27,7 +27,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "tsm-app",
+            "prefix": "tsm",
             "style": "kebab-case"
           }
         ]

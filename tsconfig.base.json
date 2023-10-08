@@ -15,11 +15,23 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-shell/tire-storage/tsm-customer-crud": [
+        "libs/tire-storage/tsm-customer-crud/src/index.ts"
+      ],
+      "@nx-shell/tire-storage/tsm-customer-overview": [
+        "libs/tire-storage/tsm-customer-overview/src/index.ts"
+      ],
       "@nx-shell/tire-storage/tsm-domain": [
         "libs/tire-storage/tsm-domain/src/index.ts"
       ],
       "@nx-shell/tire-storage/tsm-home": [
         "libs/tire-storage/tsm-home/src/index.ts"
+      ],
+      "@nx-shell/tire-storage/tsm-offers": [
+        "libs/tire-storage/tsm-offers/src/index.ts"
+      ],
+      "@nx-shell/tire-storage/tsm-services": [
+        "libs/tire-storage/tsm-services/src/index.ts"
       ],
       "@nx-shell/tire-storage/tsm-ui": [
         "libs/tire-storage/tsm-ui/src/index.ts"

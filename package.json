@@ -2,7 +2,9 @@
   "name": "@nx-shell/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "json-server-tsm": " json-server --watch apps/tire-storage-manager/src/assets/db.json"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~16.2.0",
@@ -15,7 +17,11 @@
     "@angular/platform-browser": "~16.2.0",
     "@angular/platform-browser-dynamic": "~16.2.0",
     "@angular/router": "~16.2.0",
+    "@ngrx/effects": "^16.2.0",
+    "@ngrx/store": "^16.2.0",
+    "@ngrx/store-devtools": "^16.2.0",
     "@nx/angular": "16.9.1",
+    "json-server": "^0.17.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -30,6 +36,7 @@
     "@angular/cli": "~16.2.0",
     "@angular/compiler-cli": "~16.2.0",
     "@angular/language-service": "~16.2.0",
+    "@ngrx/schematics": "^16.3.0",
     "@nx/cypress": "16.9.1",
     "@nx/eslint-plugin": "16.9.1",
     "@nx/jest": "16.9.1",
