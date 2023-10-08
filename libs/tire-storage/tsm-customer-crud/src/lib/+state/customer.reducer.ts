@@ -1,14 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store'
 import { Customer, CustomerMetadata } from '@nx-shell/tire-storage/tsm-services'
-import {
-  loadCustomer,
-  loadCustomerFailure,
-  loadCustomerMetadata,
-  loadCustomerMetadataFailure,
-  loadCustomerMetadataSuccess,
-  loadCustomerSuccess
-} from './customer.actions'
 import { CallState, LoadingState } from '@nx-shell/tire-storage/tsm-util'
+import { customerActions } from './customer.actions'
 
 export interface CustomerState {
   customer: Customer | null
@@ -31,39 +24,39 @@ export const customerFeature = createFeature({
   name: 'customer',
   reducer: createReducer(
     initialState,
-    on(loadCustomer, (state, action) => {
+    on(customerActions.fetchCustomer, (state, action) => {
       return {
         ...state,
         customerCallState: LoadingState.LOADING
       }
     }),
-    on(loadCustomerSuccess, (state, action) => {
+    on(customerActions.fetchCustomerSuccess, (state, action) => {
       return {
         ...state,
         customerCallState: LoadingState.LOADED,
         customer: action.customer,
       }
     }),
-    on(loadCustomerFailure, (state, action) => {
+    on(customerActions.fetchCustomerFailure, (state, action) => {
       return {
         ...state,
         customerCallState: { errorMsg: action.error }
       }
     }),
-    on(loadCustomerMetadata, (state, action) => {
+    on(customerActions.fetchCustomerMetadata, (state, action) => {
       return {
         ...state,
         metadataCallState: LoadingState.LOADING
       }
     }),
-    on(loadCustomerMetadataSuccess, (state, action) => {
+    on(customerActions.fetchCustomerMetadataSuccess, (state, action) => {
       return {
         ...state,
         metadataCallState: LoadingState.LOADED,
         metadata: action.metadata,
       }
     }),
-    on(loadCustomerMetadataFailure, (state, action) => {
+    on(customerActions.fetchCustomerMetadataFailure, (state, action) => {
       return {
         ...state,
         metadataCallState: { errorMsg: action.error }

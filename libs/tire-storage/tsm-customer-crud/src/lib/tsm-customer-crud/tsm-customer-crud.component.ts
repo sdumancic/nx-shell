@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { BehaviorSubject, distinctUntilChanged, filter, map, withLatestFrom } from 'rxjs'
 import { Store } from '@ngrx/store'
-import { loadCustomer, loadCustomerMetadata } from '../+state/customer.actions'
+import { customerActions } from '../+state/customer.actions'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { selectCustomerVM } from '../+state/customer.selector'
 
@@ -35,9 +35,10 @@ export class TsmCustomerCrudComponent implements OnInit {
   ngOnInit (): void {
     console.log('ID is received from router, no need for activated route anymore ', this.id$.value, this.customerRemarks)
     this.subscribeToIdChanges()
-    this.store.dispatch(loadCustomerMetadata())
+    this.store.dispatch(customerActions.fetchCustomerMetadata())
+
     this.fetchCustomer$.pipe(filter(val => val !== null), distinctUntilChanged())
-      .subscribe(val => this.store.dispatch(loadCustomer({ id: Number(val) })))
+      .subscribe(val => this.store.dispatch(customerActions.fetchCustomer({ id: Number(val) })))
   }
 
   private subscribeToIdChanges () {

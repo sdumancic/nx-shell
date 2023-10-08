@@ -1,31 +1,45 @@
-import { createAction, props } from '@ngrx/store'
+import { createActionGroup, emptyProps, props } from '@ngrx/store'
 import { Customer, CustomerMetadata } from '@nx-shell/tire-storage/tsm-services'
 
+export const customerActions = createActionGroup({
+  source: 'Customer',
+  events: {
+    'Fetch Customer': props<{ id: number }>(),
+    'Fetch Customer Success': (customer: Customer) => ({ customer }),
+    'Fetch Customer Failure': (error: string) => ({ error }),
+    'Fetch Customer Metadata': emptyProps(),
+    'Fetch Customer Metadata Success': (metadata: CustomerMetadata) => ({ metadata }),
+    'Fetch Customer Metadata Failure': (error: string) => ({ error })
+  },
+})
+/*
 export const loadCustomer = createAction(
-  '[Customer] Get Customers',
+  '[Customer] Fetch Customer',
   props<{ id: number }>()
 )
 
 export const loadCustomerSuccess = createAction(
-  '[Customer] Get Customer Success',
+  '[Customer] Fetch Customer Success',
   (customer: Customer) => ({ customer })
 )
 
 export const loadCustomerFailure = createAction(
-  '[Customer] Get Customer Failure',
+  '[Customer] Fetch Customer Failure',
   (error: string) => ({ error })
 )
 
 export const loadCustomerMetadata = createAction(
-  '[Customer] Get Customer Metadata'
+  '[Customer] Fetch Customer Metadata'
 )
 
 export const loadCustomerMetadataSuccess = createAction(
-  '[Customer] Get Customer Metadata Success',
+  '[Customer] Fetch Customer Metadata Success',
   (metadata: CustomerMetadata) => ({ metadata })
 )
 
 export const loadCustomerMetadataFailure = createAction(
-  '[Customer] Get Customer Metadata Failure',
+  '[Customer] Fetch Customer Metadata Failure',
   (error: string) => ({ error })
 )
+
+ */
