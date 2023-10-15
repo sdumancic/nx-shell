@@ -1,0 +1,24 @@
+.login-form-container {
+
+  width: 400px;
+  display: flex;
+  margin: 200px auto;
+
+  mat-card {
+    width: 100%;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
