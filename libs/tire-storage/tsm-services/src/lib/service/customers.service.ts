@@ -18,4 +18,12 @@ export class CustomersService {
     return this.http.get<Customer>(`${this.api}/customers/${id}`)
   }
 
+  createCustomer$ (customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(`${this.api}/customers`, customer)
+  }
+
+  updateCustomer$ (id: number, customer: Customer): Observable<Customer> {
+    return this.http.put<Customer>(`${this.api}/customers/${id}`, customer)
+  }
+
 }

@@ -61,7 +61,45 @@ export const customerFeature = createFeature({
         ...state,
         metadataCallState: { errorMsg: action.error }
       }
-    })
+    }),
+    on(customerActions.createCustomer, (state, action) => {
+      return {
+        ...state,
+        customerCallState: LoadingState.LOADING
+      }
+    }),
+    on(customerActions.createCustomerSuccess, (state, action) => {
+      return {
+        ...state,
+        customerCallState: LoadingState.LOADED,
+        customer: action.customer,
+      }
+    }),
+    on(customerActions.createCustomerFailure, (state, action) => {
+      return {
+        ...state,
+        customerCallState: { errorMsg: action.error }
+      }
+    }),
+    on(customerActions.updateCustomer, (state, action) => {
+      return {
+        ...state,
+        customerCallState: LoadingState.LOADING
+      }
+    }),
+    on(customerActions.updateCustomerSuccess, (state, action) => {
+      return {
+        ...state,
+        customerCallState: LoadingState.LOADED,
+        customer: action.customer,
+      }
+    }),
+    on(customerActions.updateCustomerFailure, (state, action) => {
+      return {
+        ...state,
+        customerCallState: { errorMsg: action.error }
+      }
+    }),
   ),
 })
 

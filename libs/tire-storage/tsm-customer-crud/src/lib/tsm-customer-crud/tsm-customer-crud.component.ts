@@ -5,11 +5,13 @@ import { Store } from '@ngrx/store'
 import { customerActions } from '../+state/customer.actions'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { selectCustomerVM } from '../+state/customer.selector'
+import { Customer } from '@nx-shell/tire-storage/tsm-services'
+import { TsmAddressUiComponent } from '@nx-shell/tire-storage/tsm-ui'
 
 @Component({
   selector: 'tsm-customer-crud',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TsmAddressUiComponent],
   templateUrl: './tsm-customer-crud.component.html',
   styleUrls: ['./tsm-customer-crud.component.scss'],
 })
@@ -39,6 +41,24 @@ export class TsmCustomerCrudComponent implements OnInit {
 
     this.fetchCustomer$.pipe(filter(val => val !== null), distinctUntilChanged())
       .subscribe(val => this.store.dispatch(customerActions.fetchCustomer({ id: Number(val) })))
+
+  }
+
+  private createCustomer () {
+    const customer: Customer = {
+      firstName: 'Test',
+      lastName: 'Test',
+      gender: 'male',
+      address: {
+        street: 'Test street',
+        city: 'Test city',
+        state: 'Oregon',
+        zip: '12345'
+      },
+      phoneNumber: '123-456-789',
+      email: 'sasa@asdas.asd'
+    }
+    this.store.dispatch(customerActions.createCustomer({ customer }))
   }
 
   private subscribeToIdChanges () {

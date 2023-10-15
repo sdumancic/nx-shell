@@ -38,7 +38,13 @@
       ],
       "@nx-shell/tire-storage/tsm-util": [
         "libs/tire-storage/tsm-util/src/index.ts"
-      ]
+      ],
+      "@nx-shell/users/user-auth": ["libs/users/user-auth/src/index.ts"],
+      "@nx-shell/users/user-services": [
+        "libs/users/user-services/src/index.ts"
+      ],
+      "@nx-shell/users/user-ui": ["libs/users/user-ui/src/index.ts"],
+      "@nx-shell/users/user-util": ["libs/users/user-util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

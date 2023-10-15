@@ -9,6 +9,8 @@ import { Observable } from 'rxjs'
 import { map, shareReplay } from 'rxjs/operators'
 import { CommonModule } from '@angular/common'
 import { RouterLink, RouterOutlet } from '@angular/router'
+import { Store } from '@ngrx/store'
+import { userAuthVm } from '@nx-shell/users/user-auth'
 
 @Component({
   selector: 'tsm-app-main-nav',
@@ -28,6 +30,9 @@ import { RouterLink, RouterOutlet } from '@angular/router'
 })
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver)
+  private store = inject(Store)
+
+  loggedInUser$ = this.store.select(userAuthVm).pipe(map(vm => vm.loggedInUser ? vm.loggedInUser.username : null))
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

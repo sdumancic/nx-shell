@@ -9,7 +9,13 @@ export const customerActions = createActionGroup({
     'Fetch Customer Failure': (error: string) => ({ error }),
     'Fetch Customer Metadata': emptyProps(),
     'Fetch Customer Metadata Success': (metadata: CustomerMetadata) => ({ metadata }),
-    'Fetch Customer Metadata Failure': (error: string) => ({ error })
+    'Fetch Customer Metadata Failure': (error: string) => ({ error }),
+    'Create customer': props<{ customer: Customer }>(),
+    'Create customer Success': (customer: Customer) => ({ customer }),
+    'Create customer Failure': (error: string) => ({ error }),
+    'Update customer': props<{ id: number, customer: Customer }>(),
+    'Update customer Success': (customer: Customer) => ({ customer }),
+    'Update customer Failure': (error: string) => ({ error }),
   },
 })
 /*

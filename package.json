@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "json-server-tsm": " json-server --watch apps/tire-storage-manager/src/assets/db.json"
+    "json-server-tsm": " json-server --watch apps/tire-storage-manager/src/assets/db.json",
+    "tsm": " nx serve tire-storage-manager"
   },
   "private": true,
   "dependencies": {

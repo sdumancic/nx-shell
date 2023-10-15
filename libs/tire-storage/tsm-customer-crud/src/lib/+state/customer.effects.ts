@@ -32,3 +32,32 @@ export const getMetadataEffect =
     },
     { functional: true }
   )
+
+export const createCustomerEffect = createEffect((actions$ = inject(Actions), customerService = inject(CustomersService)) => {
+    return actions$.pipe(
+      ofType(customerActions.createCustomer),
+      exhaustMap((action) =>
+        customerService.createCustomer$(action.customer).pipe(
+          map(customer => customerActions.createCustomerSuccess(customer)),
+          catchError((error: string) => of(customerActions.createCustomerFailure(error)))
+        )
+      )
+    )
+  },
+  { functional: true }
+)
+
+export const updateCustomerEffect = createEffect((actions$ = inject(Actions), customerService = inject(CustomersService)) => {
+    return actions$.pipe(
+      ofType(customerActions.updateCustomer),
+      exhaustMap((action) =>
+        customerService.updateCustomer$(action.id, action.customer).pipe(
+          map(customer => customerActions.updateCustomerSuccess(customer)),
+          catchError((error: string) => of(customerActions.updateCustomerFailure(error)))
+        )
+      )
+    )
+  },
+  { functional: true }
+)
+
