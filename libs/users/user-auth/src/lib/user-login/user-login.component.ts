@@ -11,6 +11,7 @@ import { filter, map } from 'rxjs'
 import { userAuthVm } from '../+state/user-auth.selector'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'nx-shell-user-login',
@@ -22,6 +23,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 export class UserLoginComponent implements OnInit {
   private readonly store = inject(Store)
   private _snackBar = inject(MatSnackBar)
+  private router = inject(Router)
 
   loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -34,6 +36,12 @@ export class UserLoginComponent implements OnInit {
       filter(val => val !== null)
     )
 
+  loginSuccess$ = this.store.select(userAuthVm)
+    .pipe(
+      map(vm => vm.loginSuccess),
+      filter(val => val === true)
+    )
+
   private destroyRef = inject(DestroyRef)
 
   ngOnInit () {
@@ -43,6 +51,10 @@ export class UserLoginComponent implements OnInit {
         verticalPosition: 'bottom',
         duration: 2000
       })
+    })
+
+    this.loginSuccess$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(val => {
+      this.router.navigate(['/offers'])
     })
   }
 

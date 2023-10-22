@@ -1,14 +1,178 @@
 {
   "users": [
     {
-      "userId": 1,
-      "username": "user",
-      "password": "user"
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "name": {
+        "first": "Adam",
+        "last": "Administrator"
+      },
+      "ssn": "123-45-6789",
+      "dob": "1971-05-01T07:00:00+01:00",
+      "hiredOn": "1999-02-02T07:00:00+01:00",
+      "terminatedOn": "",
+      "email": "admin@company.com",
+      "phones": [],
+      "address": {
+        "street": "7251 Walnut Hill Ln",
+        "city": "Scurry",
+        "state": "Oregon",
+        "zip": "36713"
+      },
+      "gender": "male",
+      "portrait": "portraits/admin.jpg",
+      "thumbnail": "portraits/admin-thumb.jpg",
+      "roles": [
+        "sales_advisor",
+        "warehouse",
+        "mechanic"
+      ]
     },
     {
-      "userId": 2,
-      "username": "admin",
-      "password": "admin"
+      "id": 2,
+      "username": "jdoe",
+      "password": "jdoe",
+      "name": {
+        "first": "John",
+        "last": "Doe"
+      },
+      "ssn": "704-23-6085",
+      "dob": "1978-10-02T05:00:00.000Z",
+      "hiredOn": "2002-04-11T05:00:00.000Z",
+      "terminatedOn": null,
+      "email": "john.doe@company.com",
+      "phones": [
+        {
+          "type": "office",
+          "number": "456-789-1230"
+        },
+        {
+          "type": "cell",
+          "number": "654-321-0987"
+        }
+      ],
+      "address": {
+        "street": "3199 Country Club Rd",
+        "city": "Fremont",
+        "state": "Virginia",
+        "zip": "94390"
+      },
+      "gender": "male",
+      "portrait": "portraits/jdoe.jpg",
+      "thumbnail": "portraits/jdoe-thumb.jpg",
+      "roles": [
+        "sales_advisor"
+      ]
+    },
+    {
+      "id": 3,
+      "username": "purplewolf498",
+      "password": "personal",
+      "name": {
+        "first": "Yolanda",
+        "last": "Bishop"
+      },
+      "ssn": "929-54-2428",
+      "dob": "1965-12-08T06:00:00.000Z",
+      "hiredOn": "1989-08-14T05:00:00.000Z",
+      "terminatedOn": null,
+      "email": "yolanda.bishop25@company.com",
+      "phones": [
+        {
+          "type": "office",
+          "number": "612-204-4421"
+        },
+        {
+          "type": "cell",
+          "number": "380-959-3396"
+        }
+      ],
+      "address": {
+        "street": "4969 Lovers Ln",
+        "city": "Elko",
+        "state": "Utah",
+        "zip": "98260"
+      },
+      "gender": "female",
+      "portrait": "portraits/purplewolf498.jpg",
+      "thumbnail": "portraits/purplewolf498-thumb.jpg",
+      "roles": [
+        "warehouse"
+      ]
+    },
+    {
+      "id": 4,
+      "username": "whitecat698",
+      "password": "jenny1",
+      "name": {
+        "first": "Allen",
+        "last": "Hansen"
+      },
+      "ssn": "504-23-5361",
+      "dob": "1965-12-15T06:00:00.000Z",
+      "hiredOn": "1988-03-26T06:00:00.000Z",
+      "terminatedOn": null,
+      "email": "allen.hansen47@company.com",
+      "phones": [
+        {
+          "type": "office",
+          "number": "377-837-4817"
+        },
+        {
+          "type": "cell",
+          "number": "787-513-9084"
+        }
+      ],
+      "address": {
+        "street": "1902 Plum St",
+        "city": "Akron",
+        "state": "Hawaii",
+        "zip": "26975"
+      },
+      "gender": "male",
+      "portrait": "portraits/whitecat698.jpg",
+      "thumbnail": "portraits/whitecat698-thumb.jpg",
+      "roles": [
+        "warehouse"
+      ]
+    },
+    {
+      "id": 5,
+      "username": "bluepanda840",
+      "password": "funfun",
+      "name": {
+        "first": "Leslie",
+        "last": "Vasquez"
+      },
+      "ssn": "906-45-7380",
+      "dob": "1986-10-12T05:00:00.000Z",
+      "hiredOn": "2011-10-24T05:00:00.000Z",
+      "terminatedOn": null,
+      "email": "leslie.vasquez65@company.com",
+      "phones": [
+        {
+          "type": "office",
+          "number": "854-988-2654"
+        },
+        {
+          "type": "home",
+          "number": "106-146-7963"
+        }
+      ],
+      "address": {
+        "street": "7255 Camden Ave",
+        "city": "Frederick",
+        "state": "Michigan",
+        "zip": "10865"
+      },
+      "gender": "female",
+      "portrait": "portraits/bluepanda840.jpg",
+      "thumbnail": "portraits/bluepanda840-thumb.jpg",
+      "roles": [
+        "warehouse",
+        "mechanic"
+      ]
     }
   ],
   "tireMetadata": {
@@ -351,164 +515,6 @@
       "phoneNumber": "123-456-789",
       "email": "sasa@asdas.asd",
       "id": 4
-    }
-  ],
-  "mechanics": [
-    {
-      "username": "admin",
-      "password": "admin",
-      "name": {
-        "first": "Adam",
-        "last": "Administrator"
-      },
-      "ssn": "123-45-6789",
-      "dob": "1900-01-01T06:00:00.000Z",
-      "hiredOn": "1900-01-01T06:00:00.000Z",
-      "terminatedOn": null,
-      "email": "admin@company.com",
-      "phones": [
-        {
-          "type": "office",
-          "number": "123-456-7890"
-        }
-      ],
-      "address": {
-        "street": "7251 Walnut Hill Ln",
-        "city": "Scurry",
-        "state": "Oregon",
-        "zip": "36713"
-      },
-      "gender": "male",
-      "portrait": "portraits/admin.jpg",
-      "thumbnail": "portraits/admin-thumb.jpg"
-    },
-    {
-      "username": "jdoe",
-      "password": "jdoe",
-      "name": {
-        "first": "John",
-        "last": "Doe"
-      },
-      "ssn": "704-23-6085",
-      "dob": "1978-10-02T05:00:00.000Z",
-      "hiredOn": "2002-04-11T05:00:00.000Z",
-      "terminatedOn": null,
-      "email": "john.doe@company.com",
-      "phones": [
-        {
-          "type": "office",
-          "number": "456-789-1230"
-        },
-        {
-          "type": "cell",
-          "number": "654-321-0987"
-        }
-      ],
-      "address": {
-        "street": "3199 Country Club Rd",
-        "city": "Fremont",
-        "state": "Virginia",
-        "zip": "94390"
-      },
-      "gender": "male",
-      "portrait": "portraits/jdoe.jpg",
-      "thumbnail": "portraits/jdoe-thumb.jpg"
-    },
-    {
-      "username": "purplewolf498",
-      "password": "personal",
-      "name": {
-        "first": "Yolanda",
-        "last": "Bishop"
-      },
-      "ssn": "929-54-2428",
-      "dob": "1965-12-08T06:00:00.000Z",
-      "hiredOn": "1989-08-14T05:00:00.000Z",
-      "terminatedOn": null,
-      "email": "yolanda.bishop25@company.com",
-      "phones": [
-        {
-          "type": "office",
-          "number": "612-204-4421"
-        },
-        {
-          "type": "cell",
-          "number": "380-959-3396"
-        }
-      ],
-      "address": {
-        "street": "4969 Lovers Ln",
-        "city": "Elko",
-        "state": "Utah",
-        "zip": "98260"
-      },
-      "gender": "female",
-      "portrait": "portraits/purplewolf498.jpg",
-      "thumbnail": "portraits/purplewolf498-thumb.jpg"
-    },
-    {
-      "username": "whitecat698",
-      "password": "jenny1",
-      "name": {
-        "first": "Allen",
-        "last": "Hansen"
-      },
-      "ssn": "504-23-5361",
-      "dob": "1965-12-15T06:00:00.000Z",
-      "hiredOn": "1988-03-26T06:00:00.000Z",
-      "terminatedOn": null,
-      "email": "allen.hansen47@company.com",
-      "phones": [
-        {
-          "type": "office",
-          "number": "377-837-4817"
-        },
-        {
-          "type": "cell",
-          "number": "787-513-9084"
-        }
-      ],
-      "address": {
-        "street": "1902 Plum St",
-        "city": "Akron",
-        "state": "Hawaii",
-        "zip": "26975"
-      },
-      "gender": "male",
-      "portrait": "portraits/whitecat698.jpg",
-      "thumbnail": "portraits/whitecat698-thumb.jpg"
-    },
-    {
-      "username": "bluepanda840",
-      "password": "funfun",
-      "name": {
-        "first": "Leslie",
-        "last": "Vasquez"
-      },
-      "ssn": "906-45-7380",
-      "dob": "1986-10-12T05:00:00.000Z",
-      "hiredOn": "2011-10-24T05:00:00.000Z",
-      "terminatedOn": null,
-      "email": "leslie.vasquez65@company.com",
-      "phones": [
-        {
-          "type": "office",
-          "number": "854-988-2654"
-        },
-        {
-          "type": "home",
-          "number": "106-146-7963"
-        }
-      ],
-      "address": {
-        "street": "7255 Camden Ave",
-        "city": "Frederick",
-        "state": "Michigan",
-        "zip": "10865"
-      },
-      "gender": "female",
-      "portrait": "portraits/bluepanda840.jpg",
-      "thumbnail": "portraits/bluepanda840-thumb.jpg"
     }
   ],
   "tireSets": [

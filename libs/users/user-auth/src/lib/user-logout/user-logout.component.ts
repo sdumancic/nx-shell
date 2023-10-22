@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { userAuthActions } from '@nx-shell/users/user-auth'
 import { Store } from '@ngrx/store'
+import { userAuthActions } from '../+state/user-auth.actions'
 
 @Component({
   selector: 'nx-shell-user-logout',

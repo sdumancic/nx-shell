@@ -7,7 +7,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar>Menu {{ loggedInUser$ | async }}</mat-toolbar>
+    <mat-toolbar>Menu </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/customers-overview">Customers overview</a>
       <a mat-list-item routerLink="/offers">Offers</a>
@@ -27,16 +27,51 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>tire-storage-manager</span>
+      <div class="toolbar-content">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <div class="toolbar-content--title">tire-storage-manager</div>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button
+            mat-menu-item
+            *ngIf="(loggedInUser$ | async) !== null"
+            routerLink="users/profile"
+          >
+            <mat-icon aria-hidden="false" svgIcon="profile"></mat-icon>
+            <span>Profile</span>
+          </button>
+          <button
+            mat-menu-item
+            *ngIf="(loggedInUser$ | async) === null"
+            routerLink="users/login"
+          >
+            <mat-icon aria-hidden="false" svgIcon="login"></mat-icon>
+            <span>Login</span>
+          </button>
+          <button
+            mat-menu-item
+            *ngIf="(loggedInUser$ | async) !== null"
+            routerLink="users/logout"
+          >
+            <mat-icon aria-hidden="false" svgIcon="logout">logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </div>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

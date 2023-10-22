@@ -18,3 +18,10 @@ export const userAuthVm = createSelector(
     userOverviewError: getError(userOverviewCallState)
   })
 )
+
+export const selectLoggedInUser = createSelector(
+  userAuthFeature.selectLoggedInUser,
+  (user) => ({
+    user
+  })
+)

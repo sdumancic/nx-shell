@@ -28,20 +28,4 @@ export class AuthService {
       )
   }
 
-  getUsers$ (): Observable<User[]> {
-    return this.http.get<User[]>(`${this.api}/users`)
-  }
-
-  getUser$ (id: number): Observable<User> {
-    return this.http.get<User>(`${this.api}/users/${id}`)
-  }
-
-  createUser$ (user: User): Observable<User> {
-    return this.http.post<User>(`${this.api}/users`, user)
-  }
-
-  updateUser$ (id: number, user: User): Observable<User> {
-    return this.http.put<User>(`${this.api}/users/${id}`, user)
-  }
-
 }

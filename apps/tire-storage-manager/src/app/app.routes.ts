@@ -1,8 +1,7 @@
 import { Route } from '@angular/router'
-import { provideState } from '@ngrx/store'
-import { provideEffects } from '@ngrx/effects'
 
-import { userAuthEffects, userAuthFeature, UserLoginComponent, UserLogoutComponent } from '@nx-shell/users/user-auth'
+import { UserLoginComponent, UserLogoutComponent, UserProfileComponent } from '@nx-shell/users/user-auth'
+import { authGuard } from '@nx-shell/users/user-util'
 
 export const appRoutes: Route[] = [
   {
@@ -20,25 +19,29 @@ export const appRoutes: Route[] = [
       {
         path: 'logout',
         component: UserLogoutComponent,
+      },
+      {
+        path: 'profile',
+        canMatch: [authGuard],
+        component: UserProfileComponent,
       }
-    ],
-    providers: [
-      provideState(userAuthFeature),
-      provideEffects(userAuthEffects)
     ],
   },
   {
     path: 'customers-overview',
+    canMatch: [authGuard],
     loadChildren: () =>
       import('@nx-shell/tire-storage/tsm-customer-overview').then((m) => m.featureCustomerOverviewRoutes),
   },
   {
     path: 'offers',
+    canMatch: [authGuard],
     loadChildren: () =>
       import('@nx-shell/tire-storage/tsm-offers').then((m) => m.tireStorageTsmOffersRoutes),
   },
   {
     path: 'customer-details',
+    canMatch: [authGuard],
     loadChildren: () =>
       import('@nx-shell/tire-storage/tsm-customer-crud').then((m) => m.tireStorageTsmCustomerCrudRoutes),
   },

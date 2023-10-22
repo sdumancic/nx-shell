@@ -18,7 +18,7 @@ export const userAuthActions = createActionGroup({
     'Create User': props<{ user: User }>(),
     'Create User Success': (user: User) => ({ user }),
     'Create User Failure': (error: string) => ({ error }),
-    'Update User': props<{ id: number, user: User }>(),
+    'Update User': props<{ id: number, user: Partial<User> }>(),
     'Update User Success': (user: User) => ({ user }),
     'Update User Failure': (error: string) => ({ error }),
   },

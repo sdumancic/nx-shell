@@ -18,7 +18,7 @@ const initialState: UserAuthState = {
 }
 
 export const userAuthFeature = createFeature({
-  name: 'userAuth',
+  name: 'auth',
   reducer: createReducer(
     initialState,
     on(userAuthActions.fetchUsers, (state, action) => {
@@ -68,8 +68,29 @@ export const userAuthFeature = createFeature({
         loginCallState: LoadingState.INIT
       }
     }),
+    on(userAuthActions.updateUser, (state, action) => {
+      return {
+        ...state,
+        loginCallState: LoadingState.LOADING
+      }
+    }),
+    on(userAuthActions.updateUserSuccess, (state, action) => {
+      return {
+        ...state,
+        loginCallState: LoadingState.LOADED,
+        loggedInUser: action.user
+      }
+    }),
+    on(userAuthActions.updateUserFailure, (state, action) => {
+      return {
+        ...state,
+        loginCallState: { errorMsg: action.error },
+        loggedInUser: null
+      }
+    }),
   ),
 })
+
 
 
 
