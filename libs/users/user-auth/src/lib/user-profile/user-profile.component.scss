@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+
+.density-settings-3 {
+
+  @include mat.all-component-densities(-3);
+  @include mat.button-density(-1);
+}
+
+.profile-card {
+  width: 60%;
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.address-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,287 @@
+<div class="density-settings-3">
+  <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="profile-card">
+      <mat-card-header>
+        <mat-card-title>Profile</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Username</mat-label>
+              <input
+                matInput
+                placeholder="Username"
+                formControlName="username"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="gender"
+            >
+              <mat-radio-button value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="row" formGroupName="name">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>First name</mat-label>
+              <input
+                matInput
+                placeholder="First name"
+                formControlName="first"
+              />
+              <mat-error
+                *ngIf="
+                  form.controls['name'].controls['first'].hasError('required')
+                "
+              >
+                First name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Last name</mat-label>
+              <input matInput placeholder="Last name" formControlName="last" />
+              <mat-error
+                *ngIf="
+                  form.controls['name'].controls['last'].hasError('required')
+                "
+              >
+                Last name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>SSN</mat-label>
+              <input matInput placeholder="SSN" formControlName="ssn" />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Date of birth</mat-label>
+              <input
+                matInput
+                placeholder="Date of birth"
+                formControlName="dob"
+                [matDatepicker]="picker"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Hired on</mat-label>
+              <input
+                matInput
+                placeholder="Hired on"
+                formControlName="hiredOn"
+                [matDatepicker]="pickerHiredOn"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #pickerHiredOn></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Terminated on</mat-label>
+              <input
+                matInput
+                placeholder="Terminated on"
+                formControlName="terminatedOn"
+                [matDatepicker]="pickerTerminatedOn"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="pickerTerminatedOn"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #pickerTerminatedOn></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" formControlName="email" />
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Office phone</mat-label>
+              <input
+                matInput
+                placeholder="Office phone"
+                formControlName="officePhone"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Home phone</mat-label>
+              <input
+                matInput
+                placeholder="Home phone"
+                formControlName="homePhone"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Mobile phone</mat-label>
+              <input
+                matInput
+                placeholder="Mobile phone"
+                formControlName="mobilePhone"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-tab-group>
+          <div formArrayName="address">
+            <div
+              *ngFor="let addr of addressFormArray.controls; let index = index"
+            >
+              <ng-container
+                *ngIf="
+                  addr.get('type')?.value === 'Home' ||
+                  addr.get('type')?.value === 'Office'
+                "
+              >
+                <mat-tab label="{{ addr.get('type')?.value }}">
+                  <div [formGroupName]="index" class="address-container">
+                    <div class="row">
+                      <div class="col">
+                        <mat-form-field class="full-width" appearance="outline">
+                          <mat-label>Street</mat-label>
+                          <input
+                            matInput
+                            placeholder="Street"
+                            formControlName="street"
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div class="col">
+                        <mat-form-field class="full-width" appearance="outline">
+                          <mat-label>City</mat-label>
+                          <input
+                            matInput
+                            placeholder="City"
+                            formControlName="city"
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <mat-form-field class="full-width" appearance="outline">
+                          <mat-label>State</mat-label>
+                          <input
+                            matInput
+                            placeholder="State"
+                            formControlName="state"
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div class="col">
+                        <mat-form-field class="full-width" appearance="outline">
+                          <mat-label>Zip</mat-label>
+                          <input
+                            matInput
+                            placeholder="Zip"
+                            formControlName="zip"
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </mat-tab>
+              </ng-container>
+            </div>
+          </div>
+        </mat-tab-group>
+        <mat-divider></mat-divider>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Portrait</mat-label>
+              <input
+                matInput
+                placeholder="Portrait"
+                formControlName="portrait"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Thumbnail</mat-label>
+              <input
+                matInput
+                placeholder="Thumbnail"
+                formControlName="thumbnail"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Roles</mat-label>
+              <mat-chip-grid #chipGrid aria-label="Enter roles">
+                <mat-chip-row
+                  *ngFor="let role of form.get('roles')?.value"
+                  (removed)="removeRole(role)"
+                >
+                  {{ role }}
+                  <button matChipRemove [attr.aria-label]="'remove ' + role">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+                <input
+                  placeholder="New role..."
+                  [matChipInputFor]="chipGrid"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur"
+                  (matChipInputTokenEnd)="addRole($event)"
+                />
+              </mat-chip-grid>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!isDirty() || !form.valid"
+        >
+          Save changes
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

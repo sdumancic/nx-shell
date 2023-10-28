@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core'
-import { RouterModule } from '@angular/router'
+import { Router, RouterModule } from '@angular/router'
 import { HomeComponent } from '@nx-shell/tire-storage/tsm-home'
 import { MainNavComponent } from './main-nav/main-nav.component'
 import { MatIconRegistry } from '@angular/material/icon'
@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   private matIconRegistry = inject(MatIconRegistry)
   private store = inject(Store)
   private domSanitzer = inject(DomSanitizer)
+  private router = inject(Router)
   title = 'tire-storage-manager'
 
   constructor () {
@@ -32,7 +33,11 @@ export class AppComponent implements OnInit {
         username: 'admin',
         password: 'admin'
       }))
-    }, 1000)
+    }, 10)
+
+    setTimeout(() => {
+      this.router.navigate(['users', 'profile'],)
+    }, 500)
 
   }
 }

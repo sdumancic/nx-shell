@@ -14,12 +14,22 @@
       "terminatedOn": "",
       "email": "admin@company.com",
       "phones": [],
-      "address": {
-        "street": "7251 Walnut Hill Ln",
-        "city": "Scurry",
-        "state": "Oregon",
-        "zip": "36713"
-      },
+      "addressx": [
+        {
+          "type": "Home",
+          "street": "7251 Walnut Hill Ln",
+          "city": "Scurry",
+          "state": "Hrvatska",
+          "zip": "36713"
+        },
+        {
+          "type": "Office",
+          "street": "7251 Walnut Hill Ln",
+          "city": "Čakovec",
+          "state": "Oregon",
+          "zip": "36713"
+        }
+      ],
       "gender": "male",
       "portrait": "portraits/admin.jpg",
       "thumbnail": "portraits/admin-thumb.jpg",
@@ -27,6 +37,22 @@
         "sales_advisor",
         "warehouse",
         "mechanic"
+      ],
+      "address": [
+        {
+          "type": "Home",
+          "street": "Vukovarska ",
+          "city": "Čakovec",
+          "state": "Croatia",
+          "zip": "40000"
+        },
+        {
+          "type": "Office",
+          "street": null,
+          "city": null,
+          "state": null,
+          "zip": null
+        }
       ]
     },
     {
@@ -52,12 +78,22 @@
           "number": "654-321-0987"
         }
       ],
-      "address": {
-        "street": "3199 Country Club Rd",
-        "city": "Fremont",
-        "state": "Virginia",
-        "zip": "94390"
-      },
+      "address": [
+        {
+          "type": "Home",
+          "street": "3199 Country Club Rd",
+          "city": "Fremont",
+          "state": "Virginia",
+          "zip": "94390"
+        },
+        {
+          "type": "Office",
+          "street": "3199 Country Club Rd",
+          "city": "Fremont",
+          "state": "Virginia",
+          "zip": "94390"
+        }
+      ],
       "gender": "male",
       "portrait": "portraits/jdoe.jpg",
       "thumbnail": "portraits/jdoe-thumb.jpg",
@@ -88,12 +124,22 @@
           "number": "380-959-3396"
         }
       ],
-      "address": {
-        "street": "4969 Lovers Ln",
-        "city": "Elko",
-        "state": "Utah",
-        "zip": "98260"
-      },
+      "address": [
+        {
+          "type": "Home",
+          "street": "4969 Lovers Ln",
+          "city": "Elko",
+          "state": "Utah",
+          "zip": "98260"
+        },
+        {
+          "type": "Office",
+          "street": "4969 Lovers Ln",
+          "city": "Elko",
+          "state": "Utah",
+          "zip": "98260"
+        }
+      ],
       "gender": "female",
       "portrait": "portraits/purplewolf498.jpg",
       "thumbnail": "portraits/purplewolf498-thumb.jpg",
@@ -124,12 +170,15 @@
           "number": "787-513-9084"
         }
       ],
-      "address": {
-        "street": "1902 Plum St",
-        "city": "Akron",
-        "state": "Hawaii",
-        "zip": "26975"
-      },
+      "address": [
+        {
+          "type": "Home",
+          "street": "1902 Plum St",
+          "city": "Akron",
+          "state": "Hawaii",
+          "zip": "26975"
+        }
+      ],
       "gender": "male",
       "portrait": "portraits/whitecat698.jpg",
       "thumbnail": "portraits/whitecat698-thumb.jpg",
@@ -160,12 +209,15 @@
           "number": "106-146-7963"
         }
       ],
-      "address": {
-        "street": "7255 Camden Ave",
-        "city": "Frederick",
-        "state": "Michigan",
-        "zip": "10865"
-      },
+      "address": [
+        {
+          "type": "Home",
+          "street": "7255 Camden Ave",
+          "city": "Frederick",
+          "state": "Michigan",
+          "zip": "10865"
+        }
+      ],
       "gender": "female",
       "portrait": "portraits/bluepanda840.jpg",
       "thumbnail": "portraits/bluepanda840-thumb.jpg",

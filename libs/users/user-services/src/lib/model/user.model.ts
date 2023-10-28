@@ -12,16 +12,16 @@ export interface User {
     first: string
     last: string
   }
-  ssn: string
-  dob: string
-  hiredOn: string
-  terminatedOn: string
-  email: string
+  ssn: string | null
+  dob: string | null
+  hiredOn: string | null
+  terminatedOn: string | null
+  email: string | null
   phones: Phone[]
-  address: Address
-  gender: string
-  portrait: string
-  thumbnail: string
+  address: Address[]
+  gender: string | null
+  portrait: string | null
+  thumbnail: string | null
   roles: string[]
 }
 
@@ -31,8 +31,9 @@ export interface Phone {
 }
 
 export interface Address {
-  street: string
-  city: string
-  state: string
-  zip: string
+  type: string
+  street: string | null
+  city: string | null
+  state: string | null
+  zip: string | null
 }

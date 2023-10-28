@@ -4,7 +4,7 @@ import { UserUi } from '../form/user-ui.model'
 
 export class UserProfileMapper {
 
-  public static fromUserToFormGroup (loggedInUser: User) {
+  public static fromUserToUserUi (loggedInUser: User): UserUi {
     return {
       userId: loggedInUser.id,
       username: loggedInUser.username,
@@ -20,12 +20,7 @@ export class UserProfileMapper {
       officePhone: UserProfileMapper.getPhone(loggedInUser.phones, PhoneType.office),
       homePhone: UserProfileMapper.getPhone(loggedInUser.phones, PhoneType.home),
       mobilePhone: UserProfileMapper.getPhone(loggedInUser.phones, PhoneType.mobile),
-      address: {
-        street: loggedInUser.address ? loggedInUser.address.street : null,
-        city: loggedInUser.address ? loggedInUser.address.city : null,
-        state: loggedInUser.address ? loggedInUser.address.state : null,
-        zip: loggedInUser.address ? loggedInUser.address.zip : null,
-      },
+      address: [],
       gender: loggedInUser.gender,
       portrait: loggedInUser.portrait,
       thumbnail: loggedInUser.thumbnail,
@@ -62,12 +57,15 @@ export class UserProfileMapper {
       terminatedOn: formValue.terminatedOn ? formatISO(formValue.terminatedOn) : '',
       email: formValue.email,
       phones: phones,
-      address: {
-        street: formValue.address.street,
-        city: formValue.address.city,
-        state: formValue.address.state,
-        zip: formValue.address.zip,
-      },
+      address: formValue.address.map(add => {
+        return {
+          type: add.type ? add.type : 'Home',
+          street: add.street,
+          city: add.city,
+          state: add.state,
+          zip: add.zip,
+        }
+      }),
       gender: formValue.gender,
       portrait: formValue.portrait,
       thumbnail: formValue.thumbnail,

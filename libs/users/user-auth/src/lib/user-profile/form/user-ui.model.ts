@@ -1,27 +1,30 @@
 export interface UserUi {
-  userId: number
+  userId: number | null
   username: string
-  password: string
+  password?: string
   name: {
     first: string
     last: string
   }
-  ssn: string
-  dob: Date
-  hiredOn: Date
-  terminatedOn: Date
-  email: string
-  officePhone: string
-  homePhone: string
-  mobilePhone: string
-  address: {
-    street: string
-    city: string
-    state: string
-    zip: string
-  },
-  gender: string
-  portrait: string
-  thumbnail: string
+  ssn: string | null
+  dob: Date | null
+  hiredOn: Date | null
+  terminatedOn: Date | null
+  email: string | null
+  officePhone: string | null
+  homePhone: string | null
+  mobilePhone: string | null
+  address: AddressUi[],
+  gender: string | null
+  portrait: string | null
+  thumbnail: string | null
   roles: string[]
+}
+
+export interface AddressUi {
+  type: string
+  street: string | null
+  city: string | null
+  state: string | null
+  zip: string | null
 }
