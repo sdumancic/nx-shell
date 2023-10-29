@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
+import { map, Observable } from 'rxjs'
 import { Customer } from '../models/customer.model'
 
 @Injectable({ providedIn: 'root' })
@@ -24,6 +24,20 @@ export class CustomersService {
 
   updateCustomer$ (id: number, customer: Customer): Observable<Customer> {
     return this.http.put<Customer>(`${this.api}/customers/${id}`, customer)
+  }
+
+  fullTextSearch (searchText: string, page: number, limit: number): Observable<{ data: Customer[] | null, totalCount: string | null }> {
+    return this.http.get<Customer[]>(`${this.api}/customers?q=${searchText}&_page=${page}&_limit=${limit}`, {
+      observe: 'response',
+    }).pipe(
+      map((res) => {
+        return {
+          data: res.body,
+          totalCount: res.headers.get('x-total-count'),
+        }
+      })
+    )
+
   }
 
 }

@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  height: 100vh;
+
+  .mat-mdc-dialog-content {
+    max-height: 100vh;
+  }
+
+}
+
+.search-container {
+  width: 50%;
+  max-width: 700px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-viewport {
+  height: 250px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.example-item-detail {
+  height: 100px;
+}
+
+.paginator {
+  align-self: center;
+}

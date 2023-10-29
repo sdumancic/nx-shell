@@ -15,11 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-shell/core": ["libs/core/src/index.ts"],
       "@nx-shell/tire-storage/tsm-customer-crud": [
         "libs/tire-storage/tsm-customer-crud/src/index.ts"
       ],
       "@nx-shell/tire-storage/tsm-customer-overview": [
         "libs/tire-storage/tsm-customer-overview/src/index.ts"
+      ],
+      "@nx-shell/tire-storage/tsm-customer-search-dialog": [
+        "libs/tire-storage/tsm-customer-search-dialog/src/index.ts"
       ],
       "@nx-shell/tire-storage/tsm-domain": [
         "libs/tire-storage/tsm-domain/src/index.ts"

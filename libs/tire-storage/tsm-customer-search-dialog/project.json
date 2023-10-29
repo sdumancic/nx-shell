@@ -1,0 +1,38 @@
+{
+  "name": "tire-storage-tsm-customer-search-dialog",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/tire-storage/tsm-customer-search-dialog/src",
+  "prefix": "tsm",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "libs/tire-storage/tsm-customer-search-dialog/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/tire-storage/tsm-customer-search-dialog/**/*.ts",
+          "libs/tire-storage/tsm-customer-search-dialog/**/*.html"
+        ]
+      }
+    }
+  }
+}

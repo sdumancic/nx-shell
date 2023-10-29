@@ -1,0 +1,74 @@
+.customer-info-card {
+  border-width: 1px;
+  border-color: darkgrey;
+  margin-bottom: 10px;
+  background-color: white;
+  box-shadow: unset;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--content {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 0.3fr repeat(2, 0.35fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+
+      mat-icon {
+        opacity: 0.4;
+      }
+    }
+
+    &--actions {
+      cursor: pointer;
+    }
+  }
+}
+
+.flex-icon-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.flex-30-percent {
+  display: flex;
+  align-items: center;
+  flex: 1 1 30%;
+  column-gap: 10px;
+}
+
+.flex-50-percent {
+  display: flex;
+  align-items: center;
+  flex: 1 1 50%;
+  column-gap: 10px;
+}
+
+
+.flex-70-percent {
+  display: flex;
+  align-items: center;
+  flex: 1 1 70%;
+  column-gap: 10px;
+}
+
+.flex-100-percent {
+  display: flex;
+  align-items: center;
+  flex: 1 1 100%;
+  column-gap: 10px;
+}
+

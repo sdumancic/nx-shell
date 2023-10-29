@@ -6,25 +6,42 @@ import { MatIconRegistry } from '@angular/material/icon'
 import { DomSanitizer } from '@angular/platform-browser'
 import { userAuthActions } from '@nx-shell/users/user-auth'
 import { Store } from '@ngrx/store'
+import { MatDialogModule } from '@angular/material/dialog'
+import { TsmCustomerSearchDialogComponent } from '@nx-shell/tire-storage/tsm-customer-search-dialog'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { DialogService } from '@nx-shell/core'
 
 @Component({
   standalone: true,
-  imports: [RouterModule, HomeComponent, MainNavComponent],
+  imports: [RouterModule, HomeComponent, MainNavComponent, MatDialogModule, MatFormFieldModule],
   selector: 'tsm-app-shell-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [DialogService]
 })
 export class AppComponent implements OnInit {
   private matIconRegistry = inject(MatIconRegistry)
   private store = inject(Store)
   private domSanitzer = inject(DomSanitizer)
   private router = inject(Router)
+  private dialogService = inject(DialogService)
   title = 'tire-storage-manager'
 
   constructor () {
     this.matIconRegistry.addSvgIcon('login', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/login.svg'))
     this.matIconRegistry.addSvgIcon('logout', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/logout.svg'))
     this.matIconRegistry.addSvgIcon('profile', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/profile.svg'))
+    this.matIconRegistry.addSvgIcon('close', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/close.svg'))
+    this.matIconRegistry.addSvgIcon('close-big', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/close-big.svg'))
+    this.matIconRegistry.addSvgIcon('right-arrow', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/right-arrow.svg'))
+    this.matIconRegistry.addSvgIcon('user', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/user.svg'))
+    this.matIconRegistry.addSvgIcon('id', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/id.svg'))
+    this.matIconRegistry.addSvgIcon('street', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/street.svg'))
+    this.matIconRegistry.addSvgIcon('city', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/city.svg'))
+    this.matIconRegistry.addSvgIcon('address', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/address.svg'))
+    this.matIconRegistry.addSvgIcon('email', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/email.svg'))
+    this.matIconRegistry.addSvgIcon('phone', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/phone.svg'))
+    this.matIconRegistry.addSvgIcon('close-24px', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/close-24px.svg'))
   }
 
   ngOnInit (): void {
@@ -36,8 +53,12 @@ export class AppComponent implements OnInit {
     }, 10)
 
     setTimeout(() => {
-      this.router.navigate(['users', 'profile'],)
+      const dialogRef = this.dialogService.openFullScreen(TsmCustomerSearchDialogComponent, { data: { name: 'austin' }, })
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed', result)
+      })
     }, 500)
 
   }
+
 }
