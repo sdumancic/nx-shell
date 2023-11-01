@@ -1,0 +1,142 @@
+<header class="fs-modal__header">
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon svgIcon="close-24px"></mat-icon>
+  </button>
+  <h2 style="margin: auto">
+    <span> Edit customer</span>
+  </h2>
+  <div></div>
+</header>
+
+<mat-spinner *ngIf="loading" class="center-spinner"></mat-spinner>
+<form [formGroup]="customerForm" novalidate *ngIf="!loading">
+  <main class="fs-modal__body density-settings-3">
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>ID</mat-label>
+          <input matInput placeholder="ID" formControlName="id" />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-button-toggle-group
+          name="gender"
+          aria-label="Gender"
+          formControlName="gender"
+          style="width: 100%"
+        >
+          <mat-button-toggle
+            value="male"
+            style="width: 50%"
+            class="toggle-button"
+            >Male</mat-button-toggle
+          >
+          <mat-button-toggle
+            value="female"
+            style="width: 50%"
+            class="toggle-button"
+            >Female</mat-button-toggle
+          >
+        </mat-button-toggle-group>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Firstname</mat-label>
+          <input matInput placeholder="Firstname" formControlName="firstName" />
+          <mat-error
+            *ngIf="customerForm.controls['firstName'].hasError('required')"
+          >
+            First name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Lastname</mat-label>
+          <input matInput placeholder="Lastname" formControlName="lastName" />
+          <mat-error
+            *ngIf="customerForm.controls['lastName'].hasError('required')"
+          >
+            Last name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="E-Mail" formControlName="email" />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Phone number</mat-label>
+          <input
+            matInput
+            placeholder="Phone number"
+            formControlName="phoneNumber"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+    <div formGroupName="address" class="address-container">
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Street</mat-label>
+            <input matInput placeholder="Street" formControlName="street" />
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="City" formControlName="city" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-select placeholder="State" formControlName="state">
+              <mat-option
+                *ngFor="let state of states"
+                [value]="state.abbreviation"
+              >
+                {{ state.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Zip</mat-label>
+            <input matInput placeholder="Zip" formControlName="zip" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </main>
+</form>
+
+<footer class="fs-modal__footer">
+  <div class="left-side"></div>
+  <div class="right-side">
+    <button mat-flat-button color="secondary" class="btn-wide" mat-dialog-close>
+      <span> Cancel </span>
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="btn-wide"
+      [disabled]="!isDirty() || !customerForm.valid"
+      (click)="onSave()"
+    >
+      <span> Save </span>
+    </button>
+  </div>
+</footer>

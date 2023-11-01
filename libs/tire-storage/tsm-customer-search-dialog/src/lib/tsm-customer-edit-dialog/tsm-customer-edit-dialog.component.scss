@@ -1,0 +1,69 @@
+@use '@angular/material' as mat;
+
+.density-settings-3 {
+
+  @include mat.all-component-densities(-3);
+  @include mat.button-density(-1);
+}
+
+.customer-card {
+  width: 60%;
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.fs-modal {
+  &__header {
+    padding: 12px 84px;
+    top: 0;
+    position: sticky;
+    background: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__body {
+    min-height: calc(100vh - 132px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1f2f5;
+    padding: 40px;
+
+    & > * {
+      max-width: 620px;
+      width: 100%;
+    }
+  }
+
+  &__footer:not(:empty) {
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px 80px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+}
+
+.btn-wide {
+  width: 200px;
+}
+
+.mat-button-toggle-appearance-standard.mat-button-toggle-checked.toggle-button {
+  background-color: rgba(169, 169, 169, 0.39);
+}
+
+.center-spinner {
+  top: calc(40vh - 50px);
+  left: calc(50vw - 50px);
+}
+
