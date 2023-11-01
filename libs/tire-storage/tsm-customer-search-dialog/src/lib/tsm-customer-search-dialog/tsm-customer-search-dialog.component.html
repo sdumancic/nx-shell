@@ -7,22 +7,41 @@
     <mat-icon svgIcon="close-24px"></mat-icon>
   </button>
 </div>
+
 <div mat-dialog-content style="background-color: #f1f2f5; height: 100vh">
   <div class="search-container">
     <mat-form-field appearance="outline" class="w-700">
       <mat-label>Customer Search</mat-label>
       <input
         matInput
+        spellcheck="false"
         [formControl]="searchControl"
         placeholder="Enter 3 characters to start search"
       />
+      <mat-spinner
+        [ngStyle]="{ visibility: searchInProgress ? 'visible' : 'hidden' }"
+        matPrefix
+        [diameter]="18"
+        style="float: right; margin-left: 8px"
+      ></mat-spinner>
+      <button
+        mat-icon-button
+        matSuffix
+        color="primary"
+        [attr.aria-label]="'Add customer'"
+        (click)="onCustomerAdd()"
+      >
+        <mat-icon svgIcon="add-circle"></mat-icon>
+      </button>
     </mat-form-field>
+
     <div class="search-results w-700">
       <tsm-ui-customer-info
         *ngFor="let item of items"
         class="w-700"
         [customer]="item"
         (selectedCustomer)="onCustomerSelected($event)"
+        (editedCustomer)="onCustomerEdit($event)"
       ></tsm-ui-customer-info>
     </div>
     <div class="paginator">

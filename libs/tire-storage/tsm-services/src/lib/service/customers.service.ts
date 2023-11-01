@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { map, Observable } from 'rxjs'
+import { delay, map, Observable } from 'rxjs'
 import { Customer } from '../models/customer.model'
 
 @Injectable({ providedIn: 'root' })
@@ -15,7 +15,7 @@ export class CustomersService {
   }
 
   getCustomer$ (id: number): Observable<Customer> {
-    return this.http.get<Customer>(`${this.api}/customers/${id}`)
+    return this.http.get<Customer>(`${this.api}/customers/${id}`).pipe(delay(500))
   }
 
   createCustomer$ (customer: Customer): Observable<Customer> {
@@ -23,6 +23,7 @@ export class CustomersService {
   }
 
   updateCustomer$ (id: number, customer: Customer): Observable<Customer> {
+    console.log('updating customer ', customer)
     return this.http.put<Customer>(`${this.api}/customers/${id}`, customer)
   }
 

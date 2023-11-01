@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
+import { delay, Observable } from 'rxjs'
 import { CustomerMetadata } from '../models/customer-metadata.model'
 
 @Injectable({ providedIn: 'root' })
@@ -11,7 +11,7 @@ export class CustomersMetadataService {
   private api = 'http://localhost:3000'
 
   getCustomerMetadata$ (): Observable<CustomerMetadata> {
-    return this.http.get<CustomerMetadata>(`${this.api}/customerMetadata`)
+    return this.http.get<CustomerMetadata>(`${this.api}/customerMetadata`).pipe(delay(500))
   }
 
 }

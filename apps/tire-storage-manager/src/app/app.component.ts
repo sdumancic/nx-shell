@@ -7,9 +7,9 @@ import { DomSanitizer } from '@angular/platform-browser'
 import { userAuthActions } from '@nx-shell/users/user-auth'
 import { Store } from '@ngrx/store'
 import { MatDialogModule } from '@angular/material/dialog'
-import { TsmCustomerSearchDialogComponent } from '@nx-shell/tire-storage/tsm-customer-search-dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { DialogService } from '@nx-shell/core'
+import { TsmCustomerSearchDialogComponent } from '@nx-shell/tire-storage/tsm-customer-search-dialog'
 
 @Component({
   standalone: true,
@@ -42,6 +42,9 @@ export class AppComponent implements OnInit {
     this.matIconRegistry.addSvgIcon('email', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/email.svg'))
     this.matIconRegistry.addSvgIcon('phone', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/phone.svg'))
     this.matIconRegistry.addSvgIcon('close-24px', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/close-24px.svg'))
+    this.matIconRegistry.addSvgIcon('edit', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/edit.svg'))
+    this.matIconRegistry.addSvgIcon('add-circle', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/add-circle.svg'))
+    this.matIconRegistry.addSvgIcon('add', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/add.svg'))
   }
 
   ngOnInit (): void {
@@ -53,7 +56,8 @@ export class AppComponent implements OnInit {
     }, 10)
 
     setTimeout(() => {
-      const dialogRef = this.dialogService.openFullScreen(TsmCustomerSearchDialogComponent, { data: { name: 'austin' }, })
+      const dialogRef = this.dialogService.openFullScreen(TsmCustomerSearchDialogComponent, {})
+
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed', result)
       })

@@ -22,8 +22,14 @@ import { MatIconModule } from '@angular/material/icon'
 export class TsmCustomerInfoUiComponent {
   @Input() customer: Customer | undefined
   @Output() selectedCustomer = new EventEmitter<Customer>()
+  @Output() editedCustomer = new EventEmitter<Customer>()
 
   onCustomerSelect (customer: Customer | undefined) {
     this.selectedCustomer.emit(customer)
+  }
+
+  onEditCustomer (event: MouseEvent, customer: Customer | undefined) {
+    event.stopPropagation()
+    this.editedCustomer.emit(customer)
   }
 }

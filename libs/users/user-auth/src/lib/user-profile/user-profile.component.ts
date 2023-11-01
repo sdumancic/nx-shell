@@ -120,5 +120,4 @@ export class UserProfileComponent implements OnInit {
     return this.formService.form.dirty && this.formService.form.touched
   }
 
-  protected readonly JSON = JSON
 }

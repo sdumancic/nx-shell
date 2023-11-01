@@ -1,41 +1,48 @@
-<mat-card class="customer-info-card">
+<mat-card class="customer-info-card" (click)="onCustomerSelect(customer)">
   <mat-card-content class="container">
-    <div class="container--content default-text">
-      <div class="flex-icon-text">
-        <mat-icon svgIcon="id"></mat-icon>
-        <span>{{ customer?.id }}</span>
+    <div class="container--content">
+      <div class="main-info">
+        <mat-icon svgIcon="user" class="m-r-10"></mat-icon>
+        <div class="flex-column">
+          <div class="strong-text">
+            {{ customer?.firstName }} {{ customer?.lastName }}
+          </div>
+          <div class="default-text">
+            {{ customer?.address?.street }}, {{ customer?.address?.city }},{{
+              customer?.address?.state
+            }}, {{ customer?.address?.zip }}
+          </div>
+        </div>
+        <div class="container--actions">
+          <button
+            mat-flat-button
+            type="button"
+            class="btn-edit"
+            (click)="onEditCustomer($event, customer)"
+          >
+            <mat-icon svgIcon="edit"></mat-icon>
+          </button>
+        </div>
       </div>
-      <div class="flex-icon-text">
-        <mat-icon svgIcon="user"></mat-icon>
-        <span>{{ customer?.firstName }} {{ customer?.lastName }}</span>
+      <div class="divider"></div>
+      <div class="address-info">
+        <div>
+          <span class="label-text"> E-Mail: </span>
+          <span class="value-text">{{ customer?.email }}</span>
+        </div>
+        <div>
+          <span class="label-text"> Phone Number: </span>
+          <span class="value-text"> {{ customer?.phoneNumber }}</span>
+        </div>
+        <div>
+          <span class="label-text"> Gender: </span>
+          <span class="value-text"> {{ customer?.gender }}</span>
+        </div>
+        <div>
+          <span class="label-text"> Customer ID: </span>
+          <span class="value-text"> {{ customer?.id }}</span>
+        </div>
       </div>
-      <div class="flex-icon-text">
-        <mat-icon svgIcon="street"></mat-icon>
-        <span
-          >{{ customer?.address?.street }} {{ customer?.address?.city }}</span
-        >
-      </div>
-      <div class="flex-icon-text">
-        <mat-icon svgIcon="phone"> </mat-icon>
-        <span>{{ customer?.phoneNumber }}</span>
-      </div>
-      <div class="flex-icon-text">
-        <mat-icon svgIcon="email"> </mat-icon>
-        <span>{{ customer?.email }}</span>
-      </div>
-      <div class="flex-icon-text">
-        <mat-icon svgIcon="city"></mat-icon>
-        <span>
-          {{ customer?.address?.state }}
-          {{ customer?.address?.zip }}
-        </span>
-      </div>
-    </div>
-    <div class="container--actions">
-      <mat-icon
-        svgIcon="right-arrow"
-        (click)="onCustomerSelect(customer)"
-      ></mat-icon>
     </div>
   </mat-card-content>
 </mat-card>

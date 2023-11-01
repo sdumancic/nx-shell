@@ -3,8 +3,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url(assets/fonts/Inter-Light.ttf) format('truetype');
-  font-size: 14px;
+  src: url(assets/fonts/Inter-Regular.ttf) format('truetype');
 }
 
 .Inter {
@@ -52,11 +51,11 @@ body {
   width: 700px;
 }
 
-.heading-text {
+.strong-text {
   color: #051E48;
   font-size: 14px;
   font-weight: 600;
-  line-height: 19px;
+  line-height: 17px;
   letter-spacing: 0em;
 }
 
@@ -70,13 +69,29 @@ body {
 
 .tiny-text {
   font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
   letter-spacing: 0em;
-  color: #051E48;
-
-
+  color: rgba(5, 30, 72, 0.7);
 }
 
+.label-text {
+  color: #50627f;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.value-text {
+  color: #051e48;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.divider {
+  margin-left: 30px;
+  width: calc(100% - 30px);
+  background-color: rgba(5, 30, 72, 0.2);
+  height: 1px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
 
 
