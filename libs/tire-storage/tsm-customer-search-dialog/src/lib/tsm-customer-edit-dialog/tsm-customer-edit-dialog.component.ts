@@ -22,11 +22,12 @@ import { MatOptionModule } from '@angular/material/core'
 import { MatSelectModule } from '@angular/material/select'
 import { lastValueFrom } from 'rxjs'
 import { CustomerEditDialogDataModel } from '@nx-shell/tire-storage/tsm-domain'
+import { GenericModalComponent } from '@nx-shell/core'
 
 @Component({
   selector: 'tsm-tsm-customer-edit-dialog',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, TsmCustomerInfoUiComponent, MatCardModule, MatChipsModule, MatDatepickerModule, MatDividerModule, MatRadioModule, MatTabsModule, ReactiveFormsModule, MatButtonToggleModule, MatOptionModule, MatSelectModule],
+  imports: [CommonModule, FormsModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, TsmCustomerInfoUiComponent, MatCardModule, MatChipsModule, MatDatepickerModule, MatDividerModule, MatRadioModule, MatTabsModule, ReactiveFormsModule, MatButtonToggleModule, MatOptionModule, MatSelectModule, GenericModalComponent],
   templateUrl: './tsm-customer-edit-dialog.component.html',
   styleUrls: ['./tsm-customer-edit-dialog.component.scss'],
   encapsulation: ViewEncapsulation.None

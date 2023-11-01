@@ -43,12 +43,21 @@ body {
   width: 100%;
 }
 
+.half-width {
+  width: 50%;
+}
+
+
 .w-500 {
   width: 500px;
 }
 
 .w-700 {
   width: 700px;
+}
+
+.m-auto {
+  margin: auto;
 }
 
 .strong-text {
@@ -94,4 +103,13 @@ body {
   margin-bottom: 3px;
 }
 
+.density-settings-3 {
+  @include mat.all-component-densities(-3);
+  @include mat.button-density(-1);
+}
+
+
+.btn-wide {
+  width: 200px;
+}
 

@@ -15,14 +15,14 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator'
 import { TsmCustomerInfoUiComponent } from '@nx-shell/tire-storage/tsm-ui'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
-import { DialogService } from '@nx-shell/core'
+import { DialogService, GenericModalComponent } from '@nx-shell/core'
 import { TsmCustomerEditDialogComponent } from '../tsm-customer-edit-dialog/tsm-customer-edit-dialog.component'
 
 @Component({
   selector: 'tsm-customer-search-dialog',
   standalone: true,
   imports: [CommonModule, MatFormFieldModule, MatDialogModule, MatInputModule, MatButtonModule, MatIconModule,
-    ReactiveFormsModule, ScrollingModule, MatPaginatorModule, TsmCustomerInfoUiComponent, MatProgressSpinnerModule, MatProgressBarModule],
+    ReactiveFormsModule, ScrollingModule, MatPaginatorModule, TsmCustomerInfoUiComponent, MatProgressSpinnerModule, MatProgressBarModule, GenericModalComponent],
   templateUrl: './tsm-customer-search-dialog.component.html',
   styleUrls: ['./tsm-customer-search-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
