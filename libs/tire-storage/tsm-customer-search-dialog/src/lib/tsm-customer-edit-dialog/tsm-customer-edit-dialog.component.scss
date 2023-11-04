@@ -1,15 +1,12 @@
-.customer-card {
-  width: 60%;
-  max-width: 800px;
-  margin: 30px auto;
-}
+:host {
+  .customer-edit-container {
+    width: 60%;
+    max-width: 800px;
+    margin: 30px auto;
+  }
 
-.mat-button-toggle-appearance-standard.mat-button-toggle-checked.toggle-button {
-  background-color: rgba(169, 169, 169, 0.39);
-}
+  .mat-button-toggle-appearance-standard.mat-button-toggle-checked.toggle-button {
+    background-color: rgba(169, 169, 169, 0.39);
+  }
 
-.center-spinner {
-  top: calc(40vh - 50px);
-  left: calc(50vw - 50px);
 }
-

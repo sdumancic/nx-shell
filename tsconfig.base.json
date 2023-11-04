@@ -37,6 +37,9 @@
       "@nx-shell/tire-storage/tsm-services": [
         "libs/tire-storage/tsm-services/src/index.ts"
       ],
+      "@nx-shell/tire-storage/tsm-tiresets-and-tires": [
+        "libs/tire-storage/tsm-tiresets-and-tires/src/index.ts"
+      ],
       "@nx-shell/tire-storage/tsm-ui": [
         "libs/tire-storage/tsm-ui/src/index.ts"
       ],

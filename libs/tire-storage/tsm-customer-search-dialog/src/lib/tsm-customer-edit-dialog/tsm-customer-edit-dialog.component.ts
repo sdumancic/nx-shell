@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit, ViewEncapsulation } from '@angular/core'
+import { Component, Inject, inject, OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
@@ -30,7 +30,7 @@ import { GenericModalComponent } from '@nx-shell/core'
   imports: [CommonModule, FormsModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, TsmCustomerInfoUiComponent, MatCardModule, MatChipsModule, MatDatepickerModule, MatDividerModule, MatRadioModule, MatTabsModule, ReactiveFormsModule, MatButtonToggleModule, MatOptionModule, MatSelectModule, GenericModalComponent],
   templateUrl: './tsm-customer-edit-dialog.component.html',
   styleUrls: ['./tsm-customer-edit-dialog.component.scss'],
-  encapsulation: ViewEncapsulation.None
+
 })
 export class TsmCustomerEditDialogComponent implements OnInit {
 

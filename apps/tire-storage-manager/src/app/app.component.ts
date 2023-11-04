@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { DialogService } from '@nx-shell/core'
-import { TsmCustomerSearchDialogComponent } from '@nx-shell/tire-storage/tsm-customer-search-dialog'
+import { TsmTireSetEditDialogComponent } from '@nx-shell/tire-storage/tsm-tiresets-and-tires'
 
 @Component({
   standalone: true,
@@ -56,7 +56,8 @@ export class AppComponent implements OnInit {
     }, 10)
 
     setTimeout(() => {
-      const dialogRef = this.dialogService.openFullScreen(TsmCustomerSearchDialogComponent, {})
+
+      const dialogRef = this.dialogService.openFullScreen(TsmTireSetEditDialogComponent, { data: { id: 1 } })
 
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed', result)

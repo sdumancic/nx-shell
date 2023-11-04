@@ -227,7 +227,7 @@
       ]
     }
   ],
-  "tireMetadata": {
+  "tireSetMetadata": {
     "tireTypes": [
       "Winter",
       "Summer",
@@ -265,6 +265,66 @@
       225,
       235,
       245
+    ],
+    "tireHeights": [
+      35,
+      45,
+      55,
+      65,
+      75
+    ],
+    "speedIndex": [
+      "T",
+      "U",
+      "H",
+      "V",
+      "W",
+      "Y"
+    ],
+    "loadIndex": [
+      100,
+      105,
+      110,
+      115,
+      120,
+      125,
+      130,
+      135,
+      140,
+      145,
+      150
+    ],
+    "treadDepth": [
+      {
+        "value": 2,
+        "displayValue": "2 mm",
+        "color": "red"
+      },
+      {
+        "value": 3,
+        "displayValue": "3 mm",
+        "color": "red"
+      },
+      {
+        "value": 4,
+        "displayValue": "4 mm",
+        "color": "orange"
+      },
+      {
+        "value": 5,
+        "displayValue": "5 mm",
+        "color": "orange"
+      },
+      {
+        "value": 6,
+        "displayValue": "6 mm",
+        "color": "green"
+      },
+      {
+        "value": 7,
+        "displayValue": "7 mm",
+        "color": "green"
+      }
     ]
   },
   "customerMetadata": {
@@ -725,44 +785,56 @@
   ],
   "tireSets": [
     {
-      "id": 1,
-      "type": "Winter",
+      "id": "4ece2ca7-2b79-4cf2-94c9-336e703a4f1d",
+      "season": "Winter",
+      "brand": "Michelin",
+      "width": 215,
+      "height": 55,
+      "size": 18,
+      "loadIndex": 89,
+      "speedIndex": "H",
+      "rimsIncluded": true,
+      "runFlat": false,
       "customerId": 1,
       "tires": [
         {
-          "id": 2,
-          "brand": "Michelin",
-          "width": 215,
-          "height": 55,
-          "size": 18,
-          "threadDepth": 4,
+          "id": "c11344f3-fc95-4b46-80d7-7619127b219a",
+          "threadDepth1": "4",
+          "threadDepth2": "4",
+          "threadDepth3": "4",
+          "threadDepth4": "4",
+          "tireDamaged": false,
+          "rimDamaged": false,
           "tireLocation": "Front left"
         },
         {
-          "id": 3,
-          "brand": "Michelin",
-          "width": 215,
-          "height": 55,
-          "size": 18,
-          "threadDepth": 4,
+          "id": "81a2c6ca-c83d-41fe-99c9-915d5cb535e3",
+          "threadDepth1": "4",
+          "threadDepth2": "4",
+          "threadDepth3": "4",
+          "threadDepth4": "4",
+          "tireDamaged": false,
+          "rimDamaged": false,
           "tireLocation": "Front right"
         },
         {
-          "id": 4,
-          "brand": "Michelin",
-          "width": 215,
-          "height": 55,
-          "size": 18,
-          "threadDepth": 3,
+          "id": "c788b598-0bf7-4ba8-9c32-bf78415003b1",
+          "threadDepth1": "4",
+          "threadDepth2": "4",
+          "threadDepth3": "4",
+          "threadDepth4": "4",
+          "tireDamaged": false,
+          "rimDamaged": false,
           "tireLocation": "Rear left"
         },
         {
-          "id": 5,
-          "brand": "Michelin",
-          "width": 215,
-          "height": 55,
-          "size": 18,
-          "threadDepth": 2.5,
+          "id": "58a99869-1d6e-4551-9b18-533e66a10d18",
+          "threadDepth1": "4",
+          "threadDepth2": "4",
+          "threadDepth3": "4",
+          "threadDepth4": "4",
+          "tireDamaged": false,
+          "rimDamaged": false,
           "tireLocation": "Rear right"
         }
       ]
