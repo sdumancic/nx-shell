@@ -1,0 +1,28 @@
+.tire-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 50px 50px;
+  grid-template-areas:
+    "front-left front-right"
+    "rear-left rear-right";
+  justify-content: center;
+  align-items: stretch;
+}
+
+.front-left {
+  grid-area: front-left;
+}
+
+.front-right {
+  grid-area: front-right;
+}
+
+.rear-left {
+  grid-area: rear-left;
+}
+
+.rear-right {
+  grid-area: rear-right;
+}
+

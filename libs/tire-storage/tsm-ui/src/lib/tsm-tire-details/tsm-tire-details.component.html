@@ -1,0 +1,65 @@
+<div class="tire-details" [formGroup]="tireFormGroup">
+  <div>
+    <strong>{{ tireLocation }}</strong>
+  </div>
+  <tsm-ui-tire-treads
+    [treadDepth1]="treadDepth1"
+    [treadDepth2]="treadDepth2"
+    [treadDepth3]="treadDepth3"
+    [treadDepth4]="treadDepth4"
+    [treadColor1]="treadColor1"
+    [treadColor2]="treadColor2"
+    [treadColor3]="treadColor3"
+    [treadColor4]="treadColor4"
+  ></tsm-ui-tire-treads>
+  <div class="tread-depths-container">
+    <mat-form-field appearance="outline" class="w-60">
+      <mat-select formControlName="treadDepth1" hideSingleSelectionIndicator>
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+        <mat-option value="7">7</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-60">
+      <mat-select hideSingleSelectionIndicator formControlName="treadDepth2">
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+        <mat-option value="7">7</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-60">
+      <mat-select hideSingleSelectionIndicator formControlName="treadDepth3">
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+        <mat-option value="7">7</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-60">
+      <mat-select formControlName="treadDepth4" hideSingleSelectionIndicator>
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+        <mat-option value="7">7</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-checkbox formControlName="tireDamaged">Tire damaged</mat-checkbox>
+    <mat-checkbox formControlName="rimDamaged">Rim damaged</mat-checkbox>
+  </div>
+</div>

@@ -34,10 +34,16 @@ export const appRoutes: Route[] = [
       import('@nx-shell/tire-storage/tsm-customer-overview').then((m) => m.featureCustomerOverviewRoutes),
   },
   {
-    path: 'offers',
+    path: 'offers/overview',
     canMatch: [authGuard],
     loadChildren: () =>
       import('@nx-shell/tire-storage/tsm-offers').then((m) => m.tireStorageTsmOffersRoutes),
+  },
+  {
+    path: 'offers/edit',
+    canMatch: [authGuard],
+    loadChildren: () =>
+      import('@nx-shell/tire-storage/tsm-offers-crud').then((m) => m.tireStorageTsmOffersCrudRoutes),
   },
   {
     path: 'customer-details',

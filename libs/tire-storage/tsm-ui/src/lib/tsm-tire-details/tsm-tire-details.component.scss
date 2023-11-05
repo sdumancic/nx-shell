@@ -1,0 +1,14 @@
+.tire-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 10px;
+}
+
+.tread-depths-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+

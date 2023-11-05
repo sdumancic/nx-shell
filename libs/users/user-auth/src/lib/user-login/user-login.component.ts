@@ -14,7 +14,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 import { Router } from '@angular/router'
 
 @Component({
-  selector: 'nx-shell-user-login',
+  selector: 'user-auth-login',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSnackBarModule],
   templateUrl: './user-login.component.html',
@@ -54,7 +54,7 @@ export class UserLoginComponent implements OnInit {
     })
 
     this.loginSuccess$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(val => {
-      this.router.navigate(['/offers'])
+      this.router.navigate(['/offers/edit'])
     })
   }
 

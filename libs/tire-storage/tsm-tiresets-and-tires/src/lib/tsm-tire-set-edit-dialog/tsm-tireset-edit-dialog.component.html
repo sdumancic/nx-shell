@@ -1,0 +1,133 @@
+<core-ui-generic-modal>
+  <ng-container header>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon svgIcon="close-24px"></mat-icon>
+    </button>
+    <h2 class="m-auto">
+      <span> Edit tireset</span>
+    </h2>
+    <div></div>
+  </ng-container>
+
+  <mat-spinner *ngIf="loading" class="center-spinner"></mat-spinner>
+  <form [formGroup]="tireSetForm" novalidate *ngIf="!loading">
+    <div class="ui-section">
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-select placeholder="Season" formControlName="season">
+              <mat-option *ngFor="let season of seasons" [value]="season">
+                {{ season }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-select placeholder="Brand" formControlName="brand">
+              <mat-option *ngFor="let brand of brands" [value]="brand">
+                {{ brand }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-select placeholder="Width" formControlName="width">
+              <mat-option *ngFor="let width of widths" [value]="width">
+                {{ width }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-select placeholder="Height" formControlName="height">
+              <mat-option *ngFor="let height of heights" [value]="height">
+                {{ height }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-select placeholder="Size" formControlName="size">
+              <mat-option *ngFor="let size of sizes" [value]="size">
+                {{ size }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-select placeholder="Load Index" formControlName="loadIndex">
+              <mat-option
+                *ngFor="let loadIndex of loadIndexes"
+                [value]="loadIndex"
+              >
+                {{ loadIndex }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-select placeholder="Speed Index" formControlName="speedIndex">
+              <mat-option
+                *ngFor="let speedIndex of speedIndexes"
+                [value]="speedIndex"
+              >
+                {{ speedIndex }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <mat-checkbox formControlName="rimsIncluded"
+          >Rims included</mat-checkbox
+        >
+      </div>
+      <div class="row">
+        <mat-checkbox formControlName="runFlat">Run flat</mat-checkbox>
+      </div>
+    </div>
+    <div class="ui-section" formArrayName="tires">
+      <div class="tire-container">
+        <ng-container *ngFor="let tire of tires.controls; let i = index">
+          <tsm-ui-tire-details
+            [tire]="tire.value"
+            (valueChanged)="onTireValueChanged($event, tire)"
+          ></tsm-ui-tire-details>
+        </ng-container>
+      </div>
+    </div>
+  </form>
+
+  <ng-container footer>
+    <div class="left-side"></div>
+    <div class="right-side">
+      <button
+        mat-flat-button
+        color="secondary"
+        class="btn-wide"
+        mat-dialog-close
+      >
+        <span> Cancel </span>
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="btn-wide"
+        [disabled]="!isDirty() || !tireSetForm.valid"
+        (click)="onSave()"
+      >
+        <span> Save </span>
+      </button>
+    </div>
+  </ng-container>
+</core-ui-generic-modal>
