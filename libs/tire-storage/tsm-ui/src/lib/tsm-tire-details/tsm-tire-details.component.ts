@@ -1,6 +1,6 @@
 import { Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { TireSetMetadataService, TreadDepth } from '@nx-shell/tire-storage/tsm-services'
+import { TireDetails, TireSetMetadataService, TreadDepth } from '@nx-shell/tire-storage/tsm-services'
 import { TsmTireTreadsComponent } from '../tsm-tire-treads/tsm-tire-treads.component'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -10,7 +10,6 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { StringUtils } from '@nx-shell/tire-storage/tsm-util'
-import { TireDetails } from '@nx-shell/tire-storage/tsm-domain'
 
 @Component({
   selector: 'tsm-ui-tire-details',

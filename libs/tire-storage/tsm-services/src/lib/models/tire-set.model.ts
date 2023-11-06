@@ -1,4 +1,4 @@
-import { TireDetails } from '@nx-shell/tire-storage/tsm-domain'
+import { TireDetails } from './tire-details.model'
 
 export interface TireSet {
   id: string | null

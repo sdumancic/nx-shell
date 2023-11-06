@@ -44,6 +44,8 @@ export class AppComponent implements OnInit {
     this.matIconRegistry.addSvgIcon('edit', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/edit.svg'))
     this.matIconRegistry.addSvgIcon('add-circle', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/add-circle.svg'))
     this.matIconRegistry.addSvgIcon('add', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/add.svg'))
+    this.matIconRegistry.addSvgIcon('contact', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/contact.svg'))
+    this.matIconRegistry.addSvgIcon('tire', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/tire.svg'))
   }
 
   ngOnInit (): void {

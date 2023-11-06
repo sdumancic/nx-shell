@@ -1,1 +1,42 @@
-<p>tire-storage-tsm-offers-crud works!</p>
+<main class="offer-container">
+  <article class="content">
+    <div class="select-customer">
+      <core-ui-large-button
+        *ngIf="(selectedCustomer$ | async) === null"
+        [isLoading]="isLoadingCustomer"
+        [buttonType]="'dashed'"
+        [title]="'Add Customer'"
+        [subtitle]="'Click to select or add customer'"
+        [svgIcon]="'contact'"
+        (click)="onSelectCustomer()"
+      ></core-ui-large-button>
+      <tsm-ui-customer-info
+        *ngIf="selectedCustomer$ | async"
+        [customer]="selectedCustomer$ | async"
+        (editedCustomer)="onChangeCustomer()"
+      ></tsm-ui-customer-info>
+    </div>
+    <div class="select-tireset">
+      <core-ui-large-button
+        [isLoading]="isLoadingTireset"
+        [buttonType]="'dashed'"
+        [title]="'Add Tireset'"
+        [subtitle]="'Click to select or add tirest'"
+        [svgIcon]="'tire'"
+        (click)="onSelectTireSet()"
+      ></core-ui-large-button>
+    </div>
+    <div class="select-duration ui-section">
+      <mat-calendar [(selected)]="today"></mat-calendar>
+      <mat-calendar
+        [(selected)]="todayPlus6months"
+        [startAt]="todayPlus6months"
+      ></mat-calendar>
+    </div>
+  </article>
+  <aside class="sidebar">
+    <div class="ui-section-small sidebar-section">
+      <h2>Calculation</h2>
+    </div>
+  </aside>
+</main>

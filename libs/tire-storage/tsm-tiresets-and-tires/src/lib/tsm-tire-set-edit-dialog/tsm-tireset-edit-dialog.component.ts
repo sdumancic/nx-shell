@@ -15,10 +15,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatSelectModule } from '@angular/material/select'
 import { MatCardModule } from '@angular/material/card'
 import { MatCheckboxModule } from '@angular/material/checkbox'
-import { TiresEditDialogDataModel } from '@nx-shell/tire-storage/tsm-domain'
 import { TsmTireDetailsComponent } from '@nx-shell/tire-storage/tsm-ui'
 import { Observable, take } from 'rxjs'
 import { TireSetEditForm } from './form/tireset-edit-form.service'
+import { TiresEditDialogDataModel } from './tires-edit-dialog-data.model'
 
 @Component({
   selector: 'tsm-tireset-edit-dialog',

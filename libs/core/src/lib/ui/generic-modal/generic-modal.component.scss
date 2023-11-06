@@ -1,4 +1,5 @@
 .generic-modal {
+
   &__header {
     padding: 12px 84px;
     top: 0;
@@ -29,7 +30,7 @@
 
   &__footer:not(:empty) {
     z-index: 2;
-    position: fixed;
+    position: sticky;
     bottom: 0;
     left: 0;
     width: 100%;

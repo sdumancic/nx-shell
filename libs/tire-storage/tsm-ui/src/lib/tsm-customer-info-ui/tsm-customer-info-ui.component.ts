@@ -20,16 +20,20 @@ import { MatIconModule } from '@angular/material/icon'
   standalone: true
 })
 export class TsmCustomerInfoUiComponent {
-  @Input() customer: Customer | undefined
+  @Input() customer: Customer | null = null
   @Output() selectedCustomer = new EventEmitter<Customer>()
   @Output() editedCustomer = new EventEmitter<Customer>()
 
-  onCustomerSelect (customer: Customer | undefined) {
-    this.selectedCustomer.emit(customer)
+  onCustomerSelect (customer: Customer | null) {
+    if (customer) {
+      this.selectedCustomer.emit(customer)
+    }
   }
 
-  onEditCustomer (event: MouseEvent, customer: Customer | undefined) {
+  onEditCustomer (event: MouseEvent, customer: Customer | null) {
     event.stopPropagation()
-    this.editedCustomer.emit(customer)
+    if (customer) {
+      this.editedCustomer.emit(customer)
+    }
   }
 }

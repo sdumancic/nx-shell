@@ -1,4 +1,3 @@
 export interface CustomerSearchDialogDataModel {
-  animal: string;
-  name: string;
+  test: string;
 }

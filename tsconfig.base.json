@@ -40,6 +40,9 @@
       "@nx-shell/tire-storage/tsm-services": [
         "libs/tire-storage/tsm-services/src/index.ts"
       ],
+      "@nx-shell/tire-storage/tsm-tire-set-select-dialog": [
+        "libs/tire-storage/tsm-tire-set-select-dialog/src/index.ts"
+      ],
       "@nx-shell/tire-storage/tsm-tiresets-and-tires": [
         "libs/tire-storage/tsm-tiresets-and-tires/src/index.ts"
       ],

@@ -4,11 +4,11 @@ import { ComponentType } from '@angular/cdk/overlay'
 
 @Injectable({ providedIn: 'root' })
 export class DialogService {
-  private readonly defaultConfig: MatDialogConfig = { autoFocus: true, panelClass: ['dialog-container'] }
+  private readonly defaultConfig: MatDialogConfig = { autoFocus: true }
 
   private dialog = inject(MatDialog)
 
-  private readonly smallConf: MatDialogConfig = { ...this.defaultConfig, width: '500px' }
+  private readonly smallConf: MatDialogConfig = { ...this.defaultConfig, width: '500px', height: '500px', }
   private readonly mediumConf: MatDialogConfig = { ...this.defaultConfig, width: '640px' }
   private readonly largeConf: MatDialogConfig = { ...this.defaultConfig, width: '800px' }
   private readonly fullWidthConf: MatDialogConfig = {

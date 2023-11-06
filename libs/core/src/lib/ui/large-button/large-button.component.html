@@ -1,0 +1,18 @@
+<div
+  matRipple
+  class="btn-large"
+  [class.btn-large--is-loading]="isLoading"
+  [ngClass]="'btn-large--' + buttonType"
+>
+  <mat-icon
+    *ngIf="svgIcon"
+    svgIcon="{{ svgIcon }}"
+    class="btn-large__icon opacity-40"
+  ></mat-icon>
+  <div class="btn-large__content">
+    <div class="btn-large__content__title">{{ title }}</div>
+    <div class="btn-large__content__subtitle">
+      {{ subtitle }}
+    </div>
+  </div>
+</div>

@@ -838,6 +838,61 @@
           "tireLocation": "Rear right"
         }
       ]
+    },
+    {
+      "id": "4ece2ca7-2b79-4cf2-94c9-336e703a4f2d",
+      "season": "Summer",
+      "brand": "Toyo",
+      "width": 215,
+      "height": 55,
+      "size": 18,
+      "loadIndex": 89,
+      "speedIndex": "H",
+      "rimsIncluded": true,
+      "runFlat": false,
+      "customerId": 1,
+      "tires": [
+        {
+          "id": "c11344f3-fc95-4b46-80d7-7619127b2191",
+          "threadDepth1": "4",
+          "threadDepth2": "4",
+          "threadDepth3": "4",
+          "threadDepth4": "4",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front left"
+        },
+        {
+          "id": "81a2c6ca-c83d-41fe-99c9-915d5cb535e4",
+          "threadDepth1": "4",
+          "threadDepth2": "4",
+          "threadDepth3": "4",
+          "threadDepth4": "4",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front right"
+        },
+        {
+          "id": "c788b598-0bf7-4ba8-9c32-bf78415003b5",
+          "threadDepth1": "4",
+          "threadDepth2": "4",
+          "threadDepth3": "4",
+          "threadDepth4": "4",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear left"
+        },
+        {
+          "id": "58a99869-1d6e-4551-9b18-533e66a10d15",
+          "threadDepth1": "4",
+          "threadDepth2": "4",
+          "threadDepth3": "4",
+          "threadDepth4": "4",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear right"
+        }
+      ]
     }
   ]
 }

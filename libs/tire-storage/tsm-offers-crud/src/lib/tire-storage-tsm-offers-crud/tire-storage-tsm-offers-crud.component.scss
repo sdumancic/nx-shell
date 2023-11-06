@@ -1,0 +1,56 @@
+.offer-container {
+  display: flex;
+  flex-direction: row;
+  min-height: calc(100vh - 64px);
+  backgrouind-color: #f1f2f5;
+
+  .content {
+    margin-top: 100px;
+    flex: 1 1 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 50px;
+
+    .select-customer {
+      max-width: 500px;
+      width: 50%;
+    }
+
+    .select-tireset {
+      max-width: 500px;
+      width: 50%;
+    }
+
+    .select-duration {
+      max-width: 500px;
+      width: 50%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-around;
+
+      mat-calendar {
+        width: 50%;
+      }
+    }
+  }
+
+  .sidebar {
+    flex: 1 1 20%;
+    max-width: 500px;
+    width: 100%;
+    height: 100%;
+    padding: 12px 24px 24px;
+
+    border-left: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .sidebar-section {
+    height: calc(100vh - 124px);
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+
+
