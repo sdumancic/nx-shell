@@ -1,0 +1,56 @@
+<core-ui-generic-modal>
+  <ng-container header>
+    <div class="header-title">
+      <div class="strong-text">Select tire set</div>
+    </div>
+  </ng-container>
+
+  <div class="content">
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="tireset-radio-group"
+      [(ngModel)]="selectedTireSet"
+    >
+      <mat-radio-button *ngFor="let tireSet of tireSets" [value]="tireSet">
+        <tsm-ui-tire-set-info-ui [tireSet]="tireSet"></tsm-ui-tire-set-info-ui>
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <ng-container footer>
+    <button mat-flat-button color="secondary" class="btn-wide" mat-dialog-close>
+      Close
+    </button>
+    <button mat-flat-button color="primary" class="btn-wide" (click)="select()">
+      Select
+    </button>
+  </ng-container>
+</core-ui-generic-modal>
+<!--div-- class="container">
+  <div class="header">
+    <h3>Select tire set</h3>
+  </div>
+
+  <div class="content">
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="tireset-radio-group"
+      [(ngModel)]="selectedTireSet"
+    >
+      <mat-radio-button
+        class="example-radio-button"
+        *ngFor="let tireSet of tireSets"
+        [value]="tireSet"
+      >
+        <div>{{ tireSet | json }}</div>
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="actions">
+    <button mat-flat-button color="secondary" class="btn-wide" mat-dialog-close>
+      Close
+    </button>
+    <button mat-flat-button color="primary" class="btn-wide" (click)="select()">
+      Select
+    </button>
+  </div>
+</div-->
