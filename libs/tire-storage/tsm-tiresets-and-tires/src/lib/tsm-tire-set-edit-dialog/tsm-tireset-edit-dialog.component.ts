@@ -63,6 +63,7 @@ export class TsmTireSetEditDialogComponent implements OnInit {
       this.loadIndexes = metadata.loadIndex
       this.speedIndexes = metadata.speedIndex
     })
+    this.formService.setCustomerId(this.data.customerId)
   }
 
   onSave () {

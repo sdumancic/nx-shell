@@ -1,6 +1,6 @@
 import { Component, Inject, inject } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { GenericModalComponent } from '@nx-shell/core'
+import { DialogService, GenericModalComponent, LargeButtonComponent } from '@nx-shell/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog'
@@ -16,16 +16,20 @@ import { MatRadioModule } from '@angular/material/radio'
 import { TireSet } from '@nx-shell/tire-storage/tsm-services'
 import { TireSetSelectDialogDataModel } from './tire-set-select-dialog-data.model'
 import { TsmTireSetInfoUiComponent } from '@nx-shell/tire-storage/tsm-ui'
+import { TsmTireSetEditDialogComponent } from '@nx-shell/tire-storage/tsm-tiresets-and-tires'
+import { take } from 'rxjs'
 
 @Component({
   selector: 'tsm-tire-set-select-dialog',
   standalone: true,
-  imports: [CommonModule, GenericModalComponent, MatButtonModule, MatButtonToggleModule, MatDialogModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatOptionModule, MatProgressSpinnerModule, MatSelectModule, ReactiveFormsModule, MatRadioModule, FormsModule, TsmTireSetInfoUiComponent],
+  imports: [CommonModule, GenericModalComponent, MatButtonModule, MatButtonToggleModule, MatDialogModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatOptionModule, MatProgressSpinnerModule, MatSelectModule, ReactiveFormsModule, MatRadioModule, FormsModule, TsmTireSetInfoUiComponent, LargeButtonComponent],
   templateUrl: './tsm-tire-set-select-dialog.component.html',
   styleUrls: ['./tsm-tire-set-select-dialog.component.scss'],
+  providers: [DialogService]
 })
 export class TsmTireSetSelectDialogComponent {
   public readonly dialogRef = inject(MatDialogRef<TsmTireSetSelectDialogComponent>)
+  public readonly dialogService = inject(DialogService)
   selectedTireSet: TireSet | undefined
   tireSets: TireSet[] = []
   customerId: number | undefined
@@ -39,4 +43,14 @@ export class TsmTireSetSelectDialogComponent {
 
   }
 
+  onAddTireSet () {
+    const dialogRef: MatDialogRef<TsmTireSetEditDialogComponent, TireSet> = this.dialogService.openFullScreen(TsmTireSetEditDialogComponent, { data: { customerId: this.customerId } })
+    dialogRef.afterClosed().pipe(take(1)).subscribe(tireSet => {
+      if (tireSet) {
+        const newTireSets = [tireSet, ...this.tireSets]
+        this.tireSets = newTireSets
+        this.selectedTireSet = tireSet
+      }
+    })
+  }
 }

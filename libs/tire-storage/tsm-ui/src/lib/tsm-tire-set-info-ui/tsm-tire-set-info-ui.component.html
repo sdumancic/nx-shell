@@ -3,6 +3,10 @@
     <div class="container--content">
       <div class="main-info">
         <mat-icon svgIcon="tire" class="m-r-10"></mat-icon>
+        <mat-radio-button
+          [value]="tireSet"
+          [checked]="checked"
+        ></mat-radio-button>
         <div class="flex-column">
           <div class="strong-text">
             {{ tireSet?.brand }} {{ tireSet?.width }}/{{ tireSet?.size }} ZR{{
@@ -11,7 +15,15 @@
             {{ tireSet?.loadIndex }}{{ tireSet?.speedIndex }}
           </div>
           <div class="default-text">
-            Rims: {{ tireSet?.rimsIncluded }}, Run flat:{{ tireSet?.runFlat }}
+            <mat-checkbox
+              [checked]="tireSet?.rimsIncluded ? true : false"
+              disabled
+            >
+              <span class="default-text">Rims included</span>
+            </mat-checkbox>
+            <mat-checkbox [checked]="tireSet?.runFlat ? true : false" disabled>
+              <span class="default-text">Run flat</span>
+            </mat-checkbox>
           </div>
         </div>
         <div class="container--actions">
@@ -20,7 +32,6 @@
           </button>
         </div>
       </div>
-      <div class="divider"></div>
     </div>
   </mat-card-content>
 </mat-card>
