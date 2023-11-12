@@ -1,0 +1,6 @@
+export { CustomersService } from './customers.service'
+export { CustomersMetadataService } from './customers-metadata.service'
+export { TireSetService } from './tireset.service'
+export { TireSetMetadataService } from './tireset-metadata.service'
+export { OfferService } from './offer.service'
+export { TireStoragePricingService } from './tire-storage-pricing.service'

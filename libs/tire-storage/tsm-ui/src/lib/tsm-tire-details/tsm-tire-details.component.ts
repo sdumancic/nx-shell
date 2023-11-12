@@ -5,7 +5,7 @@ import { TsmTireTreadsComponent } from '../tsm-tire-treads/tsm-tire-treads.compo
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
-import { take } from 'rxjs'
+import { skip, take } from 'rxjs'
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
@@ -79,7 +79,8 @@ export class TsmTireDetailsComponent implements OnInit {
       this.setTreadColors(this.treadDepths)
     })
 
-    this.tireFormGroup.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(val => {
+    // skip(1) is used for skipping first change which is initialization of default tires or populating of existing value when editing tireset
+    this.tireFormGroup.valueChanges.pipe(takeUntilDestroyed(this.destroyRef), skip(1)).subscribe(val => {
       this.setTreadColors(this.treadDepths)
       this.valueChanged.emit({
         id: val.id ? val.id : null,

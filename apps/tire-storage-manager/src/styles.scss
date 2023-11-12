@@ -59,6 +59,10 @@ body {
   width: 300px;
 }
 
+.w-380 {
+  width: 380px;
+}
+
 .w-500 {
   width: 500px;
 }
@@ -77,6 +81,14 @@ body {
 
 .m-b-30px {
   margin-bottom: 30px;
+}
+
+.m-t-50px {
+  margin-top: 50px;
+}
+
+.m-left-20px {
+  margin-left: 20px;
 }
 
 .strong-text {
@@ -162,7 +174,6 @@ body {
   transition: all 500ms ease;
   transition-property: background-color, box-shadow;
   background-color: #ffffff;
-  width: 400px;
   max-width: 400px;
 }
 

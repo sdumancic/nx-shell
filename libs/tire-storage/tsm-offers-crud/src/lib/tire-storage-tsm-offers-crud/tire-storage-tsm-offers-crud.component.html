@@ -18,25 +18,62 @@
     </div>
     <div class="select-tireset">
       <core-ui-large-button
-        [isLoading]="isLoadingTireset"
+        [isLoading]="isLoadingTireSet"
         [buttonType]="'dashed'"
         [title]="'Add Tireset'"
         [subtitle]="'Click to select or add tirest'"
         [svgIcon]="'tire'"
         (click)="onSelectTireSet()"
       ></core-ui-large-button>
+      <ng-container
+        *ngFor="
+          let selectedTireSetWithPrices of selectedTireSetsWithPrices$ | async
+        "
+      >
+        <tsm-ui-tire-set-info-ui
+          class="full-width"
+          [selectOptionVisible]="false"
+          [editEnabled]="false"
+          [deleteEnabled]="true"
+          [tireSet]="selectedTireSetWithPrices.tireSet"
+          (deleteTireSet)="onRemoveTireSet($event)"
+        ></tsm-ui-tire-set-info-ui>
+      </ng-container>
     </div>
-    <div class="select-duration ui-section">
-      <mat-calendar [(selected)]="today"></mat-calendar>
-      <mat-calendar
-        [(selected)]="todayPlus6months"
-        [startAt]="todayPlus6months"
-      ></mat-calendar>
-    </div>
+    <mat-card>
+      <mat-card-content>
+        <div class="select-duration ui-section">
+          <mat-calendar
+            [selected]="startDate$ | async"
+            (selectedChange)="onStartDateChanged($event)"
+          ></mat-calendar>
+          <mat-calendar
+            [selected]="endDate$ | async"
+            [startAt]="endDate$ | async"
+            (selectedChange)="onEndDateChanged($event)"
+          ></mat-calendar>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </article>
   <aside class="sidebar">
-    <div class="ui-section-small sidebar-section">
-      <h2>Calculation</h2>
+    <div class="sidebar-section">
+      <div class="ui-section-small">
+        <tsm-ui-offer-calculation-ui
+          [selectedTireSetsWithPrices]="selectedTireSetsWithPrices$ | async"
+          [startDate]="startDate$ | async"
+          [endDate]="endDate$ | async"
+          [offerTotalPrice]="totalTireSetPrice$ | async"
+        ></tsm-ui-offer-calculation-ui>
+        <button
+          mat-flat-button
+          color="primary"
+          class="full-width m-t-50px"
+          (click)="onPlaceOrder()"
+        >
+          Place order
+        </button>
+      </div>
     </div>
   </aside>
 </main>

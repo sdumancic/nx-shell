@@ -14,7 +14,7 @@
       "terminatedOn": "",
       "email": "admin@company.com",
       "phones": [],
-      "addressx": [
+      "address": [
         {
           "type": "Home",
           "street": "7251 Walnut Hill Ln",
@@ -225,6 +225,58 @@
         "warehouse",
         "mechanic"
       ]
+    }
+  ],
+  "tireStoragePrices": [
+    {
+      "size": 13,
+      "price": 10,
+      "priceWithRims": 11
+    },
+    {
+      "size": 14,
+      "price": 10,
+      "priceWithRims": 11
+    },
+    {
+      "size": 15,
+      "price": 11,
+      "priceWithRims": 12
+    },
+    {
+      "size": 16,
+      "price": 12,
+      "priceWithRims": 13
+    },
+    {
+      "size": 17,
+      "price": 14,
+      "priceWithRims": 16
+    },
+    {
+      "size": 18,
+      "price": 16,
+      "priceWithRims": 18
+    },
+    {
+      "size": 19,
+      "price": 17,
+      "priceWithRims": 19
+    },
+    {
+      "size": 20,
+      "price": 18,
+      "priceWithRims": 20
+    },
+    {
+      "size": 21,
+      "price": 20,
+      "priceWithRims": 24
+    },
+    {
+      "size": 22,
+      "price": 25,
+      "priceWithRims": 30
     }
   ],
   "tireSetMetadata": {
@@ -799,40 +851,40 @@
       "tires": [
         {
           "id": "c11344f3-fc95-4b46-80d7-7619127b219a",
-          "threadDepth1": "4",
-          "threadDepth2": "4",
-          "threadDepth3": "4",
-          "threadDepth4": "4",
+          "treadDepth1": "4",
+          "treadDepth2": "4",
+          "treadDepth3": "4",
+          "treadDepth4": "4",
           "tireDamaged": false,
           "rimDamaged": false,
           "tireLocation": "Front left"
         },
         {
           "id": "81a2c6ca-c83d-41fe-99c9-915d5cb535e3",
-          "threadDepth1": "4",
-          "threadDepth2": "4",
-          "threadDepth3": "4",
-          "threadDepth4": "4",
+          "treadDepth1": "4",
+          "treadDepth2": "4",
+          "treadDepth3": "4",
+          "treadDepth4": "4",
           "tireDamaged": false,
           "rimDamaged": false,
           "tireLocation": "Front right"
         },
         {
           "id": "c788b598-0bf7-4ba8-9c32-bf78415003b1",
-          "threadDepth1": "4",
-          "threadDepth2": "4",
-          "threadDepth3": "4",
-          "threadDepth4": "4",
+          "treadDepth1": "4",
+          "treadDepth2": "4",
+          "treadDepth3": "4",
+          "treadDepth4": "4",
           "tireDamaged": false,
           "rimDamaged": false,
           "tireLocation": "Rear left"
         },
         {
           "id": "58a99869-1d6e-4551-9b18-533e66a10d18",
-          "threadDepth1": "4",
-          "threadDepth2": "4",
-          "threadDepth3": "4",
-          "threadDepth4": "4",
+          "treadDepth1": "4",
+          "treadDepth2": "4",
+          "treadDepth3": "4",
+          "treadDepth4": "4",
           "tireDamaged": false,
           "rimDamaged": false,
           "tireLocation": "Rear right"
@@ -854,40 +906,40 @@
       "tires": [
         {
           "id": "c11344f3-fc95-4b46-80d7-7619127b2191",
-          "threadDepth1": "4",
-          "threadDepth2": "4",
-          "threadDepth3": "4",
-          "threadDepth4": "4",
+          "treadDepth1": "4",
+          "treadDepth2": "4",
+          "treadDepth3": "4",
+          "treadDepth4": "4",
           "tireDamaged": false,
           "rimDamaged": false,
           "tireLocation": "Front left"
         },
         {
           "id": "81a2c6ca-c83d-41fe-99c9-915d5cb535e4",
-          "threadDepth1": "4",
-          "threadDepth2": "4",
-          "threadDepth3": "4",
-          "threadDepth4": "4",
+          "treadDepth1": "4",
+          "treadDepth2": "4",
+          "treadDepth3": "4",
+          "treadDepth4": "4",
           "tireDamaged": false,
           "rimDamaged": false,
           "tireLocation": "Front right"
         },
         {
           "id": "c788b598-0bf7-4ba8-9c32-bf78415003b5",
-          "threadDepth1": "4",
-          "threadDepth2": "4",
-          "threadDepth3": "4",
-          "threadDepth4": "4",
+          "treadDepth1": "4",
+          "treadDepth2": "4",
+          "treadDepth3": "4",
+          "treadDepth4": "4",
           "tireDamaged": false,
           "rimDamaged": false,
           "tireLocation": "Rear left"
         },
         {
           "id": "58a99869-1d6e-4551-9b18-533e66a10d15",
-          "threadDepth1": "4",
-          "threadDepth2": "4",
-          "threadDepth3": "4",
-          "threadDepth4": "4",
+          "treadDepth1": "4",
+          "treadDepth2": "4",
+          "treadDepth3": "4",
+          "treadDepth4": "4",
           "tireDamaged": false,
           "rimDamaged": false,
           "tireLocation": "Rear right"

@@ -7,7 +7,7 @@
 
   <div class="content">
     <core-ui-large-button
-      class="d-block m-b-30px"
+      class="d-block m-b-30px w-380"
       [buttonType]="'dashed'"
       [title]="'Add TireSet'"
       [subtitle]="'Click to add new set of tires'"
@@ -19,10 +19,11 @@
       class="tireset-radio-group"
       [(ngModel)]="selectedTireSet"
     >
-      <ng-container *ngFor="let tireSet of tireSets">
+      <ng-container *ngFor="let tireSet of deltaTireSets">
         <tsm-ui-tire-set-info-ui
           [tireSet]="tireSet"
           [checked]="tireSet === selectedTireSet"
+          (editTireSet)="onEditTireSet($event)"
         ></tsm-ui-tire-set-info-ui>
       </ng-container>
     </mat-radio-group>
@@ -31,7 +32,12 @@
     <button mat-flat-button color="secondary" class="btn-wide" mat-dialog-close>
       Close
     </button>
-    <button mat-flat-button color="primary" class="btn-wide" (click)="select()">
+    <button
+      mat-flat-button
+      color="primary"
+      class="btn-wide"
+      (click)="onSelectTireSet()"
+    >
       Select
     </button>
   </ng-container>

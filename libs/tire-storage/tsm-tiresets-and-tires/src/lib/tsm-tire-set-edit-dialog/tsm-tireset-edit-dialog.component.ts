@@ -26,6 +26,7 @@ import { TiresEditDialogDataModel } from './tires-edit-dialog-data.model'
   imports: [CommonModule, FormsModule, GenericModalComponent, MatButtonModule, MatButtonToggleModule, MatDialogModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatOptionModule, MatProgressSpinnerModule, MatSelectModule, ReactiveFormsModule, MatCardModule, MatCheckboxModule, TsmTireDetailsComponent],
   templateUrl: './tsm-tireset-edit-dialog.component.html',
   styleUrls: ['./tsm-tireset-edit-dialog.component.scss'],
+  providers: [TireSetEditForm]
 })
 export class TsmTireSetEditDialogComponent implements OnInit {
 
@@ -64,6 +65,12 @@ export class TsmTireSetEditDialogComponent implements OnInit {
       this.speedIndexes = metadata.speedIndex
     })
     this.formService.setCustomerId(this.data.customerId)
+    if (this.data.tireSet) {
+      this.formService.setFormGroupFromTireSet(this.data.tireSet)
+      this.tireSetForm.markAsPristine()
+      this.tireSetForm.markAsUntouched()
+    }
+
   }
 
   onSave () {
@@ -82,6 +89,8 @@ export class TsmTireSetEditDialogComponent implements OnInit {
   }
 
   onTireValueChanged (event: any, tire: AbstractControl<any>) {
+    this.tireSetForm.markAsDirty()
+    this.tireSetForm.markAsTouched()
     tire.patchValue(event)
 
   }

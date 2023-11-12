@@ -4,6 +4,7 @@
       <div class="main-info">
         <mat-icon svgIcon="tire" class="m-r-10"></mat-icon>
         <mat-radio-button
+          *ngIf="selectOptionVisible"
           [value]="tireSet"
           [checked]="checked"
         ></mat-radio-button>
@@ -14,23 +15,36 @@
             }}
             {{ tireSet?.loadIndex }}{{ tireSet?.speedIndex }}
           </div>
-          <div class="default-text">
-            <mat-checkbox
-              [checked]="tireSet?.rimsIncluded ? true : false"
-              disabled
-            >
-              <span class="default-text">Rims included</span>
-            </mat-checkbox>
-            <mat-checkbox [checked]="tireSet?.runFlat ? true : false" disabled>
-              <span class="default-text">Run flat</span>
-            </mat-checkbox>
-          </div>
         </div>
         <div class="container--actions">
-          <button mat-flat-button type="button" class="btn-edit">
+          <button
+            *ngIf="editEnabled"
+            mat-flat-button
+            type="button"
+            class="btn-action"
+            (click)="onClickEdit()"
+          >
             <mat-icon svgIcon="edit"></mat-icon>
           </button>
+          <button
+            *ngIf="deleteEnabled"
+            mat-flat-button
+            type="button"
+            class="btn-action"
+            (click)="onClickDelete()"
+          >
+            <mat-icon svgIcon="delete2"></mat-icon>
+          </button>
         </div>
+      </div>
+      <div class="divider"></div>
+      <div class="additional-info">
+        <mat-checkbox [checked]="tireSet?.rimsIncluded ? true : false" disabled>
+          <span class="label-text">Rims included</span>
+        </mat-checkbox>
+        <mat-checkbox [checked]="tireSet?.runFlat ? true : false" disabled>
+          <span class="label-text">Run flat</span>
+        </mat-checkbox>
       </div>
     </div>
   </mat-card-content>

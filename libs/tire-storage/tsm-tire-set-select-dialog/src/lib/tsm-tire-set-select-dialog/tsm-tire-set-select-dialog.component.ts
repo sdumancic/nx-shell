@@ -32,24 +32,41 @@ export class TsmTireSetSelectDialogComponent {
   public readonly dialogService = inject(DialogService)
   selectedTireSet: TireSet | undefined
   tireSets: TireSet[] = []
+  alreadySelectedTireSets: TireSet[] = []
   customerId: number | undefined
 
   constructor (@Inject(MAT_DIALOG_DATA) public data: TireSetSelectDialogDataModel) {
     this.tireSets = data.tireSets
     this.customerId = data.customerId
+    this.alreadySelectedTireSets = data.selectedTireSets
   }
 
-  select () {
+  get deltaTireSets () {
+    return this.tireSets.filter(x => this.alreadySelectedTireSets.findIndex(e => e.id === x.id) < 0)
+  }
 
+  onSelectTireSet () {
+    this.dialogRef.close(this.selectedTireSet)
   }
 
   onAddTireSet () {
-    const dialogRef: MatDialogRef<TsmTireSetEditDialogComponent, TireSet> = this.dialogService.openFullScreen(TsmTireSetEditDialogComponent, { data: { customerId: this.customerId } })
+    const dialogRef: MatDialogRef<TsmTireSetEditDialogComponent, TireSet> = this.dialogService.openFullScreen(TsmTireSetEditDialogComponent, { data: { customerId: this.customerId, tireSet: null } })
     dialogRef.afterClosed().pipe(take(1)).subscribe(tireSet => {
       if (tireSet) {
         const newTireSets = [tireSet, ...this.tireSets]
         this.tireSets = newTireSets
         this.selectedTireSet = tireSet
+      }
+    })
+  }
+
+  onEditTireSet (tireSet: TireSet) {
+    const dialogRef: MatDialogRef<TsmTireSetEditDialogComponent, TireSet> = this.dialogService.openFullScreen(TsmTireSetEditDialogComponent, { data: { customerId: this.customerId, tireSet: tireSet } })
+    dialogRef.afterClosed().pipe(take(1)).subscribe(tireSet => {
+      if (tireSet) {
+        const index = this.tireSets.findIndex(tireset => tireset.id === tireset.id)
+        const updatedTireSets = [...this.tireSets].splice(index, 1, tireSet)
+        this.tireSets = updatedTireSets
       }
     })
   }

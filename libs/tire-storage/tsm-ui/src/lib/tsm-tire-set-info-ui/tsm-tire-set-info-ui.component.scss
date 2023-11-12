@@ -1,8 +1,9 @@
 :host {
   display: block;
 
+
   .tireset-info-card {
-    width: 380px;
+    width: 100%;
     border-width: 1px;
     border-color: darkgrey;
     margin-top: 5px;
@@ -32,12 +33,12 @@
           align-items: center;
         }
 
-        .address-info {
+        .additional-info {
           margin-left: 35px;
           width: calc(100% - 35px);
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          grid-template-rows: repeat(2, 1fr);
+          grid-template-rows: repeat(1, 1fr);
           grid-column-gap: 10px;
         }
 
@@ -50,7 +51,7 @@
     }
   }
 
-  .btn-edit {
+  .btn-action {
     border-radius: 4px;
     min-width: auto;
     padding: 0;

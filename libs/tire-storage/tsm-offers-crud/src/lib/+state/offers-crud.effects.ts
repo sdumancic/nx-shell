@@ -1,10 +1,20 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { inject } from '@angular/core'
-import { TireSetService } from '@nx-shell/tire-storage/tsm-services'
-import { loadTireSetFailure, loadTireSetSuccess, selectCustomerSuccess } from './offers-crud.actions'
-import { catchError, exhaustMap, map, of } from 'rxjs'
+import { TireSetService, TireStoragePricingService } from '@nx-shell/tire-storage/tsm-services'
+import {
+  loadTireSetFailure,
+  loadTireSetSuccess,
+  loadTireStoragePriceFailure,
+  loadTireStoragePriceSuccess,
+  selectCustomerSuccess,
+  selectTireSetSuccess
+} from './offers-crud.actions'
+import { catchError, exhaustMap, map, of, switchMap } from 'rxjs'
 
-export const selectCustomerEffect = createEffect((actions$ = inject(Actions), tireSetService = inject(TireSetService)) => {
+export const selectCustomerEffect = createEffect((
+    actions$ = inject(Actions),
+    tireSetService = inject(TireSetService),
+    tireStoragePricing = inject(TireStoragePricingService)) => {
     return actions$.pipe(
       ofType(selectCustomerSuccess),
       exhaustMap((val) => {
@@ -23,3 +33,24 @@ export const selectCustomerEffect = createEffect((actions$ = inject(Actions), ti
   },
   { functional: true }
 )
+
+export const selectTireSetEffect = createEffect((
+    actions$ = inject(Actions),
+    tireSetService = inject(TireSetService),
+    tireStoragePricing = inject(TireStoragePricingService)) => {
+    return actions$.pipe(
+      ofType(selectTireSetSuccess),
+      switchMap(data => {
+          const tireSet = data.tireSet
+          return tireStoragePricing.getTireStoragePriceForTire$(tireSet?.size ? tireSet?.size : 0).pipe(
+            map(price => loadTireStoragePriceSuccess(price[0], tireSet)),
+            catchError((error: string) => of(loadTireStoragePriceFailure(error)))
+          )
+        }
+      )
+    )
+  },
+  { functional: true }
+)
+
+

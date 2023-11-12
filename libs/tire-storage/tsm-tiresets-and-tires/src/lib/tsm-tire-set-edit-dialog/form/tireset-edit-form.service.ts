@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
 import { TireLocationEnum } from '@nx-shell/tire-storage/tsm-domain'
-import { TireDetails } from '@nx-shell/tire-storage/tsm-services'
+import { TireDetails, TireSet } from '@nx-shell/tire-storage/tsm-services'
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class TireSetEditForm {
 
   tireSetForm = new FormGroup({
@@ -89,4 +89,21 @@ export class TireSetEditForm {
     return this.tireSetForm.dirty && this.tireSetForm.touched
   }
 
+  setFormGroupFromTireSet (tireSet: TireSet) {
+    this.tireSetForm.patchValue({
+      id: tireSet.id,
+      season: tireSet.season,
+      brand: tireSet.brand,
+      width: tireSet.width,
+      height: tireSet.height,
+      size: tireSet.size,
+      loadIndex: tireSet.loadIndex,
+      speedIndex: tireSet.speedIndex,
+      rimsIncluded: tireSet.rimsIncluded,
+      runFlat: tireSet.runFlat,
+      customerId: tireSet.customerId
+    })
+    this.tires.clear()
+    tireSet.tires.forEach(tire => this.addTireFormGroup(tire))
+  }
 }

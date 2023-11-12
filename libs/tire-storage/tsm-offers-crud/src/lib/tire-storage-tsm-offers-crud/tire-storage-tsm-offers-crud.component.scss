@@ -24,7 +24,7 @@
 
     .select-duration {
       max-width: 500px;
-      width: 50%;
+      width: 100%;
       display: flex;
       align-items: flex-start;
       justify-content: space-around;
@@ -46,7 +46,9 @@
   }
 
   .sidebar-section {
-    height: calc(100vh - 124px);
+    max-height: calc(100vh - 140px);
+    height: calc(100vh - 140px);
+
     display: flex;
     flex-direction: column;
     row-gap: 20px;

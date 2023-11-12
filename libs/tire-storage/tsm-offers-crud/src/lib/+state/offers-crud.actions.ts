@@ -1,5 +1,5 @@
 import { createAction } from '@ngrx/store'
-import { Customer, TireSet } from '@nx-shell/tire-storage/tsm-services'
+import { Customer, TireSet, TireStoragePrice } from '@nx-shell/tire-storage/tsm-services'
 
 export const loadOffer = createAction(
   '[Offers CRUD] Load offer'
@@ -34,5 +34,33 @@ export const selectTireSetSuccess = createAction(
   '[Offers CRUD] Select tireSet',
   (tireSet: TireSet) => ({ tireSet })
 )
+
+export const removeTireSet = createAction(
+  '[Offers CRUD] Remove tireSet',
+  (tireSet: TireSet) => ({ tireSet })
+)
+
+export const setStartDate = createAction(
+  '[Offers CRUD] Set Offer start date',
+  (startDate: Date) => ({ startDate })
+)
+
+export const setEndDate = createAction(
+  '[Offers CRUD] Set Offer end date',
+  (endDate: Date) => ({ endDate })
+)
+
+export const loadTireStoragePriceSuccess = createAction(
+  '[Offers CRUD] Load tire storage price success',
+  (tireStoragePrice: TireStoragePrice, tireSet: TireSet) => ({ tireStoragePrice, tireSet })
+)
+
+export const loadTireStoragePriceFailure = createAction(
+  '[Offers CRUD] Load tire storage price failure',
+  (error: string) => ({ error })
+)
+
+
+
 
 
