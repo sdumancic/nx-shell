@@ -1,7 +1,9 @@
 import { createFeature, createReducer, on } from '@ngrx/store'
-import { Customer, TireSet } from '@nx-shell/tire-storage/tsm-services'
+import { Customer, Offer, TireSet, TireSetWithPrices } from '@nx-shell/tire-storage/tsm-services'
 import { CallState, LoadingState } from '@nx-shell/tire-storage/tsm-util'
 import {
+  createOfferFailure,
+  createOfferSuccess,
   loadTireSetSuccess,
   loadTireStoragePriceSuccess,
   removeTireSet,
@@ -9,7 +11,6 @@ import {
   setEndDate,
   setStartDate
 } from './offers-crud.actions'
-import { TireSetWithPrices } from '@nx-shell/tire-storage/tsm-domain'
 
 export interface OffersCrudState {
   selectedCustomer: Customer | null;
@@ -17,8 +18,10 @@ export interface OffersCrudState {
   selectedTireSet: TireSetWithPrices[] | [];
   startDate: Date | null;
   endDate: Date | null;
+  offer: Offer | null;
   selectedCustomerCallState: CallState;
   selectedTireSetCallState: CallState;
+  createOfferCallState: CallState;
 }
 
 const initialState: OffersCrudState = {
@@ -27,8 +30,10 @@ const initialState: OffersCrudState = {
   selectedTireSet: [],
   startDate: null,
   endDate: null,
+  offer: null,
   selectedCustomerCallState: LoadingState.INIT,
-  selectedTireSetCallState: LoadingState.INIT
+  selectedTireSetCallState: LoadingState.INIT,
+  createOfferCallState: LoadingState.INIT
 }
 
 export const offersCrudFeature = createFeature({
@@ -79,6 +84,20 @@ export const offersCrudFeature = createFeature({
       return {
         ...state,
         endDate: action.endDate
+      }
+    }),
+    on(createOfferSuccess, (state, action) => {
+      return {
+        ...state,
+        offer: action.offer,
+        createOfferCallState: LoadingState.LOADED,
+      }
+    }),
+    on(createOfferFailure, (state, action) => {
+      return {
+        ...state,
+        offer: null,
+        createOfferCallState: { errorMsg: action.error }
       }
     })
   ),

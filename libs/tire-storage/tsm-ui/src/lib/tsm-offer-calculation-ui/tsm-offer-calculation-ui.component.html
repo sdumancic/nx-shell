@@ -1,0 +1,22 @@
+<ng-container
+  *ngFor="let tireSetWithPrices of selectedTireSetsWithPricesNotNull"
+>
+  <tsm-ui-tire-set-calculation-info-ui
+    [tireSetWithPrices]="tireSetWithPrices"
+  ></tsm-ui-tire-set-calculation-info-ui>
+</ng-container>
+<div class="ui-section-small">
+  <div class="default-text">
+    <strong>Duration:</strong> {{ duration?.years }} Years /
+    {{ duration?.months }} Months / {{ duration?.days }} Days
+  </div>
+</div>
+<div class="totals">
+  <div class="strong-text">Total:</div>
+  <div class="strong-text">
+    {{
+      (offerTotalPrice ? offerTotalPrice : 0)
+        | currency : 'EUR' : 'symbol' : '1.2-2'
+    }}
+  </div>
+</div>

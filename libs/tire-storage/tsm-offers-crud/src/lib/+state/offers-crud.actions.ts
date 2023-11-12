@@ -1,17 +1,31 @@
 import { createAction } from '@ngrx/store'
-import { Customer, TireSet, TireStoragePrice } from '@nx-shell/tire-storage/tsm-services'
+import { Customer, Offer, TireSet, TireStoragePrice } from '@nx-shell/tire-storage/tsm-services'
 
 export const loadOffer = createAction(
   '[Offers CRUD] Load offer'
 )
 
-/*export const loadOfferSuccess = createAction(
+export const loadOfferSuccess = createAction(
   '[Offers CRUD] Load offer Success',
   (offer: Offer) => ({ offer })
-)*/
+)
 
 export const loadOfferFailure = createAction(
   '[Offers CRUD] Load offer Failure',
+  (error: string) => ({ error })
+)
+
+export const createOffer = createAction(
+  '[Offers CRUD] Create offer'
+)
+
+export const createOfferSuccess = createAction(
+  '[Offers CRUD] Create offer success',
+  (offer: Offer) => ({ offer })
+)
+
+export const createOfferFailure = createAction(
+  '[Offers CRUD] Create offer Failure',
   (error: string) => ({ error })
 )
 

@@ -1,0 +1,27 @@
+<mat-card class="tireset-info-card">
+  <mat-card-content class="container">
+    <div class="container--content">
+      <div class="main-info">
+        <mat-icon svgIcon="tire" class="m-r-10"></mat-icon>
+        <div class="flex-column">
+          <div class="strong-text">
+            {{ tireSet?.brand }} {{ tireSet?.width }}/{{ tireSet?.size }} ZR{{
+              tireSet?.height
+            }}
+            {{ tireSet?.loadIndex }}{{ tireSet?.speedIndex }}
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="default-text" class="m-left-20px">
+        {{ numOfTires }} Tires *
+        {{ tirePrice | currency : 'EUR' : 'symbol' : '1.2-2' }}
+        =
+        <strong>
+          {{ tireSetPrice | currency : 'EUR' : 'symbol' : '1.2-2' }}
+        </strong>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

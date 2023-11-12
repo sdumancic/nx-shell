@@ -1,5 +1,6 @@
 import { Customer } from './customer.model'
-import { OfferStatusEnum, TireSetWithPrices } from '@nx-shell/tire-storage/tsm-domain'
+import { OfferStatusEnum, } from '@nx-shell/tire-storage/tsm-domain'
+import { TireSetWithPrices } from './tire-set-with-prices.model'
 
 export interface Offer {
   id?: number,

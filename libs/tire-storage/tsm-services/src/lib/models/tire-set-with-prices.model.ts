@@ -1,4 +1,5 @@
-import { TireSet, TireStoragePrice } from '@nx-shell/tire-storage/tsm-services'
+import { TireSet } from './tire-set.model'
+import { TireStoragePrice } from './tire-storage-price.model'
 
 export interface TireSetWithPrices {
   tireSet: TireSet

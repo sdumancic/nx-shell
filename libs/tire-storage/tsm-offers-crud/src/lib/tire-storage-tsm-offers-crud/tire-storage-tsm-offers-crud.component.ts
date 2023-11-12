@@ -1,35 +1,31 @@
 import { Component, inject, OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { MatIconModule } from '@angular/material/icon'
-import { DialogService, LargeButtonComponent } from '@nx-shell/core'
+import { DialogService, LargeButtonComponent, MessageBusService, NotificationsObserverComponent } from '@nx-shell/core'
 import { MatCardModule } from '@angular/material/card'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatDateFnsModule } from '@angular/material-date-fns-adapter'
 import { add } from 'date-fns'
 import { MAT_DATE_FORMATS } from '@angular/material/core'
-import { DATE_FNS_DATE_FORMAT, OfferStatusEnum, TireSetWithPrices } from '@nx-shell/tire-storage/tsm-domain'
+import { DATE_FNS_DATE_FORMAT } from '@nx-shell/tire-storage/tsm-domain'
 import { TsmCustomerSearchDialogComponent } from '@nx-shell/tire-storage/tsm-customer-search-dialog'
-import {
-  catchError,
-  combineLatestWith,
-  concatMap,
-  filter,
-  firstValueFrom,
-  map,
-  Observable,
-  of,
-  take,
-  withLatestFrom
-} from 'rxjs'
+import { combineLatestWith, firstValueFrom, map, Observable, take } from 'rxjs'
 import { Store } from '@ngrx/store'
 import {
+  createOffer,
   removeTireSet,
   selectCustomerSuccess,
   selectTireSetSuccess,
   setEndDate,
   setStartDate
 } from '../+state/offers-crud.actions'
-import { Customer, CustomersService, Offer, OfferService, TireSet } from '@nx-shell/tire-storage/tsm-services'
+import {
+  Customer,
+  CustomersService,
+  OfferService,
+  TireSet,
+  TireSetWithPrices
+} from '@nx-shell/tire-storage/tsm-services'
 import { MatDialogRef } from '@angular/material/dialog'
 import { selectOffersCrudViewModel } from '../+state/offers-crud.selector'
 import {
@@ -39,15 +35,19 @@ import {
 } from '@nx-shell/tire-storage/tsm-ui'
 import { TsmTireSetSelectDialogComponent } from '@nx-shell/tire-storage/tsm-tire-set-select-dialog'
 import { MatButtonModule } from '@angular/material/button'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'tsm-offers-tire-storage-tsm-offers-crud',
   standalone: true,
-  imports: [CommonModule, MatIconModule, LargeButtonComponent, MatCardModule, MatDatepickerModule, MatDateFnsModule, TsmCustomerInfoUiComponent, TsmTireSetInfoUiComponent, TsmOfferCalculationUiComponent, MatButtonModule],
+  imports: [CommonModule, MatIconModule, LargeButtonComponent, MatCardModule,
+    MatDatepickerModule, MatDateFnsModule, TsmCustomerInfoUiComponent, TsmTireSetInfoUiComponent, TsmOfferCalculationUiComponent, MatButtonModule,
+    NotificationsObserverComponent],
   templateUrl: './tire-storage-tsm-offers-crud.component.html',
   styleUrls: ['./tire-storage-tsm-offers-crud.component.scss'],
   providers: [
-    { provide: MAT_DATE_FORMATS, useValue: DATE_FNS_DATE_FORMAT }
+    { provide: MAT_DATE_FORMATS, useValue: DATE_FNS_DATE_FORMAT },
+    MatSnackBar
   ],
 })
 export class TireStorageTsmOffersCrudComponent implements OnInit {
@@ -56,15 +56,14 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
   private readonly dialogService = inject(DialogService)
   private readonly store = inject(Store)
   private readonly offerService = inject(OfferService)
+  private readonly messageBusService = inject(MessageBusService)
   isLoadingCustomer = false
   isLoadingTireSet = false
   selectedCustomer$ = this.store.select(selectOffersCrudViewModel).pipe(map(val => val.selectedCustomer))
   selectedTireSetsWithPrices$: Observable<TireSetWithPrices[]> = this.store.select(selectOffersCrudViewModel).pipe(map(val => val.selectedTireSet !== null ? val.selectedTireSet : []))
   startDate$ = this.store.select(selectOffersCrudViewModel).pipe(map(val => val.startDate))
   endDate$ = this.store.select(selectOffersCrudViewModel).pipe(map(val => val.endDate))
-  totalTireSetPrice$ = this.selectedTireSetsWithPrices$.pipe(
-    map(val => val.reduce((prev, next) => prev + next.tireSetPrice, 0))
-  )
+  totalTireSetPrice$ = this.store.select(selectOffersCrudViewModel).pipe(map(val => val.tireSetTotalValue))
 
   ngOnInit (): void {
     this.store.dispatch(setStartDate(new Date()))
@@ -135,43 +134,15 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
   }
 
   onPlaceOrder () {
-    of(null).pipe(
-      withLatestFrom(this.selectedCustomer$, this.selectedTireSetsWithPrices$, this.startDate$, this.endDate$, this.totalTireSetPrice$),
-      take(1),
-      map(data => {
-        return {
-          customer: data[1],
-          tireSets: data[2],
-          startDate: data[3],
-          endDate: data[4],
-          totalPrice: data[5]
-        }
-      }),
-      filter(data => data.customer !== null && data.tireSets.length > 0 && data.startDate !== null && data.endDate !== null),
-      concatMap(data => {
-        const offer: Offer = {
-          customer: data.customer!,
-          tireSets: data.tireSets,
-          startDate: data.startDate!,
-          endDate: data.endDate!,
-          totalPrice: data.totalPrice,
-          status: OfferStatusEnum.PLACED
-        }
-        return this.offerService.createOffer$(offer)
-      }),
-      catchError(error => {
-        console.log(error)
-        return of(null)
-      })
-    ).subscribe(val => console.log('created order', val))
+    this.store.dispatch(createOffer())
 
   }
 
-  onStartDateChanged (date: Date) {
+  onStartDateChanged (date: any) {
     this.store.dispatch(setStartDate(date))
   }
 
-  onEndDateChanged (date: Date) {
+  onEndDateChanged (date: any) {
     this.store.dispatch(setEndDate(date))
   }
 }
