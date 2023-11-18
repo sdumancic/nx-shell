@@ -1,0 +1,22 @@
+
+.tab-row-360 {
+  ::ng-deep .mat-mdc-tab-header {
+    background-color: #F5F6FA;
+    position: sticky;
+    top: 64px;
+    z-index: 10;
+    height: 56px;
+    padding: 0 64px;
+    margin-bottom: 20px;
+  }
+
+  ::ng-deep .mat-mdc-tab-label:last-child {
+    flex-grow: 1;
+    margin: 0;
+    justify-content: flex-end !important;
+    height: 100%;
+    opacity: 1;
+    padding-right: 0 !important;
+  }
+}
+
