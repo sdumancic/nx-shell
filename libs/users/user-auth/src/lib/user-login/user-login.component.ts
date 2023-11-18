@@ -54,7 +54,7 @@ export class UserLoginComponent implements OnInit {
     })
 
     this.loginSuccess$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(val => {
-      this.router.navigate(['/offers/edit'])
+      this.router.navigate(['/offers/overview'])
     })
   }
 

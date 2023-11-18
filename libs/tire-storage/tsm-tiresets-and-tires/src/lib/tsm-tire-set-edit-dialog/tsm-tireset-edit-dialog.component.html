@@ -11,7 +11,7 @@
 
   <mat-spinner *ngIf="loading" class="center-spinner"></mat-spinner>
   <form [formGroup]="tireSetForm" novalidate *ngIf="!loading">
-    <div class="ui-section">
+    <div class="ui-section w-700">
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
@@ -96,7 +96,7 @@
         <mat-checkbox formControlName="runFlat">Run flat</mat-checkbox>
       </div>
     </div>
-    <div class="ui-section" formArrayName="tires">
+    <div class="ui-section w-700" formArrayName="tires">
       <div class="tire-container">
         <ng-container *ngFor="let tire of tires.controls; let i = index">
           <tsm-ui-tire-details

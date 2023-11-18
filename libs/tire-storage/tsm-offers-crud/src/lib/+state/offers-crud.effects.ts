@@ -12,12 +12,13 @@ import {
   selectCustomerSuccess,
   selectTireSetSuccess
 } from './offers-crud.actions'
-import { catchError, concatMap, exhaustMap, filter, map, of, switchMap, withLatestFrom } from 'rxjs'
+import { catchError, concatMap, exhaustMap, filter, map, of, switchMap, tap, withLatestFrom } from 'rxjs'
 import { Store } from '@ngrx/store'
 import { selectOffersCrudViewModel } from './offers-crud.selector'
 import { OfferStatusEnum } from '@nx-shell/tire-storage/tsm-domain'
 import { MessageAction, MessageBusService } from '@nx-shell/core'
 import { HttpErrorResponse } from '@angular/common/http'
+import { Router } from '@angular/router'
 
 export const selectCustomerEffect = createEffect((
     actions$ = inject(Actions),
@@ -63,6 +64,7 @@ export const createOfferEffect = createEffect((
     actions$ = inject(Actions),
     store = inject(Store),
     messageBus = inject(MessageBusService),
+    router = inject(Router),
     offerService = inject(OfferService)) => {
     return actions$.pipe(
       ofType(createOffer),
@@ -88,6 +90,7 @@ export const createOfferEffect = createEffect((
           }
           return offerService.createOffer$(offer).pipe(
             map(offer => createOfferSuccess(offer)),
+            tap(() => router.navigate(['offers', 'overview'])),
             catchError((error: HttpErrorResponse) => {
               messageBus.push({ type: MessageAction.ERROR, data: { name: 'Error while creating offer', message: error.message } })
               return of(createOfferFailure(error.message))
@@ -99,5 +102,6 @@ export const createOfferEffect = createEffect((
   },
   { functional: true }
 )
+
 
 

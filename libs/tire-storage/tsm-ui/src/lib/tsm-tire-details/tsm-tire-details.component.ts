@@ -65,7 +65,7 @@ export class TsmTireDetailsComponent implements OnInit {
   ngOnInit (): void {
 
     this.tireSetMetadataService.getTireSetMetadata$().pipe(take(1)).subscribe(metadata => {
-      this.treadDepths = metadata.treadDepth
+      this.treadDepths = metadata.treadDepths
       this.tireFormGroup.patchValue({
         id: this.tire?.id ? this.tire?.id : null,
         treadDepth1: StringUtils.toStringOrNull(this.tire?.treadDepth1),

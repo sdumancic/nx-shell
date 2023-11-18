@@ -1,2 +1,137 @@
-<p>tire-storage-tsm-offers works!</p>
-<router-outlet></router-outlet>
+<div class="density-settings-3 m-left-right-30px">
+  <div class="title-row">
+    <h1>{{ 'Offers' }}</h1>
+  </div>
+  <div class="filter-container">
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel expanded="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Filters </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div [formGroup]="filterForm" class="search-items">
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Season" formControlName="season" multiple>
+              <mat-option
+                *ngFor="let season of seasons$ | async"
+                [value]="season"
+              >
+                {{ season }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Brand" formControlName="brand" multiple>
+              <mat-option *ngFor="let brand of brands$ | async" [value]="brand">
+                {{ brand }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Width" formControlName="width" multiple>
+              <mat-option *ngFor="let width of widths$ | async" [value]="width">
+                {{ width }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Height" formControlName="height" multiple>
+              <mat-option
+                *ngFor="let height of heights$ | async"
+                [value]="height"
+              >
+                {{ height }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Size" formControlName="size" multiple>
+              <mat-option *ngFor="let size of sizes$ | async" [value]="size">
+                {{ size }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="Load Index"
+              formControlName="loadIndex"
+              multiple
+            >
+              <mat-option
+                *ngFor="let loadIndex of loadIndexes$ | async"
+                [value]="loadIndex"
+              >
+                {{ loadIndex }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="Speed Index"
+              formControlName="speedIndex"
+              multiple
+            >
+              <mat-option
+                *ngFor="let speedIndex of speedIndexes$ | async"
+                [value]="speedIndex"
+              >
+                {{ speedIndex }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button
+            mat-stroked-button
+            type="button"
+            (click)="onSearch()"
+            class="action-button"
+          >
+            <mat-icon svgIcon="filter"></mat-icon>Filter
+          </button>
+          <button
+            mat-stroked-button
+            type="button"
+            (click)="onClear()"
+            class="action-button"
+          >
+            <mat-icon svgIcon="close"></mat-icon>Clear
+          </button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a
+      mat-tab-link
+      *ngFor="let link of navLinks"
+      [routerLink]="link.link"
+      routerLinkActive
+      [relativeTo]="activatedRoute.parent"
+      #rla="routerLinkActive"
+      [active]="rla.isActive"
+    >
+      {{ link.label }}
+    </a>
+  </nav>
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+  <mat-tab-nav-panel #tabPanel
+    ><ng-container table>
+      <div class="table-container">
+        <tsm-ui-offers-overview-table-ui
+          [data]="searchResult$ | async"
+          [searchCount]="searchCount$ | async"
+          [searchMeta]="searchMeta$ | async"
+          [loading]="loading$ | async"
+          (paginateEmitter)="onPaginate($event)"
+          (sortEmitter)="onSort($event)"
+        ></tsm-ui-offers-overview-table-ui>
+      </div>
+    </ng-container>
+  </mat-tab-nav-panel>
+</div>

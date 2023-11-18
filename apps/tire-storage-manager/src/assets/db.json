@@ -1,4 +1,418 @@
 {
+  "offers": [
+    {
+      "customer": {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "gender": "male",
+        "address": {
+          "street": "3199 Country Club Rd",
+          "city": "Fremont",
+          "state": "Virginia",
+          "zip": "94390"
+        },
+        "phoneNumber": "123-456-789",
+        "email": "test@test.com"
+      },
+      "tireSets": [
+        {
+          "tireSet": {
+            "id": "4ece2ca7-2b79-4cf2-94c9-336e703a4f1d",
+            "season": "Winter",
+            "brand": "Michelin",
+            "width": 215,
+            "height": 55,
+            "size": 18,
+            "loadIndex": 89,
+            "speedIndex": "H",
+            "rimsIncluded": true,
+            "runFlat": false,
+            "customerId": 1,
+            "tires": [
+              {
+                "id": "c11344f3-fc95-4b46-80d7-7619127b219a",
+                "treadDepth1": "4",
+                "treadDepth2": "4",
+                "treadDepth3": "4",
+                "treadDepth4": "4",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front left"
+              },
+              {
+                "id": "81a2c6ca-c83d-41fe-99c9-915d5cb535e3",
+                "treadDepth1": "4",
+                "treadDepth2": "4",
+                "treadDepth3": "4",
+                "treadDepth4": "4",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front right"
+              },
+              {
+                "id": "c788b598-0bf7-4ba8-9c32-bf78415003b1",
+                "treadDepth1": "4",
+                "treadDepth2": "4",
+                "treadDepth3": "4",
+                "treadDepth4": "4",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear left"
+              },
+              {
+                "id": "58a99869-1d6e-4551-9b18-533e66a10d18",
+                "treadDepth1": "4",
+                "treadDepth2": "4",
+                "treadDepth3": "4",
+                "treadDepth4": "4",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear right"
+              }
+            ]
+          },
+          "tireStoragePrice": {
+            "size": 18,
+            "price": 16,
+            "priceWithRims": 18
+          },
+          "tirePrice": 18,
+          "tireSetPrice": 72
+        },
+        {
+          "tireSet": {
+            "id": "Q7F1fOg",
+            "season": "All Seasons",
+            "brand": "Dunlop",
+            "width": 135,
+            "height": 45,
+            "size": 15,
+            "loadIndex": 105,
+            "speedIndex": "H",
+            "rimsIncluded": true,
+            "runFlat": true,
+            "customerId": 1,
+            "tires": [
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front right"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear right"
+              }
+            ]
+          },
+          "tireStoragePrice": {
+            "size": 15,
+            "price": 11,
+            "priceWithRims": 12
+          },
+          "tirePrice": 12,
+          "tireSetPrice": 48
+        }
+      ],
+      "startDate": "2023-11-13T19:55:57.638Z",
+      "endDate": "2024-05-13T18:55:57.639Z",
+      "totalPrice": 120,
+      "status": 0,
+      "id": 2
+    },
+    {
+      "customer": {
+        "id": 5,
+        "firstName": "abc",
+        "lastName": "def",
+        "gender": "female",
+        "address": {
+          "street": "Test street",
+          "city": "Test city",
+          "state": "Oregon",
+          "zip": "12345"
+        },
+        "phoneNumber": "123-456-789",
+        "email": "sasa@asdas.asd"
+      },
+      "tireSets": [
+        {
+          "tireSet": {
+            "id": "3iFos8U",
+            "season": "Summer",
+            "brand": "Goodyear",
+            "width": 125,
+            "height": 45,
+            "size": 14,
+            "loadIndex": 105,
+            "speedIndex": "U",
+            "rimsIncluded": null,
+            "runFlat": true,
+            "customerId": 1,
+            "tires": [
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front right"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear right"
+              }
+            ]
+          },
+          "tireStoragePrice": {
+            "size": 14,
+            "price": 10,
+            "priceWithRims": 11
+          },
+          "tirePrice": 10,
+          "tireSetPrice": 40
+        }
+      ],
+      "startDate": "2023-11-13T20:24:23.138Z",
+      "endDate": "2024-05-13T19:24:23.139Z",
+      "totalPrice": 40,
+      "status": 0,
+      "id": 3
+    },
+    {
+      "customer": {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "gender": "male",
+        "address": {
+          "street": "3199 Country Club Rd",
+          "city": "Fremont",
+          "state": "Virginia",
+          "zip": "94390"
+        },
+        "phoneNumber": "123-456-789",
+        "email": "test@test.com"
+      },
+      "tireSets": [
+        {
+          "tireSet": {
+            "id": "3iFos8U",
+            "season": "Summer",
+            "brand": "Goodyear",
+            "width": 125,
+            "height": 45,
+            "size": 14,
+            "loadIndex": 105,
+            "speedIndex": "U",
+            "rimsIncluded": null,
+            "runFlat": true,
+            "customerId": 1,
+            "tires": [
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front right"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear right"
+              }
+            ]
+          },
+          "tireStoragePrice": {
+            "size": 14,
+            "price": 10,
+            "priceWithRims": 11
+          },
+          "tirePrice": 10,
+          "tireSetPrice": 40
+        }
+      ],
+      "startDate": "2023-11-13T20:28:35.577Z",
+      "endDate": "2024-05-13T19:28:35.577Z",
+      "totalPrice": 40,
+      "status": 0,
+      "id": 4
+    },
+    {
+      "customer": {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "gender": "male",
+        "address": {
+          "street": "3199 Country Club Rd",
+          "city": "Fremont",
+          "state": "Virginia",
+          "zip": "94390"
+        },
+        "phoneNumber": "123-456-789",
+        "email": "test@test.com"
+      },
+      "tireSets": [
+        {
+          "tireSet": {
+            "id": "Q7F1fOg",
+            "season": "All Seasons",
+            "brand": "Dunlop",
+            "width": 135,
+            "height": 45,
+            "size": 15,
+            "loadIndex": 105,
+            "speedIndex": "H",
+            "rimsIncluded": true,
+            "runFlat": true,
+            "customerId": 1,
+            "tires": [
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front right"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear right"
+              }
+            ]
+          },
+          "tireStoragePrice": {
+            "size": 15,
+            "price": 11,
+            "priceWithRims": 12
+          },
+          "tirePrice": 12,
+          "tireSetPrice": 48
+        }
+      ],
+      "startDate": "2023-11-13T20:30:26.343Z",
+      "endDate": "2024-05-13T19:30:26.343Z",
+      "totalPrice": 48,
+      "status": 0,
+      "id": 5
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -17,30 +431,6 @@
       "address": [
         {
           "type": "Home",
-          "street": "7251 Walnut Hill Ln",
-          "city": "Scurry",
-          "state": "Hrvatska",
-          "zip": "36713"
-        },
-        {
-          "type": "Office",
-          "street": "7251 Walnut Hill Ln",
-          "city": "Čakovec",
-          "state": "Oregon",
-          "zip": "36713"
-        }
-      ],
-      "gender": "male",
-      "portrait": "portraits/admin.jpg",
-      "thumbnail": "portraits/admin-thumb.jpg",
-      "roles": [
-        "sales_advisor",
-        "warehouse",
-        "mechanic"
-      ],
-      "address": [
-        {
-          "type": "Home",
           "street": "Vukovarska ",
           "city": "Čakovec",
           "state": "Croatia",
@@ -53,6 +443,14 @@
           "state": null,
           "zip": null
         }
+      ],
+      "gender": "male",
+      "portrait": "portraits/admin.jpg",
+      "thumbnail": "portraits/admin-thumb.jpg",
+      "roles": [
+        "sales_advisor",
+        "warehouse",
+        "mechanic"
       ]
     },
     {

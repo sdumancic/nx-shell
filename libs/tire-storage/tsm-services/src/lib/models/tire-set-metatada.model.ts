@@ -4,9 +4,9 @@ export interface TireSetMetadata {
   tireSizes: number[],
   tireWidths: number[],
   tireHeights: number[],
-  speedIndex: string[]
-  loadIndex: number[]
-  treadDepth: TreadDepth[]
+  speedIndexes: string[]
+  loadIndexes: number[]
+  treadDepths: TreadDepth[]
 }
 
 export interface TreadDepth {

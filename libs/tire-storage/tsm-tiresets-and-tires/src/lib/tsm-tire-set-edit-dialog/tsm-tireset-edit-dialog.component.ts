@@ -61,8 +61,8 @@ export class TsmTireSetEditDialogComponent implements OnInit {
       this.widths = metadata.tireWidths
       this.heights = metadata.tireHeights
       this.sizes = metadata.tireSizes
-      this.loadIndexes = metadata.loadIndex
-      this.speedIndexes = metadata.speedIndex
+      this.loadIndexes = metadata.loadIndexes
+      this.speedIndexes = metadata.speedIndexes
     })
     this.formService.setCustomerId(this.data.customerId)
     if (this.data.tireSet) {
