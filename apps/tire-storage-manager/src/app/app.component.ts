@@ -51,6 +51,16 @@ export class AppComponent implements OnInit {
     this.matIconRegistry.addSvgIcon('delete3', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/delete3.svg'))
     this.matIconRegistry.addSvgIcon('filter', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/filter.svg'))
     this.matIconRegistry.addSvgIcon('clear-filter', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/clear-filter.svg'))
+    this.matIconRegistry.addSvgIcon('warehouse1', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/warehouse1.svg'))
+    this.matIconRegistry.addSvgIcon('warehouse2', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/warehouse2.svg'))
+    this.matIconRegistry.addSvgIcon('warehouse3', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/warehouse3.svg'))
+    this.matIconRegistry.addSvgIcon('offer', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/offer.svg'))
+    this.matIconRegistry.addSvgIcon('contract', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/contract.svg'))
+    this.matIconRegistry.addSvgIcon('run-flat', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/run-flat.svg'))
+    this.matIconRegistry.addSvgIcon('rims', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/rims.svg'))
+    this.matIconRegistry.addSvgIcon('expand', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/expand.svg'))
+    this.matIconRegistry.addSvgIcon('accept', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/accept.svg'))
+    this.matIconRegistry.addSvgIcon('reject', this.domSanitzer.bypassSecurityTrustResourceUrl('assets/icons/reject.svg'))
   }
 
   ngOnInit (): void {

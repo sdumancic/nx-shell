@@ -45,3 +45,32 @@ export const searchOffersFailure = createAction(
   (error: string) => ({ error })
 )
 
+export const acceptOffer = createAction(
+  '[Offers Overview]  Accept offer',
+  props<{ id: number }>()
+)
+
+export const acceptOfferSuccess = createAction(
+  '[Offers Overview] Accept offers Success',
+  (offer: Offer) => ({ offer })
+)
+
+export const acceptOfferFailure = createAction(
+  '[Offers Overview] Accept offers Failure',
+  (error: string) => ({ error })
+)
+
+export const rejectOffer = createAction(
+  '[Offers Overview]  Reject offer',
+  props<{ id: number }>()
+)
+export const rejectOfferSuccess = createAction(
+  '[Offers Overview] Reject offers Success',
+  (offer: Offer) => ({ offer })
+)
+
+export const rejectOfferFailure = createAction(
+  '[Offers Overview] Reject offers Failure',
+  (error: string) => ({ error })
+)
+

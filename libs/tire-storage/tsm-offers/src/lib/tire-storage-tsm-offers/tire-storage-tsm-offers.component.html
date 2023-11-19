@@ -1,6 +1,14 @@
 <div class="density-settings-3 m-left-right-30px">
   <div class="title-row">
-    <h1>{{ 'Offers' }}</h1>
+    <div class="title-content">
+      <mat-icon svgIcon="offer"></mat-icon>
+      <div class="title-text">{{ 'Offers' }}</div>
+    </div>
+
+    <button type="button" (click)="createNewOffer()" class="standard-btn">
+      <mat-icon svgIcon="add"></mat-icon>
+      New offer
+    </button>
   </div>
   <div class="filter-container">
     <mat-accordion class="example-headers-align">
@@ -85,20 +93,10 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <button
-            mat-stroked-button
-            type="button"
-            (click)="onSearch()"
-            class="action-button"
-          >
+          <button type="button" (click)="onSearch()" class="standard-btn">
             <mat-icon svgIcon="filter"></mat-icon>Filter
           </button>
-          <button
-            mat-stroked-button
-            type="button"
-            (click)="onClear()"
-            class="action-button"
-          >
+          <button type="button" (click)="onClear()" class="standard-btn">
             <mat-icon svgIcon="close"></mat-icon>Clear
           </button>
         </div>
@@ -130,6 +128,9 @@
           [loading]="loading$ | async"
           (paginateEmitter)="onPaginate($event)"
           (sortEmitter)="onSort($event)"
+          (acceptEmitter)="onAccept($event)"
+          (editEmitter)="onEdit($event)"
+          (rejectEmitter)="onReject($event)"
         ></tsm-ui-offers-overview-table-ui>
       </div>
     </ng-container>

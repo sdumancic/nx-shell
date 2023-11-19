@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { catchError, delay, map, Observable } from 'rxjs'
 import { Offer } from '../models/offer.model'
-import { OffersOverviewSearchValues } from '@nx-shell/tire-storage/tsm-domain'
+import { OffersOverviewSearchValues, OfferStatusEnum } from '@nx-shell/tire-storage/tsm-domain'
 
 @Injectable({ providedIn: 'root' })
 export class OfferService {
@@ -16,7 +16,22 @@ export class OfferService {
     }))
   }
 
-  searchOffers$ (searchValues: OffersOverviewSearchValues, page: number, limit: number): Observable<{
+  acceptOffer$ (offer: Offer): Observable<Offer> {
+    return this.http.put<Offer>(`${this.api}/offers/${offer.id}`, {
+      ...offer,
+      status: OfferStatusEnum.ACCEPTED
+    }).pipe(catchError((err: Error) => {
+      throw Error(err.message)
+    }))
+  }
+
+  findOne$ (id: number) {
+    return this.http.get<Offer>(`${this.api}/offers/${id}`).pipe(catchError((err: Error) => {
+      throw Error(err.message)
+    }))
+  }
+
+  searchOffers$ (searchValues: OffersOverviewSearchValues, page: number, limit: number, sortAttribute?: string, sortDirection?: string): Observable<{
     data: Offer[],
     totalCount: number
   }> {
@@ -25,6 +40,13 @@ export class OfferService {
       .pipe(
         map(offers => offers.filter(offer => this.offerSatisfiesCondition(offer, searchValues))),
         delay(1000),
+        map(offers => {
+          if (!sortAttribute) {
+            return offers
+          } else {
+            return offers.sort((a, b) => this.orderBy(a, b, sortAttribute, sortDirection))
+          }
+        }),
         map((offers: Offer[]) => {
           const sliceStart = page > 0 ? (page - 1) * limit : page * limit
           const sliceEnd = sliceStart + limit - 1
@@ -77,5 +99,43 @@ export class OfferService {
       }
     }
     return satisfies
+  }
+
+  private orderBy (a: Offer, b: Offer, sortAttribute: string, sortDirection: string | undefined) {
+    if (sortDirection === 'asc') {
+      switch (sortAttribute) {
+        case 'id':
+          return a && b && a.id && b.id ? (a.id > b.id ? 1 : -1) : 0
+        case 'customer':
+          return a && b && a.customer.lastName && b.customer.lastName ? a.customer.lastName.localeCompare(b.customer.lastName) === 1 ? 1 : -1 : 0
+        case 'startDate':
+          return a && b && a.startDate && b.startDate ? a.startDate > b.startDate ? 1 : -1 : 0
+        case 'endDate':
+          return a && b && a.endDate && b.endDate ? a.endDate > b.endDate ? 1 : -1 : 0
+        case 'status':
+          return a && b && a.status && b.status ? a.status > b.status ? 1 : -1 : 0
+        case 'totalPrice':
+          return a && b && a.totalPrice && b.totalPrice ? a.totalPrice > b.totalPrice ? 1 : -1 : 0
+        default:
+          return 0
+      }
+    } else {
+      switch (sortAttribute) {
+        case 'id':
+          return a && b && a.id && b.id ? (a.id > b.id ? -1 : 1) : 0
+        case 'customer':
+          return a && b && a.customer.lastName && b.customer.lastName ? a.customer.lastName.localeCompare(b.customer.lastName) === 1 ? -1 : 1 : 0
+        case 'startDate':
+          return a && b && a.startDate && b.startDate ? a.startDate > b.startDate ? -1 : 1 : 0
+        case 'endDate':
+          return a && b && a.endDate && b.endDate ? a.endDate > b.endDate ? -1 : 1 : 0
+        case 'status':
+          return a && b && a.status && b.status ? a.status > b.status ? -1 : 1 : 0
+        case 'totalPrice':
+          return a && b && a.totalPrice && b.totalPrice ? a.totalPrice > b.totalPrice ? -1 : 1 : 0
+        default:
+          return 0
+      }
+    }
   }
 }

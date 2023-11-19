@@ -2,6 +2,7 @@ import { createFeature, createReducer, on } from '@ngrx/store'
 import { Offer, TireSetMetadata } from '@nx-shell/tire-storage/tsm-services'
 import { CallState, LoadingState } from '@nx-shell/tire-storage/tsm-util'
 import {
+  acceptOffer,
   loadMetadata,
   loadMetadataFailure,
   loadMetadataSuccess,
@@ -110,6 +111,28 @@ export const offersOverviewFeature = createFeature({
         offersCallState: { errorMsg: action.error }
       }
     }),
+    on(acceptOffer, (state, action) => {
+      function acceptOfferWithId (id: number) {
+        const offerIndex = state.offers.findIndex((offer: Offer) => offer.id === action.id)
+        const offers = [...state.offers]
+        if (offerIndex > -1) {
+
+          const offerForUpdate = { ...offers[offerIndex] }
+          offerForUpdate.status = OfferStatusEnum.ACCEPTED
+          offers.splice(offerIndex, 1, offerForUpdate)
+          return offers
+        }
+        return state.offers
+
+      }
+
+      return {
+        ...state,
+        offers: acceptOfferWithId(action.id),
+      }
+    }),
   ),
 })
+
+
 

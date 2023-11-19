@@ -20,6 +20,14 @@
   display: flex;
   align-items: center;
   width: 100%;
+  gap: 20px;
+
+  &--icon {
+    .mat-icon {
+      height: 36px;
+      width: 36px;
+    }
+  }
 
   &--title {
     flex: 1 0 auto;

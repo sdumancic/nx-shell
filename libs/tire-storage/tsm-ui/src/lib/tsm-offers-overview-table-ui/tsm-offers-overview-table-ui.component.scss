@@ -27,3 +27,82 @@ table {
   justify-content: center;
 }
 
+.status-wrap {
+  width: 100%;
+
+  .status-title {
+    width: 100%;
+  }
+
+  .status {
+    width: 100%;
+    height: 13px;
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+
+    span {
+      margin: 4px;
+      flex: 0 1 calc(20% - 5px);
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+      border-radius: 50px;
+    }
+
+    .blue-status {
+      background-color: #009aff;
+    }
+
+    .red-status {
+      background-color: #bf0101;
+    }
+
+    .gray-light-status {
+      background-color: #e1e4e9;
+    }
+
+    .gray-status {
+      background-color: #9ba5b6;
+    }
+
+    .orange-status {
+      background-color: #ec8a30;
+    }
+  }
+}
+
+.tire-set-content {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .mat-icon {
+    margin-left: 5px;
+    opacity: 0.5;
+    width: 18px;
+    height: 18px;
+  }
+
+  .other-tires {
+    margin-left: 5px;
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #009aff;
+    cursor: pointer;
+  }
+
+}
+
+.other-tires-container {
+  margin: 5px 10px 5px 10px;
+
+  .mat-icon {
+    margin-left: 5px;
+    opacity: 0.5;
+    width: 18px;
+    height: 18px;
+  }
+}
+

@@ -1,9 +1,15 @@
 .title-row {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 20px;
+
+  .title-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }
 
 .example-action-buttons {
@@ -25,7 +31,7 @@
 }
 
 .action-button {
-  height: 44px;
+  height: 46px !important;
 }
 
 .search-items {
@@ -44,3 +50,5 @@
 .active-link {
   color: #F20B22;
 }
+
+

@@ -13,7 +13,7 @@ import { MatOptionModule } from '@angular/material/core'
 import { MatSelectModule } from '@angular/material/select'
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { Store } from '@ngrx/store'
-import { loadMetadata, searchOffers } from '../+state/offers-overview.actions'
+import { acceptOffer, loadMetadata, rejectOffer, searchOffers } from '../+state/offers-overview.actions'
 import { OffersOverviewMapper } from '../mapper/offers-overview.mapper'
 import { selectOffersOverviewVm } from '../+state/offers-overview.selector'
 import { OffersOverviewSearchResultUi, TsmOffersOverviewTableUiComponent } from '@nx-shell/tire-storage/tsm-ui'
@@ -24,7 +24,9 @@ import { Sort } from '@angular/material/sort'
 @Component({
   selector: 'nx-shell-tire-storage-tsm-offers',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, OverviewWrapperComponent, MatTabsModule, MatButtonModule, MatIconModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, ReactiveFormsModule, RouterLink, RouterLinkActive, TsmOffersOverviewTableUiComponent],
+  imports: [CommonModule, RouterOutlet, OverviewWrapperComponent, MatTabsModule
+    , MatButtonModule, MatIconModule, MatExpansionModule, MatInputModule, MatDatepickerModule,
+    MatOptionModule, MatSelectModule, ReactiveFormsModule, RouterLink, RouterLinkActive, TsmOffersOverviewTableUiComponent],
   templateUrl: './tire-storage-tsm-offers.component.html',
   styleUrls: ['./tire-storage-tsm-offers.component.scss'],
 })
@@ -116,5 +118,26 @@ export class TireStorageTsmOffersComponent implements OnInit {
   onSort (sort: Sort) {
     const searchMeta = { sorting: { attribute: sort.active, order: sort.direction } } as SearchMeta
     this.store.dispatch(searchOffers({ searchMeta }))
+  }
+
+  createNewOffer () {
+    console.log('new offer')
+  }
+
+  onEdit (row: OffersOverviewSearchResultUi) {
+
+  }
+
+  onReject (row: OffersOverviewSearchResultUi) {
+    if (row.id) {
+      this.store.dispatch(rejectOffer({ id: row.id }))
+    }
+
+  }
+
+  onAccept (row: OffersOverviewSearchResultUi) {
+    if (row.id) {
+      this.store.dispatch(acceptOffer({ id: row.id }))
+    }
   }
 }

@@ -2,6 +2,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { inject } from '@angular/core'
 import { OfferService, TireSetMetadataService } from '@nx-shell/tire-storage/tsm-services'
 import {
+  acceptOffer,
+  acceptOfferFailure,
+  acceptOfferSuccess,
   loadMetadata,
   loadMetadataFailure,
   loadMetadataSuccess,
@@ -12,7 +15,7 @@ import {
   setSearchValues,
   setSort
 } from './offers-overview.actions'
-import { catchError, delay, map, of, switchMap, tap, withLatestFrom } from 'rxjs'
+import { catchError, concatMap, delay, map, of, switchMap, tap, withLatestFrom } from 'rxjs'
 import { Store } from '@ngrx/store'
 import { selectOffersOverviewVm } from './offers-overview.selector'
 
@@ -63,7 +66,7 @@ export const searchOffersEffect = createEffect((
         const searchMetaFromStore = data[2]
         const page = searchMetaFromStore.pagination?.index ? searchMetaFromStore.pagination.index : 1
         const limit = searchMetaFromStore.pagination?.size ? searchMetaFromStore.pagination.size : 10
-        return offerService.searchOffers$(searchValuesFromStore, page, limit).pipe(
+        return offerService.searchOffers$(searchValuesFromStore, page, limit, searchMetaFromStore.sorting?.attribute, searchMetaFromStore.sorting?.order).pipe(
           map(searchOffersResponse => searchOffersSuccess(searchOffersResponse.data, searchOffersResponse.totalCount)),
           catchError((error: string) => of(searchOffersFailure(error)))
         )
@@ -73,7 +76,22 @@ export const searchOffersEffect = createEffect((
   { functional: true }
 )
 
-
+export const acceptOfferEffect = createEffect((
+    actions$ = inject(Actions),
+    offerService = inject(OfferService)) => {
+    return actions$.pipe(
+      ofType(acceptOffer),
+      concatMap(val => offerService.findOne$(val.id)),
+      concatMap((offer) => {
+        return offerService.acceptOffer$(offer).pipe(
+          map(offer => acceptOfferSuccess(offer)),
+          catchError((error: string) => of(acceptOfferFailure(error)))
+        )
+      })
+    )
+  },
+  { functional: true }
+)
 
 
 
