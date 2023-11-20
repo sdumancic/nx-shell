@@ -25,6 +25,23 @@ export class OfferService {
     }))
   }
 
+  rejectOffer$ (offer: Offer): Observable<Offer> {
+    return this.http.put<Offer>(`${this.api}/offers/${offer.id}`, {
+      ...offer,
+      status: OfferStatusEnum.REJECTED
+    }).pipe(catchError((err: Error) => {
+      throw Error(err.message)
+    }))
+  }
+
+  editOffer$ (id: number, newOffer: Offer): Observable<Offer> {
+    return this.http.put<Offer>(`${this.api}/offers/${id}`, {
+      ...newOffer
+    }).pipe(catchError((err: Error) => {
+      throw Error(err.message)
+    }))
+  }
+
   findOne$ (id: number) {
     return this.http.get<Offer>(`${this.api}/offers/${id}`).pipe(catchError((err: Error) => {
       throw Error(err.message)

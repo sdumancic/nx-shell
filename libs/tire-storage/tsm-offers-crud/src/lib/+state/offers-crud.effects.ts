@@ -19,6 +19,7 @@ import { OfferStatusEnum } from '@nx-shell/tire-storage/tsm-domain'
 import { MessageAction, MessageBusService } from '@nx-shell/core'
 import { HttpErrorResponse } from '@angular/common/http'
 import { Router } from '@angular/router'
+import { formatISO } from 'date-fns'
 
 export const selectCustomerEffect = createEffect((
     actions$ = inject(Actions),
@@ -83,8 +84,8 @@ export const createOfferEffect = createEffect((
           const offer: Offer = {
             customer: data.customer!,
             tireSets: data.tireSets,
-            startDate: data.startDate!,
-            endDate: data.endDate!,
+            startDate: formatISO(data.startDate!),
+            endDate: formatISO(data.endDate!),
             totalPrice: data.totalPrice,
             status: OfferStatusEnum.PLACED
           }
@@ -92,7 +93,10 @@ export const createOfferEffect = createEffect((
             map(offer => createOfferSuccess(offer)),
             tap(() => router.navigate(['offers', 'overview'])),
             catchError((error: HttpErrorResponse) => {
-              messageBus.push({ type: MessageAction.ERROR, data: { name: 'Error while creating offer', message: error.message } })
+              messageBus.push({
+                type: MessageAction.ERROR,
+                data: { name: 'Error while creating offer', message: error.message }
+              })
               return of(createOfferFailure(error.message))
             })
           )

@@ -1,15 +1,15 @@
-import { Component, inject, OnInit } from '@angular/core'
+import { Component, inject, Input, OnInit, ViewChild } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { MatIconModule } from '@angular/material/icon'
 import { DialogService, LargeButtonComponent, MessageBusService, NotificationsObserverComponent } from '@nx-shell/core'
 import { MatCardModule } from '@angular/material/card'
-import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker'
 import { MatDateFnsModule } from '@angular/material-date-fns-adapter'
-import { add } from 'date-fns'
+import { add, parseISO } from 'date-fns'
 import { MAT_DATE_FORMATS } from '@angular/material/core'
 import { DATE_FNS_DATE_FORMAT } from '@nx-shell/tire-storage/tsm-domain'
 import { TsmCustomerSearchDialogComponent } from '@nx-shell/tire-storage/tsm-customer-search-dialog'
-import { combineLatestWith, firstValueFrom, map, Observable, take } from 'rxjs'
+import { BehaviorSubject, map, Observable, take } from 'rxjs'
 import { Store } from '@ngrx/store'
 import {
   createOffer,
@@ -51,6 +51,13 @@ import { MatSnackBar } from '@angular/material/snack-bar'
   ],
 })
 export class TireStorageTsmOffersCrudComponent implements OnInit {
+  @ViewChild('endDateCalendar') matCalendar: MatCalendar<any> | undefined
+
+  id$ = new BehaviorSubject<string | null>(null)
+
+  @Input() set id (id: string) {
+    this.id$.next(id)
+  }
 
   private readonly customerService = inject(CustomersService)
   private readonly dialogService = inject(DialogService)
@@ -66,8 +73,21 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
   totalTireSetPrice$ = this.store.select(selectOffersCrudViewModel).pipe(map(val => val.tireSetTotalValue))
 
   ngOnInit (): void {
-    this.store.dispatch(setStartDate(new Date()))
-    this.store.dispatch(setEndDate(add(new Date(), { months: 6 })))
+
+    if (this.id$.value !== 'new') {
+      // fetch offer and dispatch
+      this.offerService.findOne$(Number(this.id$.value)).pipe(take(1)).subscribe(offer => {
+        this.store.dispatch(setStartDate(parseISO(offer.startDate)))
+        this.store.dispatch(setEndDate(parseISO(offer.endDate)))
+        this.store.dispatch(selectCustomerSuccess(offer.customer))
+        offer.tireSets.forEach(tireSetWithPrices => this.store.dispatch(selectTireSetSuccess(tireSetWithPrices.tireSet)))
+      })
+
+    } else {
+      this.store.dispatch(setStartDate(new Date()))
+      this.store.dispatch(setEndDate(add(new Date(), { months: 6 })))
+    }
+
   }
 
   onSelectCustomer () {
@@ -81,39 +101,40 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
   }
 
   async onSelectTireSet () {
-    const customer = await firstValueFrom(this.customerService.getCustomer$(1))
-    this.store.dispatch(selectCustomerSuccess(customer))
-    setTimeout(() => {
-      this.store.select(selectOffersCrudViewModel)
-        .pipe(
-          map(state => state.customerTireSets))
-        .pipe(
-          combineLatestWith(this.store.select(selectOffersCrudViewModel)
-            .pipe(map(state => {return { selectedCustomer: state.selectedCustomer, selectedTireSets: state.selectedTireSet }}))
-          ),
-          take(1)
-        ).subscribe(val => {
-        const tireSets = val[0]
-        const customer = val[1].selectedCustomer
-        const selectedTireSetsWithPrices = val[1].selectedTireSets
-        const dialogRef: MatDialogRef<TsmTireSetSelectDialogComponent, TireSet> = this.dialogService.openSmall(TsmTireSetSelectDialogComponent,
-          {
-            height: '600px',
-            panelClass: 'no-overflow-modal',
-            data: {
-              customerId: customer?.id,
-              tireSets: tireSets,
-              selectedTireSets: selectedTireSetsWithPrices.map(e => e.tireSet)
-            }
+    //const customer = await firstValueFrom(this.customerService.getCustomer$(1))
+    //this.store.dispatch(selectCustomerSuccess(customer))
+
+    this.store.select(selectOffersCrudViewModel)
+      .pipe(
+        map(state => {
+          return {
+            customerTireSets: state.customerTireSets,
+            selectedCustomer: state.selectedCustomer,
+            selectedTireSetsWithPrices: state.selectedTireSet
           }
-        )
-        dialogRef.afterClosed().pipe(take(1)).subscribe(tireSet => {
-          if (tireSet) {
-            this.store.dispatch(selectTireSetSuccess(tireSet))
+        }),
+        take(1)
+      ).subscribe(val => {
+      const tireSets = val.customerTireSets
+      const customer = val.selectedCustomer
+      const selectedTireSetsWithPrices = val.selectedTireSetsWithPrices
+      const dialogRef: MatDialogRef<TsmTireSetSelectDialogComponent, TireSet> = this.dialogService.openSmall(TsmTireSetSelectDialogComponent,
+        {
+          height: '600px',
+          panelClass: 'no-overflow-modal',
+          data: {
+            customerId: customer?.id,
+            tireSets: tireSets,
+            selectedTireSets: selectedTireSetsWithPrices.map(e => e.tireSet)
           }
-        })
+        }
+      )
+      dialogRef.afterClosed().pipe(take(1)).subscribe(tireSet => {
+        if (tireSet) {
+          this.store.dispatch(selectTireSetSuccess(tireSet))
+        }
       })
-    }, 500)
+    })
 
   }
 
@@ -134,7 +155,11 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
   }
 
   onPlaceOrder () {
-    this.store.dispatch(createOffer())
+    if (this.id$.value) {
+      //this.store.dispatch(editOffer())
+    } else {
+      this.store.dispatch(createOffer())
+    }
 
   }
 

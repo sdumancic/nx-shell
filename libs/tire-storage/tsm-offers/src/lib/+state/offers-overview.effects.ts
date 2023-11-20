@@ -5,9 +5,15 @@ import {
   acceptOffer,
   acceptOfferFailure,
   acceptOfferSuccess,
+  editOffer,
+  editOfferFailure,
+  editOfferSuccess,
   loadMetadata,
   loadMetadataFailure,
   loadMetadataSuccess,
+  rejectOffer,
+  rejectOfferFailure,
+  rejectOfferSuccess,
   searchOffers,
   searchOffersFailure,
   searchOffersSuccess,
@@ -78,14 +84,59 @@ export const searchOffersEffect = createEffect((
 
 export const acceptOfferEffect = createEffect((
     actions$ = inject(Actions),
+    store = inject(Store),
     offerService = inject(OfferService)) => {
     return actions$.pipe(
       ofType(acceptOffer),
       concatMap(val => offerService.findOne$(val.id)),
       concatMap((offer) => {
         return offerService.acceptOffer$(offer).pipe(
-          map(offer => acceptOfferSuccess(offer)),
+          map(offer => {
+            store.dispatch(searchOffers({}))
+            return acceptOfferSuccess(offer)
+          }),
           catchError((error: string) => of(acceptOfferFailure(error)))
+        )
+      })
+    )
+  },
+  { functional: true }
+)
+
+export const rejectOfferEffect = createEffect((
+    actions$ = inject(Actions),
+    store = inject(Store),
+    offerService = inject(OfferService)) => {
+    return actions$.pipe(
+      ofType(rejectOffer),
+      concatMap(val => offerService.findOne$(val.id)),
+      concatMap((offer) => {
+        return offerService.rejectOffer$(offer).pipe(
+          map(offer => {
+            store.dispatch(searchOffers({}))
+            return rejectOfferSuccess(offer)
+          }),
+          catchError((error: string) => of(rejectOfferFailure(error)))
+        )
+      })
+    )
+  },
+  { functional: true }
+)
+
+export const editOfferEffect = createEffect((
+    actions$ = inject(Actions),
+    store = inject(Store),
+    offerService = inject(OfferService)) => {
+    return actions$.pipe(
+      ofType(editOffer),
+      concatMap((data) => {
+        return offerService.editOffer$(data.id, data.offer).pipe(
+          map(offer => {
+            store.dispatch(searchOffers({}))
+            return editOfferSuccess(offer)
+          }),
+          catchError((error: string) => of(editOfferFailure(error)))
         )
       })
     )

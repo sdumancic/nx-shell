@@ -1,6 +1,7 @@
 import { OffersOverviewSearchValues, OfferStatusEnum } from '@nx-shell/tire-storage/tsm-domain'
 import { Offer } from '@nx-shell/tire-storage/tsm-services'
 import { OffersOverviewSearchResultUi } from '@nx-shell/tire-storage/tsm-ui'
+import { parseISO } from 'date-fns'
 
 export class OffersOverviewMapper {
 
@@ -25,8 +26,8 @@ export class OffersOverviewMapper {
         id: resource.id,
         customer: resource.customer,
         tireSets: resource.tireSets,
-        startDate: resource.startDate,
-        endDate: resource.endDate,
+        startDate: parseISO(resource.startDate),
+        endDate: parseISO(resource.endDate),
         status: resource.status,
         totalPrice: resource.totalPrice
       } as OffersOverviewSearchResultUi

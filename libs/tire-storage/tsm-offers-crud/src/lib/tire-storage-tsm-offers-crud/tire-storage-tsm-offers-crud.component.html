@@ -44,10 +44,12 @@
       <mat-card-content>
         <div class="select-duration ui-section w-700">
           <mat-calendar
+            #startDateCalendar
             [selected]="startDate$ | async"
             (selectedChange)="onStartDateChanged($event)"
           ></mat-calendar>
           <mat-calendar
+            #endDateCalendar
             [selected]="endDate$ | async"
             [startAt]="endDate$ | async"
             (selectedChange)="onEndDateChanged($event)"

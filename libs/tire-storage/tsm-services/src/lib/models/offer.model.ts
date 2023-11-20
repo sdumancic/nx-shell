@@ -6,8 +6,8 @@ export interface Offer {
   id?: number,
   customer: Customer
   tireSets: TireSetWithPrices[],
-  startDate: Date
-  endDate: Date
+  startDate: string
+  endDate: string
   status: OfferStatusEnum
   totalPrice: number
 }

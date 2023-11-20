@@ -121,11 +121,11 @@ export class TireStorageTsmOffersComponent implements OnInit {
   }
 
   createNewOffer () {
-    console.log('new offer')
+    this.router.navigate(['offers', 'edit', 'new'],)
   }
 
   onEdit (row: OffersOverviewSearchResultUi) {
-
+    this.router.navigate(['offers', 'edit', row.id])
   }
 
   onReject (row: OffersOverviewSearchResultUi) {
