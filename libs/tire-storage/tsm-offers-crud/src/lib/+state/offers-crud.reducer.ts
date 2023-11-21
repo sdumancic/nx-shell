@@ -8,9 +8,13 @@ import {
   loadTireStoragePriceSuccess,
   removeTireSet,
   selectCustomerSuccess,
+  setEditMode,
   setEndDate,
-  setStartDate
+  setStartDate,
+  updateOfferFailure,
+  updateOfferSuccess
 } from './offers-crud.actions'
+import { EditMode } from '@nx-shell/tire-storage/tsm-domain'
 
 export interface OffersCrudState {
   selectedCustomer: Customer | null;
@@ -22,6 +26,7 @@ export interface OffersCrudState {
   selectedCustomerCallState: CallState;
   selectedTireSetCallState: CallState;
   createOfferCallState: CallState;
+  editMode: EditMode
 }
 
 const initialState: OffersCrudState = {
@@ -33,7 +38,8 @@ const initialState: OffersCrudState = {
   offer: null,
   selectedCustomerCallState: LoadingState.INIT,
   selectedTireSetCallState: LoadingState.INIT,
-  createOfferCallState: LoadingState.INIT
+  createOfferCallState: LoadingState.INIT,
+  editMode: EditMode.INIT
 }
 
 export const offersCrudFeature = createFeature({
@@ -51,6 +57,7 @@ export const offersCrudFeature = createFeature({
       return {
         ...state,
         customerTireSets: action.tireSets,
+        selectedTireSet: []
       }
     }),
     on(loadTireStoragePriceSuccess, (state, action) => {
@@ -99,7 +106,27 @@ export const offersCrudFeature = createFeature({
         offer: null,
         createOfferCallState: { errorMsg: action.error }
       }
-    })
+    }),
+    on(updateOfferSuccess, (state, action) => {
+      return {
+        ...state,
+        offer: action.offer,
+        createOfferCallState: LoadingState.LOADED,
+      }
+    }),
+    on(updateOfferFailure, (state, action) => {
+      return {
+        ...state,
+        offer: null,
+        createOfferCallState: { errorMsg: action.error }
+      }
+    }),
+    on(setEditMode, (state, action) => {
+      return {
+        ...state,
+        editMode: action.editMode
+      }
+    }),
   ),
 })
 

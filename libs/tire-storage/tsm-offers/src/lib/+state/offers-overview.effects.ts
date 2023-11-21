@@ -5,9 +5,6 @@ import {
   acceptOffer,
   acceptOfferFailure,
   acceptOfferSuccess,
-  editOffer,
-  editOfferFailure,
-  editOfferSuccess,
   loadMetadata,
   loadMetadataFailure,
   loadMetadataSuccess,
@@ -117,26 +114,6 @@ export const rejectOfferEffect = createEffect((
             return rejectOfferSuccess(offer)
           }),
           catchError((error: string) => of(rejectOfferFailure(error)))
-        )
-      })
-    )
-  },
-  { functional: true }
-)
-
-export const editOfferEffect = createEffect((
-    actions$ = inject(Actions),
-    store = inject(Store),
-    offerService = inject(OfferService)) => {
-    return actions$.pipe(
-      ofType(editOffer),
-      concatMap((data) => {
-        return offerService.editOffer$(data.id, data.offer).pipe(
-          map(offer => {
-            store.dispatch(searchOffers({}))
-            return editOfferSuccess(offer)
-          }),
-          catchError((error: string) => of(editOfferFailure(error)))
         )
       })
     )

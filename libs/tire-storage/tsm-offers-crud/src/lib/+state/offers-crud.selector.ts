@@ -16,7 +16,8 @@ export const selectOffersCrudViewModel = createSelector(
   selectTireSetPrice,
   offersCrudFeature.selectSelectedCustomerCallState,
   offersCrudFeature.selectSelectedTireSetCallState,
-  (selectedCustomer, customerTireSets, selectedTireSet, startDate, endDate, tireSetTotalValue, selectedCustomerCallState, selectedTireSetCallState) => (
+  offersCrudFeature.selectEditMode,
+  (selectedCustomer, customerTireSets, selectedTireSet, startDate, endDate, tireSetTotalValue, selectedCustomerCallState, selectedTireSetCallState, editMode) => (
     {
       selectedCustomer,
       customerTireSets,
@@ -26,5 +27,6 @@ export const selectOffersCrudViewModel = createSelector(
       tireSetTotalValue,
       selectedCustomerLoaded: selectedCustomerCallState === LoadingState.LOADED,
       selectedTireSetLoaded: selectedTireSetCallState === LoadingState.LOADED,
+      editMode
     })
 )

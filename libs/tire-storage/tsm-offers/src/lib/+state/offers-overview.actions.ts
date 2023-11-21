@@ -74,17 +74,4 @@ export const rejectOfferFailure = createAction(
   (error: string) => ({ error })
 )
 
-export const editOffer = createAction(
-  '[Offers Overview] Edit offer ',
-  props<{ id: number, offer: Offer }>()
-)
 
-export const editOfferSuccess = createAction(
-  '[Offers Overview] Edit offer Success',
-  (offer: Offer) => ({ offer })
-)
-
-export const editOfferFailure = createAction(
-  '[Offers Overview] Edit offer Failure',
-  (error: string) => ({ error })
-)

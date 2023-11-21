@@ -34,7 +34,7 @@ export class OfferService {
     }))
   }
 
-  editOffer$ (id: number, newOffer: Offer): Observable<Offer> {
+  updateOffer$ (id: string, newOffer: Offer): Observable<Offer> {
     return this.http.put<Offer>(`${this.api}/offers/${id}`, {
       ...newOffer
     }).pipe(catchError((err: Error) => {

@@ -1,21 +1,22 @@
-import { Component, inject, Input, OnInit, ViewChild } from '@angular/core'
+import { Component, DestroyRef, inject, Input, OnInit, ViewChild } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { MatIconModule } from '@angular/material/icon'
 import { DialogService, LargeButtonComponent, MessageBusService, NotificationsObserverComponent } from '@nx-shell/core'
 import { MatCardModule } from '@angular/material/card'
 import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker'
 import { MatDateFnsModule } from '@angular/material-date-fns-adapter'
-import { add, parseISO } from 'date-fns'
+import { add, endOfDay, parseISO } from 'date-fns'
 import { MAT_DATE_FORMATS } from '@angular/material/core'
-import { DATE_FNS_DATE_FORMAT } from '@nx-shell/tire-storage/tsm-domain'
+import { DATE_FNS_DATE_FORMAT, EditMode } from '@nx-shell/tire-storage/tsm-domain'
 import { TsmCustomerSearchDialogComponent } from '@nx-shell/tire-storage/tsm-customer-search-dialog'
-import { BehaviorSubject, map, Observable, take } from 'rxjs'
+import { BehaviorSubject, debounceTime, map, Observable, take } from 'rxjs'
 import { Store } from '@ngrx/store'
 import {
-  createOffer,
+  createOrUpdateOffer,
   removeTireSet,
   selectCustomerSuccess,
   selectTireSetSuccess,
+  setEditMode,
   setEndDate,
   setStartDate
 } from '../+state/offers-crud.actions'
@@ -36,13 +37,17 @@ import {
 import { TsmTireSetSelectDialogComponent } from '@nx-shell/tire-storage/tsm-tire-set-select-dialog'
 import { MatButtonModule } from '@angular/material/button'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { FormControl, ReactiveFormsModule } from '@angular/forms'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 
 @Component({
   selector: 'tsm-offers-tire-storage-tsm-offers-crud',
   standalone: true,
   imports: [CommonModule, MatIconModule, LargeButtonComponent, MatCardModule,
     MatDatepickerModule, MatDateFnsModule, TsmCustomerInfoUiComponent, TsmTireSetInfoUiComponent, TsmOfferCalculationUiComponent, MatButtonModule,
-    NotificationsObserverComponent],
+    NotificationsObserverComponent, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   templateUrl: './tire-storage-tsm-offers-crud.component.html',
   styleUrls: ['./tire-storage-tsm-offers-crud.component.scss'],
   providers: [
@@ -53,12 +58,13 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 export class TireStorageTsmOffersCrudComponent implements OnInit {
   @ViewChild('endDateCalendar') matCalendar: MatCalendar<any> | undefined
 
-  id$ = new BehaviorSubject<string | null>(null)
+  id$ = new BehaviorSubject<string | undefined>(undefined)
 
   @Input() set id (id: string) {
     this.id$.next(id)
   }
 
+  private destroyRef = inject(DestroyRef)
   private readonly customerService = inject(CustomersService)
   private readonly dialogService = inject(DialogService)
   private readonly store = inject(Store)
@@ -71,21 +77,39 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
   startDate$ = this.store.select(selectOffersCrudViewModel).pipe(map(val => val.startDate))
   endDate$ = this.store.select(selectOffersCrudViewModel).pipe(map(val => val.endDate))
   totalTireSetPrice$ = this.store.select(selectOffersCrudViewModel).pipe(map(val => val.tireSetTotalValue))
+  editMode$ = this.store.select(selectOffersCrudViewModel).pipe(map(val => val.editMode))
+
+  endDateControl = new FormControl<Date | null>(null)
+  startDateControl = new FormControl<Date | null>(null)
 
   ngOnInit (): void {
 
+    this.endDateControl.valueChanges.pipe(debounceTime(300), takeUntilDestroyed(this.destroyRef)).subscribe(endDate => {
+      if (endDate) {
+        this.store.dispatch(setEndDate(endDate))
+      }
+    })
+    this.startDateControl.valueChanges.pipe(debounceTime(300), takeUntilDestroyed(this.destroyRef)).subscribe(startDate => {
+      if (startDate) {
+        this.store.dispatch(setStartDate(startDate))
+      }
+    })
+
     if (this.id$.value !== 'new') {
-      // fetch offer and dispatch
+      this.store.dispatch(setEditMode(EditMode.EDIT))
       this.offerService.findOne$(Number(this.id$.value)).pipe(take(1)).subscribe(offer => {
-        this.store.dispatch(setStartDate(parseISO(offer.startDate)))
-        this.store.dispatch(setEndDate(parseISO(offer.endDate)))
         this.store.dispatch(selectCustomerSuccess(offer.customer))
+        this.startDateControl.setValue(parseISO(offer.startDate))
+        this.endDateControl.setValue(parseISO(offer.endDate))
         offer.tireSets.forEach(tireSetWithPrices => this.store.dispatch(selectTireSetSuccess(tireSetWithPrices.tireSet)))
       })
 
     } else {
-      this.store.dispatch(setStartDate(new Date()))
-      this.store.dispatch(setEndDate(add(new Date(), { months: 6 })))
+      this.store.dispatch(setEditMode(EditMode.ADD_NEW))
+      const today = endOfDay(new Date())
+      const future = endOfDay(add(new Date(), { months: 6 }))
+      this.startDateControl.setValue(today)
+      this.endDateControl.setValue(future)
     }
 
   }
@@ -101,9 +125,6 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
   }
 
   async onSelectTireSet () {
-    //const customer = await firstValueFrom(this.customerService.getCustomer$(1))
-    //this.store.dispatch(selectCustomerSuccess(customer))
-
     this.store.select(selectOffersCrudViewModel)
       .pipe(
         map(state => {
@@ -155,19 +176,15 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
   }
 
   onPlaceOrder () {
-    if (this.id$.value) {
-      //this.store.dispatch(editOffer())
-    } else {
-      this.store.dispatch(createOffer())
-    }
+    this.editMode$.pipe(take(1)).subscribe(editMode => {
+      if (editMode === EditMode.EDIT) {
+        this.store.dispatch(createOrUpdateOffer({ id: this.id$.value }))
+      } else {
+        this.store.dispatch(createOrUpdateOffer({}))
+      }
+    })
 
   }
 
-  onStartDateChanged (date: any) {
-    this.store.dispatch(setStartDate(date))
-  }
-
-  onEndDateChanged (date: any) {
-    this.store.dispatch(setEndDate(date))
-  }
+  protected readonly EditMode = EditMode
 }

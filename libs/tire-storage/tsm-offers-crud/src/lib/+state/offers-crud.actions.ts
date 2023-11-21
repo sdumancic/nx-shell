@@ -1,5 +1,6 @@
-import { createAction } from '@ngrx/store'
+import { createAction, props } from '@ngrx/store'
 import { Customer, Offer, TireSet, TireStoragePrice } from '@nx-shell/tire-storage/tsm-services'
+import { EditMode } from '@nx-shell/tire-storage/tsm-domain'
 
 export const loadOffer = createAction(
   '[Offers CRUD] Load offer'
@@ -15,8 +16,9 @@ export const loadOfferFailure = createAction(
   (error: string) => ({ error })
 )
 
-export const createOffer = createAction(
-  '[Offers CRUD] Create offer'
+export const createOrUpdateOffer = createAction(
+  '[Offers CRUD] Create offer',
+  props<{ id?: string }>()
 )
 
 export const createOfferSuccess = createAction(
@@ -29,6 +31,15 @@ export const createOfferFailure = createAction(
   (error: string) => ({ error })
 )
 
+export const updateOfferSuccess = createAction(
+  '[Offers CRUD] Update offer Success',
+  (offer: Offer) => ({ offer })
+)
+
+export const updateOfferFailure = createAction(
+  '[Offers CRUD] Update offer Failure',
+  (error: string) => ({ error })
+)
 export const selectCustomerSuccess = createAction(
   '[Offers CRUD] Select customer',
   (customer: Customer) => ({ customer })
@@ -72,6 +83,11 @@ export const loadTireStoragePriceSuccess = createAction(
 export const loadTireStoragePriceFailure = createAction(
   '[Offers CRUD] Load tire storage price failure',
   (error: string) => ({ error })
+)
+
+export const setEditMode = createAction(
+  '[Offers CRUD] Set Edit Mode',
+  (editMode: EditMode) => ({ editMode })
 )
 
 

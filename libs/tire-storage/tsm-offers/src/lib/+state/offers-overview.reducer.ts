@@ -2,7 +2,6 @@ import { createFeature, createReducer, on } from '@ngrx/store'
 import { Offer, TireSetMetadata } from '@nx-shell/tire-storage/tsm-services'
 import { CallState, LoadingState } from '@nx-shell/tire-storage/tsm-util'
 import {
-  editOffer,
   loadMetadata,
   loadMetadataFailure,
   loadMetadataSuccess,
@@ -109,25 +108,6 @@ export const offersOverviewFeature = createFeature({
         ...state,
         offers: [],
         offersCallState: { errorMsg: action.error }
-      }
-    }),
-    on(editOffer, (state, action) => {
-      function setNewOffer (id: number, newOffer: Offer) {
-        const offerIndex = state.offers.findIndex((offer: Offer) => offer.id === action.id)
-        const offers = [...state.offers]
-        if (offerIndex > -1) {
-
-          const offerForUpdate = { ...offers[offerIndex], ...newOffer }
-          offers.splice(offerIndex, 1, offerForUpdate)
-          return offers
-        }
-        return state.offers
-
-      }
-
-      return {
-        ...state,
-        offers: setNewOffer(action.id, action.offer),
       }
     }),
   ),

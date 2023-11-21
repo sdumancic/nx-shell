@@ -1,5 +1,31 @@
 <main class="offer-container">
   <article class="content">
+    <div class="select-duration ui-section w-700 density-settings-3">
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          [matDatepicker]="myDatepicker"
+          [formControl]="startDateControl"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="myDatepicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          [matDatepicker]="myDatepicker2"
+          [formControl]="endDateControl"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="myDatepicker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker2></mat-datepicker>
+      </mat-form-field>
+    </div>
     <div class="select-customer">
       <core-ui-large-button
         *ngIf="(selectedCustomer$ | async) === null"
@@ -40,23 +66,6 @@
         ></tsm-ui-tire-set-info-ui>
       </ng-container>
     </div>
-    <mat-card>
-      <mat-card-content>
-        <div class="select-duration ui-section w-700">
-          <mat-calendar
-            #startDateCalendar
-            [selected]="startDate$ | async"
-            (selectedChange)="onStartDateChanged($event)"
-          ></mat-calendar>
-          <mat-calendar
-            #endDateCalendar
-            [selected]="endDate$ | async"
-            [startAt]="endDate$ | async"
-            (selectedChange)="onEndDateChanged($event)"
-          ></mat-calendar>
-        </div>
-      </mat-card-content>
-    </mat-card>
   </article>
   <aside class="sidebar">
     <div class="sidebar-section">
@@ -72,8 +81,22 @@
           color="primary"
           class="full-width m-t-50px"
           (click)="onPlaceOrder()"
+          [disabled]="
+            !(
+              (selectedCustomer$ | async) &&
+              (selectedTireSetsWithPrices$ | async) &&
+              (selectedTireSetsWithPrices$ | async)!.length > 0 &&
+              (startDate$ | async) &&
+              (endDate$ | async)
+            )
+          "
         >
-          Place order
+          <span *ngIf="(editMode$ | async) === EditMode.EDIT"
+            >Update order</span
+          >
+          <span *ngIf="(editMode$ | async) === EditMode.ADD_NEW"
+            >Place order</span
+          >
         </button>
       </div>
     </div>

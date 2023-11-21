@@ -2,15 +2,17 @@ import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { inject } from '@angular/core'
 import { Offer, OfferService, TireSetService, TireStoragePricingService } from '@nx-shell/tire-storage/tsm-services'
 import {
-  createOffer,
   createOfferFailure,
   createOfferSuccess,
+  createOrUpdateOffer,
   loadTireSetFailure,
   loadTireSetSuccess,
   loadTireStoragePriceFailure,
   loadTireStoragePriceSuccess,
   selectCustomerSuccess,
-  selectTireSetSuccess
+  selectTireSetSuccess,
+  updateOfferFailure,
+  updateOfferSuccess
 } from './offers-crud.actions'
 import { catchError, concatMap, exhaustMap, filter, map, of, switchMap, tap, withLatestFrom } from 'rxjs'
 import { Store } from '@ngrx/store'
@@ -68,10 +70,11 @@ export const createOfferEffect = createEffect((
     router = inject(Router),
     offerService = inject(OfferService)) => {
     return actions$.pipe(
-      ofType(createOffer),
+      ofType(createOrUpdateOffer),
       withLatestFrom(store.select(selectOffersCrudViewModel)),
       map(data => {
         return {
+          offerId: data[0].id,
           customer: data[1].selectedCustomer,
           tireSets: data[1].selectedTireSet,
           startDate: data[1].startDate,
@@ -89,17 +92,31 @@ export const createOfferEffect = createEffect((
             totalPrice: data.totalPrice,
             status: OfferStatusEnum.PLACED
           }
-          return offerService.createOffer$(offer).pipe(
-            map(offer => createOfferSuccess(offer)),
-            tap(() => router.navigate(['offers', 'overview'])),
-            catchError((error: HttpErrorResponse) => {
-              messageBus.push({
-                type: MessageAction.ERROR,
-                data: { name: 'Error while creating offer', message: error.message }
+          if (data.offerId) {
+            return offerService.updateOffer$(data.offerId, offer).pipe(
+              map(offer => updateOfferSuccess(offer)),
+              tap(() => router.navigate(['offers', 'overview'])),
+              catchError((error: HttpErrorResponse) => {
+                messageBus.push({
+                  type: MessageAction.ERROR,
+                  data: { name: 'Error while updating offer', message: error.message }
+                })
+                return of(updateOfferFailure(error.message))
               })
-              return of(createOfferFailure(error.message))
-            })
-          )
+            )
+          } else {
+            return offerService.createOffer$(offer).pipe(
+              map(offer => createOfferSuccess(offer)),
+              tap(() => router.navigate(['offers', 'overview'])),
+              catchError((error: HttpErrorResponse) => {
+                messageBus.push({
+                  type: MessageAction.ERROR,
+                  data: { name: 'Error while creating offer', message: error.message }
+                })
+                return of(createOfferFailure(error.message))
+              })
+            )
+          }
         }
       )
     )
