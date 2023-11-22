@@ -1,4 +1,3 @@
-export * from './lib/users-user-auth/users-user-auth.component'
 export * from './lib/+state/user-auth.actions'
 export * from './lib/+state/user-auth.selector'
 export * from './lib/+state/user-auth.reducer'

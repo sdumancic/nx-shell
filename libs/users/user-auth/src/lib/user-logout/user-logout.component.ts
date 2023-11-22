@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store'
 import { userAuthActions } from '../+state/user-auth.actions'
 
 @Component({
-  selector: 'nx-shell-user-logout',
+  selector: 'user-auth-logout',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './user-logout.component.html',

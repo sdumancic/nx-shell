@@ -1,10 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core'
 import { Router, RouterModule } from '@angular/router'
-import { HomeComponent } from '@nx-shell/tire-storage/tsm-home'
 import { MainNavComponent } from './main-nav/main-nav.component'
 import { MatIconRegistry } from '@angular/material/icon'
 import { DomSanitizer } from '@angular/platform-browser'
-import { userAuthActions } from '@nx-shell/users/user-auth'
 import { Store } from '@ngrx/store'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -12,7 +10,7 @@ import { DialogService } from '@nx-shell/core'
 
 @Component({
   standalone: true,
-  imports: [RouterModule, HomeComponent, MainNavComponent, MatDialogModule, MatFormFieldModule],
+  imports: [RouterModule, MainNavComponent, MatDialogModule, MatFormFieldModule],
   selector: 'tsm-app-shell-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -64,12 +62,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit (): void {
+    /*
     setTimeout(() => {
+      console.log('dispatching login')
       this.store.dispatch(userAuthActions.loginUser({
         username: 'admin',
         password: 'admin'
       }))
     }, 10)
+
+     */
   }
 
 }

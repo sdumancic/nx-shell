@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router'
 import { map, Observable, take } from 'rxjs'
-import { OverviewWrapperComponent } from '@nx-shell/core'
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
@@ -24,7 +23,7 @@ import { Sort } from '@angular/material/sort'
 @Component({
   selector: 'nx-shell-tire-storage-tsm-offers',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, OverviewWrapperComponent, MatTabsModule
+  imports: [CommonModule, RouterOutlet, MatTabsModule
     , MatButtonModule, MatIconModule, MatExpansionModule, MatInputModule, MatDatepickerModule,
     MatOptionModule, MatSelectModule, ReactiveFormsModule, RouterLink, RouterLinkActive, TsmOffersOverviewTableUiComponent],
   templateUrl: './tire-storage-tsm-offers.component.html',
