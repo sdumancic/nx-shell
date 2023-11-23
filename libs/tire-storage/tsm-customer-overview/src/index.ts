@@ -1,6 +1,2 @@
 export * from './lib/tsm-customer-overview-home/tsm-customer-overview-home.component'
-export * as customerEffects from './lib/+state/customers.effects'
-export * from './lib/+state/customers.actions'
-export * from './lib/+state/customers.reducer'
-export * from './lib/+state/customers.selector'
 export * from './lib/lib.routes'

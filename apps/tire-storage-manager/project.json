@@ -8,16 +8,12 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/tire-storage-manager",
         "index": "apps/tire-storage-manager/src/index.html",
         "main": "apps/tire-storage-manager/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/tire-storage-manager/tsconfig.app.json",
         "assets": [
           "apps/tire-storage-manager/src/favicon.ico",
@@ -63,10 +59,10 @@
       },
       "configurations": {
         "production": {
-          "browserTarget": "tire-storage-manager:build:production"
+          "buildTarget": "tire-storage-manager:build:production"
         },
         "development": {
-          "browserTarget": "tire-storage-manager:build:development"
+          "buildTarget": "tire-storage-manager:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -74,14 +70,12 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "tire-storage-manager:build"
+        "buildTarget": "tire-storage-manager:build"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "apps/tire-storage-manager/**/*.ts",
@@ -91,18 +85,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/tire-storage-manager/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "jestConfig": "apps/tire-storage-manager/jest.config.ts"
       }
     },
     "serve-static": {
