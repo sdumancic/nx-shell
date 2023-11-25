@@ -10,21 +10,28 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatOptionModule } from '@angular/material/core'
 import { MatSelectModule } from '@angular/material/select'
 import { RouterLinkActive } from '@angular/router'
-import { CustomersOverviewSearchResultUi, TsmOffersOverviewTableUiComponent } from '@nx-shell/tire-storage/tsm-ui'
-import { MatInputModule } from '@angular/material/input'
 import {
-  TsmCustomersOverviewTableUiComponent
-} from '../../../../tsm-ui/src/lib/tsm-customers-overview-table-ui/tsm-customers-overview-table-ui.component'
+  CustomersOverviewSearchResultUi,
+  TsmCustomersOverviewTableUiComponent,
+  TsmOffersOverviewTableUiComponent
+} from '@nx-shell/tire-storage/tsm-ui'
+import { MatInputModule } from '@angular/material/input'
 import { PageEvent } from '@angular/material/paginator'
 import { Sort } from '@angular/material/sort'
 import { CustomersOverviewMapper } from '../mapper/customers-overview.mapper'
 import { CustomersOverviewFormService } from '../form/customers-overview-form.service'
 import { SearchMeta } from '@nx-shell/tire-storage/tsm-domain'
+import { TsmCustomerEditDialogComponent } from '@nx-shell/tire-storage/tsm-customer-search-dialog'
+import { take } from 'rxjs'
+import { DialogService } from '@nx-shell/core'
+import { NGXLogger } from 'ngx-logger'
 
 @Component({
   selector: 'tsm-customer-overview-home',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatTabsModule, MatIconModule, ReactiveFormsModule, MatExpansionModule, MatFormFieldModule, MatOptionModule, MatSelectModule, RouterLinkActive, TsmOffersOverviewTableUiComponent, MatInputModule, TsmCustomersOverviewTableUiComponent],
+  imports: [CommonModule, MatButtonModule, MatTabsModule, MatIconModule, ReactiveFormsModule, MatExpansionModule,
+    MatFormFieldModule, MatOptionModule, MatSelectModule, RouterLinkActive, TsmOffersOverviewTableUiComponent,
+    MatInputModule, TsmCustomersOverviewTableUiComponent],
   templateUrl: './tsm-customer-overview-home.component.html',
   styleUrls: ['./tsm-customer-overview-home.component.scss'],
   providers: [CustomersOverviewFormService]
@@ -33,6 +40,8 @@ export class TsmCustomerOverviewHomeComponent implements OnInit {
 
   private store = inject(CustomersOverviewStore)
   private formService = inject(CustomersOverviewFormService)
+  private readonly dialogService = inject(DialogService)
+  private logger = inject(NGXLogger)
 
   searchResult = this.store.customers
   searchCount = this.store.totalCount
@@ -48,14 +57,11 @@ export class TsmCustomerOverviewHomeComponent implements OnInit {
     this.store.setPagination(1, 10)
     this.store.setSort('id', 'desc')
     this.store.searchCustomers({})
+    this.logger.info('This is logger message')
   }
 
   customersSearchResult () {
     return CustomersOverviewMapper.fromResourceCollectionToSearchResultUi(this.searchResult)
-  }
-
-  createNewCustomer () {
-
   }
 
   onSearch () {
@@ -79,9 +85,15 @@ export class TsmCustomerOverviewHomeComponent implements OnInit {
     this.store.searchCustomers({ sorting: searchMeta.sorting })
   }
 
-  onEdit (event: CustomersOverviewSearchResultUi) {
+  onEdit (row: CustomersOverviewSearchResultUi) {
+    const dialogRef = this.dialogService.openFullScreen(TsmCustomerEditDialogComponent, { data: { id: row.id } })
+    dialogRef.afterClosed().pipe(take(1)).subscribe(val => val ? this.store.searchCustomers({}) : null)
 
   }
 
-  protected readonly CustomersOverviewMapper = CustomersOverviewMapper
+  createNewCustomer () {
+    const dialogRef = this.dialogService.openFullScreen(TsmCustomerEditDialogComponent, { data: { id: null } })
+    dialogRef.afterClosed().pipe(take(1)).subscribe(val => val ? this.store.searchCustomers({}) : null)
+  }
+
 }

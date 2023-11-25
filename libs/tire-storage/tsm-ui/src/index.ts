@@ -6,3 +6,4 @@ export * from './lib/tsm-offer-calculation-ui/tsm-offer-calculation-ui.component
 export * from './lib/tsm-offers-overview-table-ui/tsm-offers-overview-table-ui.component'
 export * from './lib/tsm-offers-overview-table-ui/offers-overview-search-result-ui.model'
 export * from './lib/tsm-customers-overview-table-ui/customers-overview-search-result-ui.model'
+export * from './lib/tsm-customers-overview-table-ui/tsm-customers-overview-table-ui.component'

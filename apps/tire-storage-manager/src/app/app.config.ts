@@ -1,4 +1,4 @@
-import { ApplicationConfig, LOCALE_ID } from '@angular/core'
+import { ApplicationConfig, importProvidersFrom, LOCALE_ID } from '@angular/core'
 import { provideRouter, withComponentInputBinding, withEnabledBlockingInitialNavigation, } from '@angular/router'
 import { appRoutes } from './app.routes'
 import { provideAnimations } from '@angular/platform-browser/animations'
@@ -13,6 +13,7 @@ import { registerLocaleData } from '@angular/common'
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core'
 import { DateFnsAdapter } from '@angular/material-date-fns-adapter'
 import { hr } from 'date-fns/locale'
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger'
 
 registerLocaleData(localeHr)
 registerLocaleData(localeDe)
@@ -52,5 +53,11 @@ export const appConfig: ApplicationConfig = {
       useClass: DateFnsAdapter,
       deps: [MAT_DATE_LOCALE]
     },
+
+    importProvidersFrom(LoggerModule.forRoot({
+      level: NgxLoggerLevel.DEBUG,
+      serverLogLevel: NgxLoggerLevel.WARN,
+      colorScheme: ['purple', 'teal', 'gray', 'gray', 'red', 'red', 'red']
+    }))
   ],
 }

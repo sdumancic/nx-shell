@@ -11,7 +11,7 @@ export class CustomersMetadataService {
   private api = 'http://localhost:3000'
 
   getCustomerMetadata$ (): Observable<CustomerMetadata> {
-    return this.http.get<CustomerMetadata>(`${this.api}/customerMetadata`).pipe(delay(500))
+    return this.http.get<CustomerMetadata>(`${this.api}/customerMetadata`).pipe(delay(100))
   }
 
 }

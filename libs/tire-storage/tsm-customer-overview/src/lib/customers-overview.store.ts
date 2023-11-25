@@ -8,12 +8,13 @@ import {
 import { CallState, ErrorState, LoadingState } from '@nx-shell/tire-storage/tsm-util'
 import { CustomersOverviewSearchValues, SearchMeta } from '@nx-shell/tire-storage/tsm-domain'
 import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
-import { computed, inject, } from '@angular/core'
+import { computed, inject } from '@angular/core'
 import { firstValueFrom, switchMap, tap } from 'rxjs'
 import { rxMethod } from '@ngrx/signals/rxjs-interop'
+import { NGXLogger } from 'ngx-logger'
 
 export const CustomersOverviewStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', },
   withState({
     customerMetadata: {} as CustomerMetadata,
     customerMetadataCallState: LoadingState.INIT as CallState,
@@ -45,27 +46,44 @@ export const CustomersOverviewStore = signalStore(
 
     const customerMetadataService = inject(CustomersMetadataService)
     const customersService = inject(CustomersService)
+    const logger = inject(NGXLogger)
+
+    function printState () {
+      logger.info({
+        totalCount: state.totalCount(),
+        customerMetadata: state.customerMetadata(),
+        customerMetadataCallState: state.customerMetadataCallState(),
+        customers: state.customers(),
+        searchMeta: state.searchMeta(),
+        customersCallState: state.customersCallState(),
+        searchValues: state.searchValues()
+      })
+    }
 
     return {
       setSearchValues: (searchValues: CustomersOverviewSearchValues) => {
         patchState(state, { searchValues })
+        printState()
       },
       setPagination: (index: number, size: number) => {
         const { searchMeta } = state
         patchState(state, {
           searchMeta: { ...searchMeta(), pagination: { index: index, size: size } }
         })
+        printState()
       },
       setSort: (attribute: string, order: string) => {
         const { searchMeta } = state
         patchState(state, {
           searchMeta: { ...searchMeta(), sorting: { attribute: attribute, order: order } }
         })
+        printState()
       },
       loadMetadata: async () => {
         patchState(state, { customerMetadataCallState: LoadingState.LOADING })
         const metadata = await firstValueFrom(customerMetadataService.getCustomerMetadata$())
         patchState(state, { customerMetadata: metadata, customerMetadataCallState: LoadingState.LOADED })
+        printState()
       },
       searchCustomers: rxMethod<{
         searchValues?: CustomersOverviewSearchValues,
@@ -73,7 +91,6 @@ export const CustomersOverviewStore = signalStore(
         sorting?: { attribute: string, order?: string }
       }>(s$ => s$.pipe(
         tap(data => {
-          console.log('xxx', data)
           if (data.searchValues) {
             patchState(state, { searchValues: data.searchValues })
           }
@@ -118,6 +135,7 @@ export const CustomersOverviewStore = signalStore(
           customersCallState: LoadingState.LOADED,
           customers: res.data ? res.data : []
         })),
+        tap(() => printState())
       ))
     }
 

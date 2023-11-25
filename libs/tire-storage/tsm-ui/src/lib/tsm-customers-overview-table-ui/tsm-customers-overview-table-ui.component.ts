@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatIconModule } from '@angular/material/icon'
-import { MatMenuModule } from '@angular/material/menu'
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatSort, MatSortModule, Sort, SortDirection } from '@angular/material/sort'
 import { MatTableModule } from '@angular/material/table'
-import { CustomersOverviewSearchResultUi } from '@nx-shell/tire-storage/tsm-ui'
 import { SearchMeta } from '@nx-shell/tire-storage/tsm-domain'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { MatMenuModule } from '@angular/material/menu'
+import { CustomersOverviewSearchResultUi } from './customers-overview-search-result-ui.model'
 
 @Component({
   selector: 'tsm-ui-customers-overview-table',
@@ -35,7 +35,7 @@ export class TsmCustomersOverviewTableUiComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined
   @ViewChild(MatSort) sort: MatSort | undefined
 
-  displayedColumns = ['id', 'firstName', 'lastName', 'gender', 'street', 'city', 'state', 'zip', 'phoneNumber', 'email']
+  displayedColumns = ['id', 'firstName', 'lastName', 'gender', 'street', 'city', 'state', 'zip', 'phoneNumber', 'email', 'actions']
 
   private destroyRef = inject(DestroyRef)
 
