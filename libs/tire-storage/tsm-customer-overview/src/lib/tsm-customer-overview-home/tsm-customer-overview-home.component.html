@@ -1,1 +1,116 @@
-<p>tire-storage-tsm-customer-overview works!</p>
+<div class="density-settings-3 m-left-right-30px">
+  <div class="title-row">
+    <div class="title-content">
+      <mat-icon svgIcon="contact"></mat-icon>
+      <div class="title-text">{{ 'Customers' }}</div>
+    </div>
+
+    <button
+      type="button"
+      (click)="createNewCustomer()"
+      class="standard-btn w-150"
+    >
+      <mat-icon svgIcon="add"></mat-icon>
+      New customer
+    </button>
+  </div>
+  <div class="filter-container">
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Filters </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="search-items-container">
+          <div [formGroup]="filterForm" class="search-items">
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="First Name"
+                formControlName="firstName"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="Last Name"
+                formControlName="lastName"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-select
+                placeholder="Gender"
+                formControlName="gender"
+                multiple
+              >
+                <mat-option
+                  *ngFor="let gender of metadata().genders"
+                  [value]="gender"
+                >
+                  {{ gender }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Street" formControlName="street" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="City" formControlName="city" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="State" formControlName="state" multiple>
+                <mat-option
+                  *ngFor="let state of metadata().states"
+                  [value]="state.abbreviation"
+                >
+                  {{ state.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Zip" formControlName="zip" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="Phone Number"
+                formControlName="phoneNumber"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Email" formControlName="email" />
+            </mat-form-field>
+          </div>
+          <div class="search-actions">
+            <button type="button" (click)="onSearch()" class="standard-btn">
+              <mat-icon svgIcon="filter"></mat-icon>Filter
+            </button>
+            <button type="button" (click)="onClear()" class="standard-btn">
+              <mat-icon svgIcon="close"></mat-icon>Clear
+            </button>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <ng-container table>
+    <div class="table-container">
+      <tsm-ui-customers-overview-table
+        [data]="customersSearchResult()"
+        [searchCount]="searchCount()"
+        [searchMeta]="searchMeta()"
+        [loading]="loading()"
+        (paginateEmitter)="onPaginate($event)"
+        (sortEmitter)="onSort($event)"
+        (editEmitter)="onEdit($event)"
+      ></tsm-ui-customers-overview-table>
+    </div>
+  </ng-container>
+</div>
