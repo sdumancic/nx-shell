@@ -4,3 +4,9 @@
   padding-top: 10px;
 }
 
+:host {
+  ::ng-deep .generic-modal__body {
+    max-height: 260px;
+  }
+}
+

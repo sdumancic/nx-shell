@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core'
+import { Component, inject, OnInit, signal } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { CustomersOverviewStore } from '../customers-overview.store'
 import { MatButtonModule } from '@angular/material/button'
@@ -22,7 +22,7 @@ import { CustomersOverviewMapper } from '../mapper/customers-overview.mapper'
 import { CustomersOverviewFormService } from '../form/customers-overview-form.service'
 import { SearchMeta } from '@nx-shell/tire-storage/tsm-domain'
 import { TsmCustomerEditDialogComponent } from '@nx-shell/tire-storage/tsm-customer-search-dialog'
-import { take } from 'rxjs'
+import { Observable, take } from 'rxjs'
 import { DialogService } from '@nx-shell/core'
 import { NGXLogger } from 'ngx-logger'
 
@@ -57,7 +57,6 @@ export class TsmCustomerOverviewHomeComponent implements OnInit {
     this.store.setPagination(1, 10)
     this.store.setSort('id', 'desc')
     this.store.searchCustomers({})
-    this.logger.info('This is logger message')
   }
 
   customersSearchResult () {
@@ -94,6 +93,20 @@ export class TsmCustomerOverviewHomeComponent implements OnInit {
   createNewCustomer () {
     const dialogRef = this.dialogService.openFullScreen(TsmCustomerEditDialogComponent, { data: { id: null } })
     dialogRef.afterClosed().pipe(take(1)).subscribe(val => val ? this.store.searchCustomers({}) : null)
+  }
+
+  testObservableVsSignal () {
+    const observable = new Observable<number>(observer => {
+      observer.next(123)
+      observer.complete()
+    })
+    observable.subscribe(val => console.log('Value from observable ', val))
+
+    const s = signal(1)
+    s.set(2)
+    s.set(123)
+    console.log(s())
+
   }
 
 }

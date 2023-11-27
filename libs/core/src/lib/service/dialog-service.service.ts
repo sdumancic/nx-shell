@@ -8,7 +8,11 @@ export class DialogService {
 
   private dialog = inject(MatDialog)
 
-  private readonly smallConf: MatDialogConfig = { ...this.defaultConfig, width: '500px', height: '500px', }
+  private readonly smallConf: MatDialogConfig = {
+    ...this.defaultConfig,
+    width: '500px',
+    height: '500px',
+  }
   private readonly mediumConf: MatDialogConfig = { ...this.defaultConfig, width: '640px' }
   private readonly largeConf: MatDialogConfig = { ...this.defaultConfig, width: '800px' }
   private readonly fullWidthConf: MatDialogConfig = {

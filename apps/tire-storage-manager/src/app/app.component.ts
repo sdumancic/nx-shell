@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { DialogService } from '@nx-shell/core'
+import { userAuthActions } from '@nx-shell/users/user-auth'
 
 @Component({
   standalone: true,
@@ -62,7 +63,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    /*
+
     setTimeout(() => {
       console.log('dispatching login')
       this.store.dispatch(userAuthActions.loginUser({
@@ -71,7 +72,6 @@ export class AppComponent implements OnInit {
       }))
     }, 10)
 
-     */
   }
 
 }

@@ -810,7 +810,7 @@
       65,
       75
     ],
-    "speedIndex": [
+    "speedIndexes": [
       "T",
       "U",
       "H",
@@ -818,7 +818,7 @@
       "W",
       "Y"
     ],
-    "loadIndex": [
+    "loadIndexes": [
       100,
       105,
       110,
@@ -831,7 +831,7 @@
       145,
       150
     ],
-    "treadDepth": [
+    "treadDepths": [
       {
         "value": 2,
         "displayValue": "2 mm",

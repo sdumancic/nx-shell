@@ -106,7 +106,6 @@ export class TsmTireDetailsComponent implements OnInit {
   }
 
   private setTreadColors (treadDepths: TreadDepth[]) {
-
     const { treadDepth1, treadDepth2, treadDepth3, treadDepth4 } = this.tireFormGroup.getRawValue()
     this.treadColor1 = treadDepth1 ? this.getTreadDepthColor(Number(treadDepth1), treadDepths) : null
     this.treadColor2 = treadDepth2 ? this.getTreadDepthColor(Number(treadDepth2), treadDepths) : null
