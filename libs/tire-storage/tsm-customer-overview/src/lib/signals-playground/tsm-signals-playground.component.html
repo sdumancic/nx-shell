@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-nav-list>
+    <mat-list-item *ngFor="let item of products()">
+      {{ item.name }} ({{ item.price | currency : 'EUR' : 'symbol' : '1.2-2' }})
+      <button mat-stroked-button color="primary" (click)="addToCart(item)">
+        Add to cart
+      </button>
+    </mat-list-item>
+  </mat-nav-list>
+
+  <div>
+    <h2 *ngIf="warningVisible">Application works best with max 3 cart items</h2>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let item of cartItems()">
+        {{ item.name }} ({{
+          item.price | currency : 'EUR' : 'symbol' : '1.2-2'
+        }})
+        <button mat-stroked-button color="primary" (click)="removeItem(item)">
+          Remove
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+    <h3>Total Price: ${{ totalPrice() }}</h3>
+  </div>
+</div>

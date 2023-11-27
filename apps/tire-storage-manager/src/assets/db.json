@@ -498,6 +498,93 @@
       "totalPrice": 40,
       "status": 1,
       "id": 6
+    },
+    {
+      "customer": {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "gender": "male",
+        "address": {
+          "street": "3199 Country Club Rd",
+          "city": "Fremont",
+          "state": "Virginia",
+          "zip": "94390"
+        },
+        "phoneNumber": "123-456-789",
+        "email": "test@test.com"
+      },
+      "tireSets": [
+        {
+          "tireSet": {
+            "id": "4ece2ca7-2b79-4cf2-94c9-336e703a4f1d",
+            "season": "Winter",
+            "brand": "Michelin",
+            "width": 215,
+            "height": 55,
+            "size": 18,
+            "loadIndex": 89,
+            "speedIndex": "H",
+            "rimsIncluded": true,
+            "runFlat": false,
+            "customerId": 1,
+            "tires": [
+              {
+                "id": "c11344f3-fc95-4b46-80d7-7619127b219a",
+                "treadDepth1": "4",
+                "treadDepth2": "4",
+                "treadDepth3": "4",
+                "treadDepth4": "4",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front left"
+              },
+              {
+                "id": "81a2c6ca-c83d-41fe-99c9-915d5cb535e3",
+                "treadDepth1": "4",
+                "treadDepth2": "4",
+                "treadDepth3": "4",
+                "treadDepth4": "4",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front right"
+              },
+              {
+                "id": "c788b598-0bf7-4ba8-9c32-bf78415003b1",
+                "treadDepth1": "4",
+                "treadDepth2": "4",
+                "treadDepth3": "4",
+                "treadDepth4": "4",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear left"
+              },
+              {
+                "id": "58a99869-1d6e-4551-9b18-533e66a10d18",
+                "treadDepth1": "4",
+                "treadDepth2": "4",
+                "treadDepth3": "4",
+                "treadDepth4": "4",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear right"
+              }
+            ]
+          },
+          "tireStoragePrice": {
+            "size": 18,
+            "price": 16,
+            "priceWithRims": 18
+          },
+          "tirePrice": 18,
+          "tireSetPrice": 72
+        }
+      ],
+      "startDate": "2023-11-27T23:59:59+01:00",
+      "endDate": "2024-05-27T23:59:59+02:00",
+      "totalPrice": 72,
+      "status": 0,
+      "id": 7
     }
   ],
   "users": [

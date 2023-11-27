@@ -41,22 +41,22 @@ export const updateOfferFailure = createAction(
   (error: string) => ({ error })
 )
 export const selectCustomerSuccess = createAction(
-  '[Offers CRUD] Select customer',
+  '[Offers CRUD] Select customer success',
   (customer: Customer) => ({ customer })
 )
 
 export const loadTireSetSuccess = createAction(
-  '[Offers CRUD] Load tireset success',
+  '[Offers CRUD] Load tire set success',
   (tireSets: TireSet[]) => ({ tireSets })
 )
 
 export const loadTireSetFailure = createAction(
-  '[Offers CRUD] Load tireset failure',
+  '[Offers CRUD] Load tire set failure',
   (error: string) => ({ error })
 )
 
 export const selectTireSetSuccess = createAction(
-  '[Offers CRUD] Select tireSet',
+  '[Offers CRUD] Select tireSet success',
   (tireSet: TireSet) => ({ tireSet })
 )
 
