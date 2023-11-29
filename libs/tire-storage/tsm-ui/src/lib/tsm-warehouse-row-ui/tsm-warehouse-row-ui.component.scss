@@ -1,0 +1,13 @@
+:host {
+  .warehouse-row {
+    display: flex;
+    gap: 5px;
+
+    .row-number {
+      display: flex;
+      align-items: center;
+      min-width: 50px;
+      justify-content: flex-end;
+    }
+  }
+}

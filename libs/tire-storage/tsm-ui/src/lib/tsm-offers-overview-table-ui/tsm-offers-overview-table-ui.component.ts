@@ -91,4 +91,8 @@ export class TsmOffersOverviewTableUiComponent implements AfterViewInit {
   onAccept (row: OffersOverviewSearchResultUi) {
     this.acceptEmitter.emit(row)
   }
+
+  onStore (row: OffersOverviewSearchResultUi) {
+    console.log('About to store tireSet', row)
+  }
 }

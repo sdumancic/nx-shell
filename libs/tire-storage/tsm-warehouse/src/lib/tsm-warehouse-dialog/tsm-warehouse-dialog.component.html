@@ -1,0 +1,59 @@
+<core-ui-generic-modal>
+  <ng-container header>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon svgIcon="close-24px"></mat-icon>
+    </button>
+    <h2 class="m-auto">
+      <span> Warehouse</span>
+    </h2>
+    <div></div>
+  </ng-container>
+
+  <div class="warehouse-container">
+    <div
+      class="tire-set-layout"
+      cdkDropList
+      #todoList="cdkDropList"
+      (cdkDropListDropped)="drop($event)"
+    >
+      @for ( tireSet of offerTireSets; track tireSet) {
+      <div class="example-box" cdkDrag>
+        <tsm-ui-tire-set-info-ui
+          cdkDrag
+          class="full-width"
+          [selectOptionVisible]="false"
+          [editEnabled]="false"
+          [deleteEnabled]="false"
+          [tireSet]="tireSet"
+        >
+        </tsm-ui-tire-set-info-ui>
+      </div>
+      }
+    </div>
+
+    <div class="warehouse-layout">
+      <tsm-ui-warehouse-row
+        *ngFor="let r of rows()"
+        [row]="r"
+        (boxSelected)="onBoxSelected($event)"
+      ></tsm-ui-warehouse-row>
+    </div>
+  </div>
+
+  <ng-container footer>
+    <div class="left-side"></div>
+    <div class="right-side">
+      <button
+        mat-flat-button
+        color="secondary"
+        class="btn-wide"
+        mat-dialog-close
+      >
+        <span> Cancel </span>
+      </button>
+      <button mat-flat-button color="primary" class="btn-wide">
+        <span> Save </span>
+      </button>
+    </div>
+  </ng-container>
+</core-ui-generic-modal>

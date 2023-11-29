@@ -1,0 +1,21 @@
+<div *ngIf="row === 1" class="col-number"></div>
+<div class="storage-seat">
+  <tsm-ui-warehouse-container-box
+    [row]="row"
+    [col]="col"
+    [level]="1"
+    (boxSelected)="onBoxSelected($event)"
+  ></tsm-ui-warehouse-container-box>
+  <tsm-ui-warehouse-container-box
+    [row]="row"
+    [col]="col"
+    [level]="2"
+    (boxSelected)="onBoxSelected($event)"
+  ></tsm-ui-warehouse-container-box>
+  <tsm-ui-warehouse-container-box
+    [row]="row"
+    [col]="col"
+    [level]="3"
+    (boxSelected)="onBoxSelected($event)"
+  ></tsm-ui-warehouse-container-box>
+</div>

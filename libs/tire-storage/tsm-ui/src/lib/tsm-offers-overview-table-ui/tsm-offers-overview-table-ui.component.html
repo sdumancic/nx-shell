@@ -123,17 +123,37 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menuActions="matMenu">
-            <button mat-menu-item (click)="onEdit(row)">
+            <button
+              mat-menu-item
+              (click)="onEdit(row)"
+              *ngIf="row.status === OfferStatusEnum.PLACED"
+            >
               <mat-icon svgIcon="edit"></mat-icon>
               <span>Edit</span>
             </button>
-            <button mat-menu-item (click)="onAccept(row)">
+            <button
+              mat-menu-item
+              (click)="onAccept(row)"
+              *ngIf="row.status === OfferStatusEnum.PLACED"
+            >
               <mat-icon svgIcon="accept"></mat-icon>
               <span>Accept</span>
             </button>
-            <button mat-menu-item (click)="onReject(row)">
+            <button
+              mat-menu-item
+              (click)="onReject(row)"
+              *ngIf="row.status === OfferStatusEnum.PLACED"
+            >
               <mat-icon svgIcon="reject"></mat-icon>
               <span>Reject</span>
+            </button>
+            <button
+              mat-menu-item
+              (click)="onStore(row)"
+              *ngIf="row.status === OfferStatusEnum.ACCEPTED"
+            >
+              <mat-icon svgIcon="warehouse3"></mat-icon>
+              <span>Store</span>
             </button>
           </mat-menu>
         </td>

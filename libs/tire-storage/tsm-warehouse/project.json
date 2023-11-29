@@ -1,0 +1,27 @@
+{
+  "name": "tire-storage-tsm-warehouse",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/tire-storage/tsm-warehouse/src",
+  "prefix": "tsm",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/tire-storage/tsm-warehouse/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/tire-storage/tsm-warehouse/**/*.ts",
+          "libs/tire-storage/tsm-warehouse/**/*.html"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<div
+  cdkDrag
+  [matTooltip]="tooltip() ? tooltip() : ''"
+  class="container-box"
+  [ngClass]="tireSetModel ? 'occupied' : 'vacant'"
+  (click)="onSelected()"
+></div>
