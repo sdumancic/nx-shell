@@ -2,6 +2,7 @@ import { createFeature, createReducer, on } from '@ngrx/store'
 import { Customer, Offer, TireSet, TireSetWithPrices } from '@nx-shell/tire-storage/tsm-services'
 import { CallState, LoadingState } from '@nx-shell/tire-storage/tsm-util'
 import {
+  clearStore,
   createOfferFailure,
   createOfferSuccess,
   loadTireSetSuccess,
@@ -57,7 +58,7 @@ export const offersCrudFeature = createFeature({
       return {
         ...state,
         customerTireSets: action.tireSets,
-        selectedTireSet: []
+        selectedTireSet: action.clearSelectedTireSet ? [] : state.selectedTireSet
       }
     }),
     on(loadTireStoragePriceSuccess, (state, action) => {
@@ -125,6 +126,21 @@ export const offersCrudFeature = createFeature({
       return {
         ...state,
         editMode: action.editMode
+      }
+    }),
+    on(clearStore, (state) => {
+      return {
+        ...state,
+        selectedCustomer: null,
+        customerTireSets: [],
+        selectedTireSet: [],
+        startDate: null,
+        endDate: null,
+        offer: null,
+        selectedCustomerCallState: LoadingState.INIT,
+        selectedTireSetCallState: LoadingState.INIT,
+        createOfferCallState: LoadingState.INIT,
+        editMode: EditMode.INIT
       }
     }),
   ),

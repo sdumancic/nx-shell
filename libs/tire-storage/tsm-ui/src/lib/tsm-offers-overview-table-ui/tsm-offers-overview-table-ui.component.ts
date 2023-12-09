@@ -45,6 +45,7 @@ export class TsmOffersOverviewTableUiComponent implements AfterViewInit {
   @Output() editEmitter = new EventEmitter<OffersOverviewSearchResultUi>()
   @Output() rejectEmitter = new EventEmitter<OffersOverviewSearchResultUi>()
   @Output() acceptEmitter = new EventEmitter<OffersOverviewSearchResultUi>()
+  @Output() storeEmitter = new EventEmitter<OffersOverviewSearchResultUi>()
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined
   @ViewChild(MatSort) sort: MatSort | undefined
@@ -93,6 +94,6 @@ export class TsmOffersOverviewTableUiComponent implements AfterViewInit {
   }
 
   onStore (row: OffersOverviewSearchResultUi) {
-    console.log('About to store tireSet', row)
+    this.storeEmitter.emit(row)
   }
 }

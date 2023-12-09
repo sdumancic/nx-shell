@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon'
 })
 export class TsmCustomerInfoUiComponent {
   @Input() customer: Customer | null = null
+  @Input() editEnabled = true
   @Output() selectedCustomer = new EventEmitter<Customer>()
   @Output() editedCustomer = new EventEmitter<Customer>()
 

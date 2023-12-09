@@ -1,0 +1,552 @@
+{
+  "sections": [
+    {
+      "id": 1,
+      "name": "Large",
+      "subsections": [
+        {
+          "name": "B1",
+          "boxes_by_rows": {
+            "0": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "1": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "2": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ]
+          }
+        },
+        {
+          "name": "B2",
+          "boxes_by_rows": {
+            "0": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "1": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "2": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ]
+          }
+        },
+        {
+          "name": "B3",
+          "boxes_by_rows": {
+            "0": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              },
+              {
+                "name": "C4",
+                "status": "vacant"
+              },
+              {
+                "name": "C5",
+                "status": "vacant"
+              },
+              {
+                "name": "C6",
+                "status": "vacant"
+              },
+              {
+                "name": "C7",
+                "status": "vacant"
+              },
+              {
+                "name": "C8",
+                "status": "vacant"
+              }
+            ],
+            "1": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              },
+              {
+                "name": "C4",
+                "status": "vacant"
+              },
+              {
+                "name": "C5",
+                "status": "vacant"
+              },
+              {
+                "name": "C6",
+                "status": "vacant"
+              },
+              {
+                "name": "C7",
+                "status": "vacant"
+              },
+              {
+                "name": "C8",
+                "status": "vacant"
+              }
+            ],
+            "2": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              },
+              {
+                "name": "C4",
+                "status": "vacant"
+              },
+              {
+                "name": "C5",
+                "status": "vacant"
+              },
+              {
+                "name": "C6",
+                "status": "vacant"
+              },
+              {
+                "name": "C7",
+                "status": "vacant"
+              },
+              {
+                "name": "C8",
+                "status": "vacant"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Medium",
+      "subsections": [
+        {
+          "name": "M1",
+          "boxes_by_rows": {
+            "0": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "1": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "2": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ]
+          }
+        },
+        {
+          "name": "M2",
+          "boxes_by_rows": {
+            "0": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "1": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "2": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ]
+          }
+        },
+        {
+          "name": "M3",
+          "boxes_by_rows": {
+            "0": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "1": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "2": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ]
+          }
+        },
+        {
+          "name": "M4",
+          "boxes_by_rows": {
+            "0": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "1": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "2": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Small",
+      "subsections": [
+        {
+          "name": "S1",
+          "boxes_by_rows": {
+            "0": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "1": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "2": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ]
+          }
+        },
+        {
+          "name": "S2",
+          "boxes_by_rows": {
+            "0": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "1": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "2": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ]
+          }
+        },
+        {
+          "name": "S3",
+          "boxes_by_rows": {
+            "0": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "1": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ],
+            "2": [
+              {
+                "name": "C1",
+                "status": "vacant"
+              },
+              {
+                "name": "C2",
+                "status": "vacant"
+              },
+              {
+                "name": "C3",
+                "status": "vacant"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

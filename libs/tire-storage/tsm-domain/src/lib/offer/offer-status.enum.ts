@@ -1,5 +1,6 @@
 export enum OfferStatusEnum {
   PLACED,
   ACCEPTED,
-  REJECTED
+  REJECTED,
+  STORED
 }

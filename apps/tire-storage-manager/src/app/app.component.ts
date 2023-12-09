@@ -8,8 +8,6 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { DialogService } from '@nx-shell/core'
 import { userAuthActions } from '@nx-shell/users/user-auth'
-import { TsmWarehouseDialogComponent } from '@nx-shell/tire-storage/tsm-warehouse'
-import { take } from 'rxjs'
 
 @Component({
   standalone: true,
@@ -67,16 +65,10 @@ export class AppComponent implements OnInit {
   ngOnInit (): void {
 
     setTimeout(() => {
-      console.log('dispatching login')
       this.store.dispatch(userAuthActions.loginUser({
         username: 'admin',
         password: 'admin'
       }))
-      const dialogRef = this.dialogService.openFullScreen(TsmWarehouseDialogComponent, {
-        data: { offerId: 2 },
-        panelClass: 'no-overflow-modal',
-      })
-      dialogRef.afterClosed().pipe(take(1)).subscribe(val => console.log(val))
 
     }, 10)
 

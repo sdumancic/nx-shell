@@ -5,11 +5,11 @@ import { MatCardModule } from '@angular/material/card'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatIconModule } from '@angular/material/icon'
 import { MatRadioModule } from '@angular/material/radio'
+import { intervalToDuration } from 'date-fns'
+import { TireSetWithPrices } from '@nx-shell/tire-storage/tsm-services'
 import {
   TsmTireSetCalculationInfoUiComponent
 } from '../tsm-tire-set-calculation-info-ui/tsm-tire-set-calculation-info-ui.component'
-import { intervalToDuration } from 'date-fns'
-import { TireSetWithPrices } from '@nx-shell/tire-storage/tsm-services'
 
 @Component({
   selector: 'tsm-ui-offer-calculation-ui',

@@ -10,33 +10,22 @@
   </ng-container>
 
   <div class="warehouse-container">
-    <div
-      class="tire-set-layout"
-      cdkDropList
-      #todoList="cdkDropList"
-      (cdkDropListDropped)="drop($event)"
-    >
-      @for ( tireSet of offerTireSets; track tireSet) {
-      <div class="example-box" cdkDrag>
-        <tsm-ui-tire-set-info-ui
-          cdkDrag
-          class="full-width"
-          [selectOptionVisible]="false"
-          [editEnabled]="false"
-          [deleteEnabled]="false"
-          [tireSet]="tireSet"
-        >
-        </tsm-ui-tire-set-info-ui>
+    <div>
+      <div><tsm-ui-offer-details [offer]="offer()"></tsm-ui-offer-details></div>
+      <div *ngIf="newTireSetStorage().length > 0" class="m-t-50px">
+        <tsm-ui-warehouse-location-info
+          [newTireSetStorage]="newTireSetStorage()"
+        ></tsm-ui-warehouse-location-info>
       </div>
-      }
     </div>
-
-    <div class="warehouse-layout">
-      <tsm-ui-warehouse-row
-        *ngFor="let r of rows()"
-        [row]="r"
-        (boxSelected)="onBoxSelected($event)"
-      ></tsm-ui-warehouse-row>
+    <div>
+      <tsm-ui-warehouse
+        [warehouseLayout]="warehouseLayout"
+        [tireSet]="offerTireSets()"
+        [offerId]="offer().id"
+        [showTireSetContainer]="true"
+        (tireSetStored)="onTireSetStored($event)"
+      ></tsm-ui-warehouse>
     </div>
   </div>
 
@@ -51,7 +40,12 @@
       >
         <span> Cancel </span>
       </button>
-      <button mat-flat-button color="primary" class="btn-wide">
+      <button
+        mat-flat-button
+        color="primary"
+        class="btn-wide"
+        (click)="onStoreTireSet()"
+      >
         <span> Save </span>
       </button>
     </div>

@@ -1,9 +1,9 @@
-import { Component, DestroyRef, inject, Input, OnInit, ViewChild } from '@angular/core'
+import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { MatIconModule } from '@angular/material/icon'
 import { DialogService, LargeButtonComponent, MessageBusService, NotificationsObserverComponent } from '@nx-shell/core'
 import { MatCardModule } from '@angular/material/card'
-import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker'
+import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatDateFnsModule } from '@angular/material-date-fns-adapter'
 import { add, endOfDay, parseISO } from 'date-fns'
 import { MAT_DATE_FORMATS } from '@angular/material/core'
@@ -12,6 +12,7 @@ import { TsmCustomerSearchDialogComponent } from '@nx-shell/tire-storage/tsm-cus
 import { BehaviorSubject, debounceTime, map, Observable, take } from 'rxjs'
 import { Store } from '@ngrx/store'
 import {
+  clearStore,
   createOrUpdateOffer,
   removeTireSet,
   selectCustomerSuccess,
@@ -56,8 +57,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
   ],
 })
 export class TireStorageTsmOffersCrudComponent implements OnInit {
-  @ViewChild('endDateCalendar') matCalendar: MatCalendar<any> | undefined
-
   id$ = new BehaviorSubject<string | undefined>(undefined)
 
   @Input() set id (id: string) {
@@ -96,15 +95,17 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
     })
 
     if (this.id$.value !== 'new') {
+      this.store.dispatch(clearStore())
       this.store.dispatch(setEditMode(EditMode.EDIT))
       this.offerService.findOne$(Number(this.id$.value)).pipe(take(1)).subscribe(offer => {
-        this.store.dispatch(selectCustomerSuccess(offer.customer))
+        this.store.dispatch(selectCustomerSuccess(offer.customer, true))
         this.startDateControl.setValue(parseISO(offer.startDate))
         this.endDateControl.setValue(parseISO(offer.endDate))
         offer.tireSets.forEach(tireSetWithPrices => this.store.dispatch(selectTireSetSuccess(tireSetWithPrices.tireSet)))
       })
 
     } else {
+      this.store.dispatch(clearStore())
       this.store.dispatch(setEditMode(EditMode.ADD_NEW))
       const today = endOfDay(new Date())
       const future = endOfDay(add(new Date(), { months: 6 }))
@@ -118,13 +119,14 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
     const dialogRef: MatDialogRef<TsmCustomerSearchDialogComponent, Customer> = this.dialogService.openFullScreen(TsmCustomerSearchDialogComponent, {})
     dialogRef.afterClosed().pipe(take(1)).subscribe(customer => {
       if (customer) {
-        this.store.dispatch(selectCustomerSuccess(customer))
+        this.store.dispatch(selectCustomerSuccess(customer, true))
       }
     })
 
   }
 
   async onSelectTireSet () {
+
     this.store.select(selectOffersCrudViewModel)
       .pipe(
         map(state => {
@@ -151,8 +153,13 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
         }
       )
       dialogRef.afterClosed().pipe(take(1)).subscribe(tireSet => {
-        if (tireSet) {
+        if (tireSet && customer) {
           this.store.dispatch(selectTireSetSuccess(tireSet))
+          this.selectedCustomer$.pipe(take(1)).subscribe(customer => {
+            if (customer) {
+              this.store.dispatch(selectCustomerSuccess(customer, false))
+            }
+          })
         }
       })
     })
@@ -163,7 +170,7 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
     const dialogRef: MatDialogRef<TsmCustomerSearchDialogComponent, Customer> = this.dialogService.openFullScreen(TsmCustomerSearchDialogComponent, {})
     dialogRef.afterClosed().pipe(take(1)).subscribe(customer => {
       if (customer) {
-        this.store.dispatch(selectCustomerSuccess(customer))
+        this.store.dispatch(selectCustomerSuccess(customer, true))
       }
     })
   }
@@ -178,7 +185,7 @@ export class TireStorageTsmOffersCrudComponent implements OnInit {
   onPlaceOrder () {
     this.editMode$.pipe(take(1)).subscribe(editMode => {
       if (editMode === EditMode.EDIT) {
-        this.store.dispatch(createOrUpdateOffer({ id: this.id$.value }))
+        this.store.dispatch(createOrUpdateOffer({ id: Number(this.id$.value) }))
       } else {
         this.store.dispatch(createOrUpdateOffer({}))
       }

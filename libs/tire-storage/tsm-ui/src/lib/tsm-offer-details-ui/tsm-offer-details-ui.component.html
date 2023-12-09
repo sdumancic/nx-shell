@@ -1,0 +1,11 @@
+<div>
+  <tsm-ui-customer-info
+    [customer]="customer"
+    [editEnabled]="false"
+  ></tsm-ui-customer-info>
+  <ng-container *ngFor="let tireSetWithPrices of tireSetsWithPrices">
+    <tsm-ui-tire-set-calculation-info-ui
+      [tireSetWithPrices]="tireSetWithPrices"
+    ></tsm-ui-tire-set-calculation-info-ui>
+  </ng-container>
+</div>

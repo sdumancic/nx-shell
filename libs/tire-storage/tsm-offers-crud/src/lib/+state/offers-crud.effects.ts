@@ -33,13 +33,15 @@ export const selectCustomerEffect = createEffect((
           if (val.customer.id) {
             customerId = val.customer.id
             return tireSetService.getTireSetsForCustomer$(customerId).pipe(
-              map(tireSet => loadTireSetSuccess(tireSet)),
+              map(tireSet => {
+                return loadTireSetSuccess(tireSet, val.clearSelectedTireSet)
+              }),
               catchError((error: string) => of(loadTireSetFailure(error)))
             )
           }
           return []
         }
-      )
+      ),
     )
   },
   { functional: true }

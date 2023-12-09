@@ -1,0 +1,10 @@
+:host {
+  display: block;
+
+  .totals {
+    display: flex;
+    column-gap: 20px;
+    justify-content: flex-end;
+    margin-right: 20px;
+  }
+}

@@ -23,6 +23,11 @@
           "apps/tire-storage-manager/src/favicon.ico",
           "apps/tire-storage-manager/src/assets",
           {
+            "glob": "**.json",
+            "input": "libs/tire-storage/tsm-services/src/assets/data",
+            "output": "./assets/tsm-services/data"
+          },
+          {
             "glob": "**/*",
             "input": "libs/core/assets/icons",
             "output": "./assets/core/icons"

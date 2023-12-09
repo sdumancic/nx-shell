@@ -1,22 +1,10 @@
 :host {
   .warehouse-container {
     width: 80%;
-    max-height: 800px;
+    max-height: 1200px;
     display: flex;
     justify-content: space-evenly;
 
-    .tire-set-layout {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .warehouse-layout {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: stretch;
-      gap: 5px;
-    }
   }
 
   .mat-button-toggle-appearance-standard.mat-button-toggle-checked.toggle-button {
@@ -32,4 +20,5 @@
     background-color: rebeccapurple;
   }
 
+  
 }

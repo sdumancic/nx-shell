@@ -148,7 +148,7 @@
       "startDate": "2023-11-13T19:55:57.638Z",
       "endDate": "2024-05-13T18:55:57.639Z",
       "totalPrice": 120,
-      "status": 0,
+      "status": 3,
       "id": 2
     },
     {
@@ -496,7 +496,7 @@
       "startDate": "2023-11-21T23:59:59+01:00",
       "endDate": "2024-05-21T23:59:59+02:00",
       "totalPrice": 40,
-      "status": 1,
+      "status": 3,
       "id": 6
     },
     {
@@ -578,13 +578,228 @@
           },
           "tirePrice": 18,
           "tireSetPrice": 72
+        },
+        {
+          "tireSet": {
+            "id": "3iFos8U",
+            "season": "Summer",
+            "brand": "Goodyear",
+            "width": 125,
+            "height": 45,
+            "size": 14,
+            "loadIndex": 105,
+            "speedIndex": "U",
+            "rimsIncluded": null,
+            "runFlat": true,
+            "customerId": 1,
+            "tires": [
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front right"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear right"
+              }
+            ]
+          },
+          "tireStoragePrice": {
+            "size": 14,
+            "price": 10,
+            "priceWithRims": 11
+          },
+          "tirePrice": 10,
+          "tireSetPrice": 40
         }
       ],
       "startDate": "2023-11-27T23:59:59+01:00",
       "endDate": "2024-05-27T23:59:59+02:00",
-      "totalPrice": 72,
-      "status": 0,
+      "totalPrice": 112,
+      "status": 1,
       "id": 7
+    },
+    {
+      "customer": {
+        "id": "0AuOZ-s",
+        "firstName": "Jake",
+        "lastName": "Doe",
+        "gender": "",
+        "address": {
+          "street": "asdsad",
+          "city": "asdasd",
+          "state": "AK",
+          "zip": "asdsa"
+        },
+        "phoneNumber": "asdsad",
+        "email": "aaa@asdsad"
+      },
+      "tireSets": [
+        {
+          "tireSet": {
+            "id": "41J2zIG",
+            "season": "Winter",
+            "brand": "Toyo",
+            "width": 125,
+            "height": 45,
+            "size": 14,
+            "loadIndex": 105,
+            "speedIndex": "U",
+            "rimsIncluded": null,
+            "runFlat": null,
+            "customerId": "0AuOZ-s",
+            "tires": [
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front right"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear right"
+              }
+            ]
+          },
+          "tireStoragePrice": {
+            "size": 14,
+            "price": 10,
+            "priceWithRims": 11
+          },
+          "tirePrice": 10,
+          "tireSetPrice": 40
+        },
+        {
+          "tireSet": {
+            "id": "4fwa0kR",
+            "season": "Summer",
+            "brand": "Goodyear",
+            "width": 155,
+            "height": 45,
+            "size": 14,
+            "loadIndex": 110,
+            "speedIndex": "H",
+            "rimsIncluded": true,
+            "runFlat": null,
+            "customerId": "0AuOZ-s",
+            "tires": [
+              {
+                "id": null,
+                "treadDepth1": "4",
+                "treadDepth2": "4",
+                "treadDepth3": "4",
+                "treadDepth4": "4",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "5",
+                "treadDepth2": "4",
+                "treadDepth3": "4",
+                "treadDepth4": "4",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Front right"
+              },
+              {
+                "id": null,
+                "treadDepth1": "7",
+                "treadDepth2": "7",
+                "treadDepth3": "7",
+                "treadDepth4": "7",
+                "tireDamaged": false,
+                "rimDamaged": false,
+                "tireLocation": "Rear left"
+              },
+              {
+                "id": null,
+                "treadDepth1": "3",
+                "treadDepth2": "3",
+                "treadDepth3": "3",
+                "treadDepth4": "3",
+                "tireDamaged": true,
+                "rimDamaged": false,
+                "tireLocation": "Rear right"
+              }
+            ]
+          },
+          "tireStoragePrice": {
+            "size": 14,
+            "price": 10,
+            "priceWithRims": 11
+          },
+          "tirePrice": 11,
+          "tireSetPrice": 44
+        }
+      ],
+      "startDate": "2023-12-07T23:59:59+01:00",
+      "endDate": "2024-06-07T23:59:59+02:00",
+      "totalPrice": 84,
+      "status": 3,
+      "id": 8
     }
   ],
   "users": [
@@ -1419,6 +1634,20 @@
       },
       "phoneNumber": "",
       "email": ""
+    },
+    {
+      "id": "0AuOZ-s",
+      "firstName": "Jake",
+      "lastName": "Doe",
+      "gender": "",
+      "address": {
+        "street": "asdsad",
+        "city": "asdasd",
+        "state": "AK",
+        "zip": "asdsa"
+      },
+      "phoneNumber": "asdsad",
+      "email": "aaa@asdsad"
     }
   ],
   "tireSets": [
@@ -1696,6 +1925,478 @@
           "tireLocation": "Rear right"
         }
       ]
+    },
+    {
+      "id": "4fwa0kR",
+      "season": "Summer",
+      "brand": "Goodyear",
+      "width": 155,
+      "height": 45,
+      "size": 14,
+      "loadIndex": 110,
+      "speedIndex": "H",
+      "rimsIncluded": true,
+      "runFlat": null,
+      "customerId": "0AuOZ-s",
+      "tires": [
+        {
+          "id": null,
+          "treadDepth1": "4",
+          "treadDepth2": "4",
+          "treadDepth3": "4",
+          "treadDepth4": "4",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "5",
+          "treadDepth2": "4",
+          "treadDepth3": "4",
+          "treadDepth4": "4",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front right"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "3",
+          "treadDepth2": "3",
+          "treadDepth3": "3",
+          "treadDepth4": "3",
+          "tireDamaged": true,
+          "rimDamaged": false,
+          "tireLocation": "Rear right"
+        }
+      ]
+    },
+    {
+      "id": "41J2zIG",
+      "season": "Winter",
+      "brand": "Toyo",
+      "width": 125,
+      "height": 45,
+      "size": 14,
+      "loadIndex": 105,
+      "speedIndex": "U",
+      "rimsIncluded": null,
+      "runFlat": null,
+      "customerId": "0AuOZ-s",
+      "tires": [
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front right"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear right"
+        }
+      ]
+    },
+    {
+      "id": "LaUh8Ic",
+      "season": "All Seasons",
+      "brand": "Toyo",
+      "width": 155,
+      "height": 65,
+      "size": 22,
+      "loadIndex": 105,
+      "speedIndex": "U",
+      "rimsIncluded": null,
+      "runFlat": null,
+      "customerId": 1,
+      "tires": [
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front right"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear right"
+        }
+      ]
+    },
+    {
+      "id": "LtAm5RE",
+      "season": "Winter",
+      "brand": "Michelin",
+      "width": 225,
+      "height": 55,
+      "size": 19,
+      "loadIndex": 105,
+      "speedIndex": "U",
+      "rimsIncluded": true,
+      "runFlat": null,
+      "customerId": 5,
+      "tires": [
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front right"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear right"
+        }
+      ]
+    },
+    {
+      "id": "loNE6IU",
+      "season": "Summer",
+      "brand": "Toyo",
+      "width": 125,
+      "height": 45,
+      "size": 14,
+      "loadIndex": 105,
+      "speedIndex": "H",
+      "rimsIncluded": true,
+      "runFlat": null,
+      "customerId": 5,
+      "tires": [
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front right"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear right"
+        }
+      ]
+    },
+    {
+      "id": "-L8go17",
+      "season": "Summer",
+      "brand": "Goodyear",
+      "width": 135,
+      "height": 45,
+      "size": 14,
+      "loadIndex": 105,
+      "speedIndex": "H",
+      "rimsIncluded": null,
+      "runFlat": null,
+      "customerId": "1MeLZ3l",
+      "tires": [
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front right"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear right"
+        }
+      ]
+    },
+    {
+      "id": "H7w-JRp",
+      "season": "Summer",
+      "brand": "Toyo",
+      "width": 135,
+      "height": 45,
+      "size": 14,
+      "loadIndex": 105,
+      "speedIndex": "H",
+      "rimsIncluded": null,
+      "runFlat": null,
+      "customerId": "1MeLZ3l",
+      "tires": [
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front right"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear right"
+        }
+      ]
+    },
+    {
+      "id": "F5oHJHO",
+      "season": "Winter",
+      "brand": "Goodyear",
+      "width": 125,
+      "height": 45,
+      "size": 14,
+      "loadIndex": 105,
+      "speedIndex": "U",
+      "rimsIncluded": null,
+      "runFlat": null,
+      "customerId": "14",
+      "tires": [
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Front right"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear left"
+        },
+        {
+          "id": null,
+          "treadDepth1": "7",
+          "treadDepth2": "7",
+          "treadDepth3": "7",
+          "treadDepth4": "7",
+          "tireDamaged": false,
+          "rimDamaged": false,
+          "tireLocation": "Rear right"
+        }
+      ]
+    }
+  ],
+  "tireSetStorage": [
+    {
+      "offerId": 2,
+      "tireSetId": "4ece2ca7-2b79-4cf2-94c9-336e703a4f1d",
+      "locationId": "Large:B3:1:1",
+      "id": 1
+    },
+    {
+      "offerId": 2,
+      "tireSetId": "Q7F1fOg",
+      "locationId": "Small:S2:0:1",
+      "id": 2
+    },
+    {
+      "offerId": 8,
+      "tireSetId": "41J2zIG",
+      "locationId": "Large:B1:0:2",
+      "id": 3
+    },
+    {
+      "offerId": 8,
+      "tireSetId": "4fwa0kR",
+      "locationId": "Medium:M4:1:0",
+      "id": 4
+    },
+    {
+      "offerId": 6,
+      "tireSetId": "3iFos8U",
+      "locationId": "Large:B3:2:1",
+      "id": 5
     }
   ]
 }

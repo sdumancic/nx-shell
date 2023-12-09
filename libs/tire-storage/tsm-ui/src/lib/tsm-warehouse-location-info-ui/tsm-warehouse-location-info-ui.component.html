@@ -1,0 +1,32 @@
+<mat-card class="storage-info-card" *ngFor="let tsStorage of newTireSetStorage">
+  <mat-card-content class="container">
+    <div class="container--content">
+      <div class="main-info">
+        <mat-icon svgIcon="warehouse3" class="m-r-10px"></mat-icon>
+        <div class="flex-column">
+          <div class="strong-text">{{ tireDescription(tsStorage) }}</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="storage-info">
+        <div>
+          <span class="label-text"> Section: </span>
+          <span class="value-text">{{ section(tsStorage) }}</span>
+        </div>
+        <div>
+          <span class="label-text"> Subsection: </span>
+          <span class="value-text"> {{ subsection(tsStorage) }}</span>
+        </div>
+        <div>
+          <span class="label-text"> Row: </span>
+          <span class="value-text"> {{ row(tsStorage) }}</span>
+        </div>
+        <div>
+          <span class="label-text"> Column: </span>
+          <span class="value-text"> {{ col(tsStorage) }}</span>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

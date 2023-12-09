@@ -18,7 +18,7 @@ export const loadOfferFailure = createAction(
 
 export const createOrUpdateOffer = createAction(
   '[Offers CRUD] Create offer',
-  props<{ id?: string }>()
+  props<{ id?: number }>()
 )
 
 export const createOfferSuccess = createAction(
@@ -42,12 +42,12 @@ export const updateOfferFailure = createAction(
 )
 export const selectCustomerSuccess = createAction(
   '[Offers CRUD] Select customer success',
-  (customer: Customer) => ({ customer })
+  (customer: Customer, clearSelectedTireSet: boolean) => ({ customer, clearSelectedTireSet })
 )
 
 export const loadTireSetSuccess = createAction(
   '[Offers CRUD] Load tire set success',
-  (tireSets: TireSet[]) => ({ tireSets })
+  (tireSets: TireSet[], clearSelectedTireSet: boolean) => ({ tireSets, clearSelectedTireSet })
 )
 
 export const loadTireSetFailure = createAction(
@@ -89,6 +89,11 @@ export const setEditMode = createAction(
   '[Offers CRUD] Set Edit Mode',
   (editMode: EditMode) => ({ editMode })
 )
+
+export const clearStore = createAction(
+  '[Offers CRUD] Clear store'
+)
+
 
 
 

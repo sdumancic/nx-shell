@@ -52,6 +52,7 @@ export class TsmSignalsPlaygroundComponent {
   cartItems: WritableSignal<Product[]> = signal([])
 
   totalPrice = computed(() => {
+    console.log('totalPrice')
     return this.cartItems().reduce((acc, curr) => acc + curr.price, 0)
   })
 

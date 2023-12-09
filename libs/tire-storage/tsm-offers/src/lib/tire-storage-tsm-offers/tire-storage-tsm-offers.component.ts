@@ -19,6 +19,8 @@ import { OffersOverviewSearchResultUi, TsmOffersOverviewTableUiComponent } from 
 import { OfferStatusEnum, SearchMeta } from '@nx-shell/tire-storage/tsm-domain'
 import { PageEvent } from '@angular/material/paginator'
 import { Sort } from '@angular/material/sort'
+import { TsmWarehouseDialogComponent } from '@nx-shell/tire-storage/tsm-warehouse'
+import { DialogService } from '@nx-shell/core'
 
 @Component({
   selector: 'nx-shell-tire-storage-tsm-offers',
@@ -32,6 +34,7 @@ import { Sort } from '@angular/material/sort'
 export class TireStorageTsmOffersComponent implements OnInit {
   readonly activatedRoute = inject(ActivatedRoute)
   readonly router = inject(Router)
+  readonly dialogService = inject(DialogService)
   private readonly store = inject(Store)
   seasons$: Observable<string[]> = this.store.select(selectOffersOverviewVm).pipe(map(vm => vm.selectedTireSetMetadata?.tireTypes ? vm.selectedTireSetMetadata?.tireTypes : []))
   brands$: Observable<string[]> = this.store.select(selectOffersOverviewVm).pipe(map(vm => vm.selectedTireSetMetadata?.tireBrands ? vm.selectedTireSetMetadata?.tireBrands : []))
@@ -138,5 +141,17 @@ export class TireStorageTsmOffersComponent implements OnInit {
     if (row.id) {
       this.store.dispatch(acceptOffer({ id: row.id }))
     }
+  }
+
+  onStore (row: OffersOverviewSearchResultUi) {
+    const dialogRef = this.dialogService.openFullScreen(TsmWarehouseDialogComponent, {
+      data: { offerId: row.id },
+      panelClass: 'no-overflow-modal',
+    })
+    dialogRef.afterClosed().pipe(take(1)).subscribe(val => {
+      if (val) {
+        this.store.dispatch(searchOffers({}))
+      }
+    })
   }
 }
