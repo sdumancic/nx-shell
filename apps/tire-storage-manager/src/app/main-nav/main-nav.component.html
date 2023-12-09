@@ -23,6 +23,9 @@
         *ngIf="(loggedInUser$ | async) !== null"
         >Logout {{ loggedInUser$ | async }}</a
       >
+      <a mat-list-item routerLink="/customers-overview/playground"
+        >Playground</a
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

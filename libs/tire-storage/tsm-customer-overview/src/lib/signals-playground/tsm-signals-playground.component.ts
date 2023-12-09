@@ -12,6 +12,7 @@ import { RouterLinkActive } from '@angular/router'
 import { TsmCustomersOverviewTableUiComponent, TsmOffersOverviewTableUiComponent } from '@nx-shell/tire-storage/tsm-ui'
 import { MatInputModule } from '@angular/material/input'
 import { MatListModule } from '@angular/material/list'
+import { BehaviorSubject, map, of } from 'rxjs'
 
 interface Product {
   name: string
@@ -28,7 +29,7 @@ interface Product {
   styleUrls: ['./tsm-signals-playground.component.scss'],
 })
 export class TsmSignalsPlaygroundComponent {
-  warningVisible = false
+  warningVisible = signal(false)
   items: Product[] = [
     { name: 'Product A', price: 10 },
     { name: 'Product B', price: 15 },
@@ -38,30 +39,51 @@ export class TsmSignalsPlaygroundComponent {
     { name: 'Product G', price: 35 },
   ]
 
-  constructor () {
-    effect(() => {
-      if (this.cartItems().length > 3) {
-        this.warningVisible = true
-      } else {
-        this.warningVisible = false
-      }
-    })
-  }
-
   products = signal(this.items)
   cartItems: WritableSignal<Product[]> = signal([])
 
+  contains (val: Product) {
+    return this.cartItems().indexOf(val) > -1 ? true : false
+  }
+
   totalPrice = computed(() => {
-    console.log('totalPrice')
     return this.cartItems().reduce((acc, curr) => acc + curr.price, 0)
   })
 
+  products$ = of(this.items)
+  cartItems$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([])
+  warningVisible$ = new BehaviorSubject(false)
+  totalPrice$ = this.cartItems$.pipe(map(data => data.reduce((acc, curr) => acc + curr.price, 0)))
+
+  constructor () {
+    effect(() => {
+      if (this.cartItems().length > 3) {
+        this.warningVisible.set(true)
+      } else {
+        this.warningVisible.set(false)
+      }
+    }, { allowSignalWrites: true })
+
+    this.cartItems$.pipe(map(val => {
+      if (val.length > 3) {
+        this.warningVisible$.next(true)
+      } else {
+        this.warningVisible$.next(false)
+      }
+    })).subscribe()
+  }
+
   removeItem (item: Product) {
-    // Update the itemList signal by removing the selected item
     this.cartItems.set(this.cartItems().filter((i) => i !== item))
+  }
+
+  removeItem2 (item: Product) {
+    this.cartItems$.next([...this.cartItems$.value.filter((i) => i !== item)])
   }
 
   addToCart (item: Product) {
     this.cartItems.update((cart) => [...cart, item])
+    this.cartItems$.next([...this.cartItems$.value, item])
   }
+
 }

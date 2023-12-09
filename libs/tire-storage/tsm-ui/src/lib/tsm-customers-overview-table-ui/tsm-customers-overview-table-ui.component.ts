@@ -2,20 +2,19 @@ import { AfterViewInit, Component, DestroyRef, EventEmitter, inject, Input, Outp
 import { CommonModule } from '@angular/common'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDividerModule } from '@angular/material/divider'
-import { MatIconModule } from '@angular/material/icon'
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatSort, MatSortModule, Sort, SortDirection } from '@angular/material/sort'
 import { MatTableModule } from '@angular/material/table'
 import { SearchMeta } from '@nx-shell/tire-storage/tsm-domain'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-import { MatMenuModule } from '@angular/material/menu'
 import { CustomersOverviewSearchResultUi } from './customers-overview-search-result-ui.model'
+import { MatIconModule } from '@angular/material/icon'
 
 @Component({
   selector: 'tsm-ui-customers-overview-table',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatDividerModule, MatIconModule, MatMenuModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule],
+  imports: [CommonModule, MatButtonModule, MatDividerModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatIconModule],
   templateUrl: './tsm-customers-overview-table-ui.component.html',
   styleUrl: './tsm-customers-overview-table-ui.component.scss',
 })
@@ -65,7 +64,10 @@ export class TsmCustomersOverviewTableUiComponent implements AfterViewInit {
   }
 
   onEdit (row: CustomersOverviewSearchResultUi) {
+    console.log('edit table', row)
     this.editEmitter.emit(row)
   }
+
+  test () {console.log('xxx')}
 
 }
