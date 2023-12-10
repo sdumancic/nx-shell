@@ -44,5 +44,11 @@ export const appRoutes: Route[] = [
     canMatch: [authGuard],
     loadChildren: () =>
       import('@nx-shell/tire-storage/tsm-offers-crud').then((m) => m.tireStorageTsmOffersCrudRoutes),
-  }
+  },
+  {
+    path: 'planner',
+    //canMatch: [authGuard],
+    loadChildren: () =>
+      import('@nx-shell/tire-storage/tsm-planner').then((m) => m.tireStorageTsmPlannerRoutes),
+  },
 ]

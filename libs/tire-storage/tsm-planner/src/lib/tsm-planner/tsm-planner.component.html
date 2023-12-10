@@ -1,0 +1,30 @@
+<main>
+  <div class="group" cdkDropListGroup>
+    <div
+      class="mechanic-container"
+      *ngFor="let mechanic of mechanics()"
+      cdkDropList
+      [cdkDropListData]="mechanic"
+      id="{{ mechanic.mechanicId }}"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="mechanic">
+        {{ mechanic.mechanicId }} {{ mechanic.mechanicName }}
+      </div>
+      <div
+        class="workorder-container"
+        *ngFor="let wo of mechanic.workOrders"
+        cdkDrag
+        [cdkDragData]="wo"
+      >
+        <div class="example-handle" cdkDragHandle>
+          <mat-icon>drag_indicator</mat-icon>
+        </div>
+        <div>
+          <div>Description: {{ wo.description }}</div>
+          <div>Duration: {{ wo.durationMin }} min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

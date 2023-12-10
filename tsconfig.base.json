@@ -10,12 +10,17 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-shell/core": ["libs/core/src/index.ts"],
+      "@nx-shell/core": [
+        "libs/core/src/index.ts"
+      ],
       "@nx-shell/tire-storage/tsm-customer-crud": [
         "libs/tire-storage/tsm-customer-crud/src/index.ts"
       ],
@@ -55,13 +60,25 @@
       "@nx-shell/tire-storage/tsm-warehouse": [
         "libs/tire-storage/tsm-warehouse/src/index.ts"
       ],
-      "@nx-shell/users/user-auth": ["libs/users/user-auth/src/index.ts"],
+      "@nx-shell/tire-storage/tsm-planner": [
+        "libs/tire-storage/tsm-planner/src/index.ts"
+      ],
+      "@nx-shell/users/user-auth": [
+        "libs/users/user-auth/src/index.ts"
+      ],
       "@nx-shell/users/user-services": [
         "libs/users/user-services/src/index.ts"
       ],
-      "@nx-shell/users/user-ui": ["libs/users/user-ui/src/index.ts"],
-      "@nx-shell/users/user-util": ["libs/users/user-util/src/index.ts"]
+      "@nx-shell/users/user-ui": [
+        "libs/users/user-ui/src/index.ts"
+      ],
+      "@nx-shell/users/user-util": [
+        "libs/users/user-util/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
