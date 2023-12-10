@@ -1,30 +1,39 @@
 <main>
   <div class="group" cdkDropListGroup>
-    <div
-      class="mechanic-container"
-      *ngFor="let mechanic of mechanics()"
-      cdkDropList
-      [cdkDropListData]="mechanic"
-      id="{{ mechanic.mechanicId }}"
-      (cdkDropListDropped)="drop($event)"
+    <mat-expansion-panel
+      [expanded]="ind === 0"
+      togglePosition="before"
+      *ngFor="let team of teams; let ind = index"
     >
-      <div class="mechanic">
-        {{ mechanic.mechanicId }} {{ mechanic.mechanicName }}
-      </div>
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ team.id }} - {{ team.name }} </mat-panel-title>
+      </mat-expansion-panel-header>
       <div
-        class="workorder-container"
-        *ngFor="let wo of mechanic.workOrders"
-        cdkDrag
-        [cdkDragData]="wo"
+        class="mechanic-container"
+        *ngFor="let mechanic of teamMechanics(team.id)"
+        cdkDropList
+        [cdkDropListData]="mechanic"
+        id="{{ mechanic.mechanicId }}"
+        (cdkDropListDropped)="drop($event)"
       >
-        <div class="example-handle" cdkDragHandle>
-          <mat-icon>drag_indicator</mat-icon>
+        <div class="mechanic">
+          {{ mechanic.mechanicId }} {{ mechanic.mechanicName }}
         </div>
-        <div>
-          <div>Description: {{ wo.description }}</div>
-          <div>Duration: {{ wo.durationMin }} min</div>
+        <div
+          class="workorder-container"
+          *ngFor="let wo of mechanic.workOrders"
+          cdkDrag
+          [cdkDragData]="wo"
+        >
+          <div class="example-handle" cdkDragHandle>
+            <mat-icon>drag_indicator</mat-icon>
+          </div>
+          <div>
+            <div>Description: {{ wo.description }}</div>
+            <div>Duration: {{ wo.durationMin }} min</div>
+          </div>
         </div>
       </div>
-    </div>
+    </mat-expansion-panel>
   </div>
 </main>

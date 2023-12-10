@@ -2,19 +2,26 @@ import { Component, signal } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop'
 import { MatIconModule } from '@angular/material/icon'
+import { MatExpansionModule } from '@angular/material/expansion'
 
 @Component({
   selector: 'tsm-planner',
   standalone: true,
-  imports: [CommonModule, DragDropModule, MatIconModule],
+  imports: [CommonModule, DragDropModule, MatIconModule, MatExpansionModule],
   templateUrl: './tsm-planner.component.html',
   styleUrl: './tsm-planner.component.scss',
 })
 export class TsmPlannerComponent {
+  teams = [
+    { id: 1, name: 'Team 1' },
+    { id: 2, name: 'Team 2' },
+    { id: 3, name: 'Team 3' }
+  ]
   private data = [
     {
       mechanicId: 1,
       mechanicName: 'John Doe',
+      teamId: 1,
       workOrders: [
         {
           workOrderId: 1,
@@ -36,6 +43,7 @@ export class TsmPlannerComponent {
     {
       mechanicId: 2,
       mechanicName: 'John Rambo',
+      teamId: 1,
       workOrders: [
         {
           workOrderId: 4,
@@ -53,6 +61,7 @@ export class TsmPlannerComponent {
     {
       mechanicId: 3,
       mechanicName: 'Sigourney Doe',
+      teamId: 1,
       workOrders: [
         {
           workOrderId: 6,
@@ -60,9 +69,23 @@ export class TsmPlannerComponent {
           description: 'Full service'
         },
       ]
+    },
+    {
+      mechanicId: 4,
+      mechanicName: 'John Wayne',
+      teamId: 2,
+      workOrders: [
+        {
+          workOrderId: 7,
+          durationMin: 120,
+          description: 'Full inspection'
+        },
+      ]
     }
   ]
   mechanics = signal(this.data)
+
+  teamMechanics (teamId: number) { return this.data.filter(m => m.teamId === teamId)}
 
   drop (event: CdkDragDrop<any>) {
     const oldIndex = event.previousIndex

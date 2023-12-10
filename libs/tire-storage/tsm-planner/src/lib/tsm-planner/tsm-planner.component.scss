@@ -47,3 +47,15 @@
 .example-handle {
   margin-left: 10px;
 }
+
+.mat-expansion-panel-header.mat-expanded {
+  height: 40px;
+}
+
+.mat-expansion-panel-header {
+  height: 40px;
+}
+
+.mat-expansion-panel-header.mat-expansion-toggle-indicator-before .mat-expansion-indicator {
+  display: flex;
+}
